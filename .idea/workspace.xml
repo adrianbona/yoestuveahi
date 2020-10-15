@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/yoestuveahi-frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Link.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Todo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/AddTodo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/FilterLinks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/VisibleTodoList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/todos.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reducers/visibilityFilter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.old.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +59,8 @@
       <workItem from="1602347427768" duration="260000" />
       <workItem from="1602347817111" duration="545000" />
       <workItem from="1602593757739" duration="33000" />
-      <workItem from="1602642997081" duration="1845000" />
+      <workItem from="1602642997081" duration="2520000" />
+      <workItem from="1602726411106" duration="550000" />
     </task>
     <servers />
   </component>
@@ -118,9 +100,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1605" y="438" width="630" height="534" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602346253185" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1602346266619">
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1602645048937">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602346266619" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602645048937" />
   </component>
 </project>
