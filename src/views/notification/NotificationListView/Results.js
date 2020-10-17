@@ -14,6 +14,8 @@ import {
   TableRow,
   makeStyles
 } from '@material-ui/core';
+import MailIcon from '@material-ui/icons/Mail';
+import DraftsIcon from '@material-ui/icons/Drafts';
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -41,7 +43,7 @@ const Results = ({ className, notifications, ...rest }) => {
               <TableRow>
                 <TableCell>Created At</TableCell>
                 <TableCell>Content</TableCell>
-                <TableCell>Read</TableCell>
+                <TableCell />
               </TableRow>
             </TableHead>
             <TableBody>
@@ -51,7 +53,9 @@ const Results = ({ className, notifications, ...rest }) => {
                     {moment(notification.createdAt).format('DD/MM/YYYY HH:mm')}
                   </TableCell>
                   <TableCell>{notification.content}</TableCell>
-                  <TableCell>{notification.shown ? 'Yes' : 'No'}</TableCell>
+                  <TableCell>
+                    {notification.shown ? <DraftsIcon /> : <MailIcon />}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

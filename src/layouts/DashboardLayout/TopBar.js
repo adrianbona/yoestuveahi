@@ -41,9 +41,11 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <RouterLink to="/">
           <div className={classes.title}>
             <Logo />
-            <Typography align="center" color="textPrimary" variant="h3">
-              Yo Estuve Ahí App
-            </Typography>
+            <Hidden smDown>
+              <Typography align="center" color="textPrimary" variant="h3">
+                Yo Estuve Ahí App
+              </Typography>
+            </Hidden>
           </div>
         </RouterLink>
         <Box flexGrow={1} />
