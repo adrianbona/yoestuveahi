@@ -9,7 +9,8 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
+  Typography
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
@@ -17,37 +18,43 @@ import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 
 const useStyles = makeStyles(() => ({
-  root: {},
-  avatar: {
-    width: 60,
-    height: 60
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    '& > h3': {
+      marginLeft: '24px'
+    }
   }
 }));
 
-const TopBar = ({
-  className,
-  onMobileNavOpen,
-  ...rest
-}) => {
+const useGetNotifications = () => {
+  return {
+    data: [{ content: 'Someone you met is sick' }]
+  };
+};
+
+const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
+  const { data } = useGetNotifications({ userId: 123 });
+  const [notifications] = useState(data);
 
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      elevation={0}
-      {...rest}
-    >
+    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
         <RouterLink to="/">
-          <Logo />
+          <div className={classes.title}>
+            <Logo />
+            <Typography align="center" color="textPrimary" variant="h3">
+              Yo Estuve Ahí App
+            </Typography>
+          </div>
         </RouterLink>
         <Box flexGrow={1} />
-        <Hidden mdDown>
+        <>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
-              color="primary"
+              color="secondary"
               variant="dot"
             >
               <NotificationsIcon />
@@ -56,12 +63,9 @@ const TopBar = ({
           <IconButton color="inherit">
             <InputIcon />
           </IconButton>
-        </Hidden>
-        <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onMobileNavOpen}
-          >
+        </>
+        <Hidden mdUp>
+          <IconButton color="inherit" onClick={onMobileNavOpen}>
             <MenuIcon />
           </IconButton>
         </Hidden>
