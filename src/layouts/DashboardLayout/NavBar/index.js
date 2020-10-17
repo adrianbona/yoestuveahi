@@ -16,6 +16,7 @@ import {
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
+  Bell as BellIcon,
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
@@ -36,6 +37,11 @@ const items = [
     href: '/app/customers',
     icon: UsersIcon,
     title: 'Customers'
+  },
+  {
+    href: '/app/notifications',
+    icon: BellIcon,
+    title: 'Notifications'
   },
   {
     href: '/app/products',

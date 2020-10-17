@@ -16,6 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import data from 'src/views/notification/NotificationListView/data';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -27,17 +28,12 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const useGetNotifications = () => {
-  return {
-    data: [{ content: 'Someone you met is sick' }]
-  };
-};
-
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const { data } = useGetNotifications({ userId: 123 });
-  const [notifications] = useState(data);
+  const [notifications] = useState(
+    data.filter(notification => !notification.shown)
+  );
 
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
@@ -52,12 +48,13 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box flexGrow={1} />
         <>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="secondary"
-              variant="dot"
-            >
+          <IconButton
+            color="inherit"
+            onClick={() => {
+              navigate('/app/notifications', { replace: true });
+            }}
+          >
+            <Badge badgeContent={notifications.length} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
