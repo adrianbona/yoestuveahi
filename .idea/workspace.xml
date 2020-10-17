@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AddTodo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AddTodo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/FilterLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/FilterLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/VisibleTodoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/VisibleTodoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GlobalStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GlobalStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AddTodo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/FilterLink.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/VisibleTodoList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/todos.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/visibilityFilter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +69,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Adrian\GIT\yoestuveahi-frontend\node_modules\prettier" />
     <property name="run.prettier.on.save" value="true" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -77,7 +87,11 @@
       <workItem from="1602642997081" duration="2520000" />
       <workItem from="1602726411106" duration="1735000" />
       <workItem from="1602728777695" duration="965000" />
-      <workItem from="1602729938202" duration="2356000" />
+      <workItem from="1602729938202" duration="2695000" />
+      <workItem from="1602767985351" duration="92000" />
+      <workItem from="1602788977072" duration="600000" />
+      <workItem from="1602859767832" duration="1195000" />
+      <workItem from="1602946868952" duration="2616000" />
     </task>
     <servers />
   </component>
@@ -128,9 +142,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1605" y="438" width="630" height="534" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602346253185" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1602733244807">
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1602949228942">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602733244807" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1602949228942" />
   </component>
 </project>
