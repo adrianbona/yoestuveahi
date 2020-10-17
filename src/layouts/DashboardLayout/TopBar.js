@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -35,6 +35,7 @@ const useGetNotifications = () => {
 
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
+  const navigate = useNavigate();
   const { data } = useGetNotifications({ userId: 123 });
   const [notifications] = useState(data);
 
@@ -60,7 +61,12 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            onClick={() => {
+              navigate('/login', { replace: true });
+            }}
+          >
             <InputIcon />
           </IconButton>
         </>
