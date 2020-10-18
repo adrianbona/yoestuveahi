@@ -15,8 +15,10 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
+import CameraEnhanceIcon from '@material-ui/icons/CameraEnhance';
 import Logo from 'src/components/Logo';
 import data from 'src/views/notification/NotificationListView/data';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -41,7 +43,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <RouterLink to="/">
           <div className={classes.title}>
             <Logo />
-            <Hidden smDown>
+            <Hidden xsDown>
               <Typography align="center" color="textPrimary" variant="h3">
                 Yo Estuve Ahí App
               </Typography>
@@ -50,24 +52,42 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box flexGrow={1} />
         <>
-          <IconButton
-            color="inherit"
-            onClick={() => {
-              navigate('/app/notifications', { replace: true });
-            }}
+          <Tooltip title="Scan a QR Code">
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                navigate('/app/registry/scan', { replace: true });
+              }}
+            >
+              <CameraEnhanceIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip
+            title={`You have ${notifications.length} pending notification${
+              notifications.length > 1 ? 's' : ''
+            }`}
           >
-            <Badge badgeContent={notifications.length} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            color="inherit"
-            onClick={() => {
-              navigate('/login', { replace: true });
-            }}
-          >
-            <InputIcon />
-          </IconButton>
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                navigate('/app/notifications', { replace: true });
+              }}
+            >
+              <Badge badgeContent={notifications.length} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Log out">
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                navigate('/login', { replace: true });
+              }}
+            >
+              <InputIcon />
+            </IconButton>
+          </Tooltip>
         </>
         <Hidden mdUp>
           <IconButton color="inherit" onClick={onMobileNavOpen}>

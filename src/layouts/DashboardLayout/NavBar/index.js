@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -13,19 +13,15 @@ import {
 } from '@material-ui/core';
 import {
   BarChart as BarChartIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
   Bell as BellIcon,
+  Settings as SettingsIcon,
+  User as UserIcon,
   Users as UsersIcon
 } from 'react-feather';
+import StorefrontIcon from '@material-ui/icons/Storefront';
 import NavItem from './NavItem';
-
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
+import customers from '../../../views/customer/CustomerListView/data';
+import locations from '../../../views/location/LocationListView/data';
 
 const items = [
   {
@@ -44,14 +40,9 @@ const items = [
     title: 'Notifications'
   },
   {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
+    href: '/app/registry',
+    icon: StorefrontIcon,
+    title: 'Registry'
   },
   {
     href: '/app/settings',
@@ -79,6 +70,9 @@ const useStyles = makeStyles(() => ({
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
+  const [customer] = useState(
+    customers[Math.floor(Math.random() * customers.length)]
+  );
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -90,17 +84,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={classes.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
-        />
+        <Avatar className={classes.avatar} src={customer.avatarUrl} />
         <Typography className={classes.name} color="textPrimary" variant="h5">
-          {user.name}
+          {customer.name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          {customer.email}
         </Typography>
       </Box>
       <Divider />
