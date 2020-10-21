@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Avatar,
@@ -15,13 +15,11 @@ import {
   BarChart as BarChartIcon,
   Bell as BellIcon,
   Settings as SettingsIcon,
-  User as UserIcon,
   Users as UsersIcon
 } from 'react-feather';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import NavItem from './NavItem';
 import customers from '../../../views/customer/CustomerListView/data';
-import locations from '../../../views/location/LocationListView/data';
 
 const items = [
   {
@@ -61,7 +59,6 @@ const useStyles = makeStyles(() => ({
     height: 'calc(100% - 64px)'
   },
   avatar: {
-    cursor: 'pointer',
     width: 64,
     height: 64
   }

@@ -105,42 +105,46 @@ const Results = ({ className, locations, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {locations.slice(0, limit).map(location => (
-                <TableRow
-                  hover
-                  key={location.id}
-                  selected={selectedLocationIds.indexOf(location.id) !== -1}
-                >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedLocationIds.indexOf(location.id) !== -1}
-                      onChange={event => handleSelectOne(event, location.id)}
-                      value="true"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Box alignItems="center" display="flex">
-                      <Avatar
-                        className={classes.avatar}
-                        src={location.avatarUrl}
-                      >
-                        {getInitials(location.name)}
-                      </Avatar>
-                      <Typography color="textPrimary" variant="body1">
-                        {location.name}
-                      </Typography>
-                    </Box>
-                  </TableCell>
-                  <TableCell>{location.email}</TableCell>
-                  <TableCell>
-                    {`${location.address.city}, ${location.address.state}, ${location.address.country}`}
-                  </TableCell>
-                  <TableCell>{location.phone}</TableCell>
-                  <TableCell>
-                    {moment(location.createdAt).format('DD/MM/YYYY')}
-                  </TableCell>
-                </TableRow>
-              ))}
+              {locations
+                .slice(page * limit, (page + 1) * limit)
+                .map(location => (
+                  <TableRow
+                    hover
+                    key={location.id}
+                    selected={selectedLocationIds.indexOf(location.id) !== -1}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={
+                          selectedLocationIds.indexOf(location.id) !== -1
+                        }
+                        onChange={event => handleSelectOne(event, location.id)}
+                        value="true"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Box alignItems="center" display="flex">
+                        <Avatar
+                          className={classes.avatar}
+                          src={location.avatarUrl}
+                        >
+                          {getInitials(location.name)}
+                        </Avatar>
+                        <Typography color="textPrimary" variant="body1">
+                          {location.name}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell>{location.email}</TableCell>
+                    <TableCell>
+                      {`${location.address.city}, ${location.address.state}, ${location.address.country}`}
+                    </TableCell>
+                    <TableCell>{location.phone}</TableCell>
+                    <TableCell>
+                      {moment(location.createdAt).format('DD/MM/YYYY')}
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </Box>

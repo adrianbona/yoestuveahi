@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
@@ -11,18 +9,12 @@ import {
   TableCell,
   TableHead,
   TablePagination,
-  TableRow,
-  makeStyles
+  TableRow
 } from '@material-ui/core';
 import MailIcon from '@material-ui/icons/Mail';
 import DraftsIcon from '@material-ui/icons/Drafts';
 
-const useStyles = makeStyles(theme => ({
-  root: {}
-}));
-
 const Results = ({ className, notifications, ...rest }) => {
-  const classes = useStyles();
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -35,7 +27,7 @@ const Results = ({ className, notifications, ...rest }) => {
   };
 
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card className={className} {...rest}>
       <PerfectScrollbar>
         <Box>
           <Table>
@@ -47,17 +39,19 @@ const Results = ({ className, notifications, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {notifications.slice(0, limit).map(notification => (
-                <TableRow hover key={notification.id}>
-                  <TableCell>
-                    {moment(notification.createdAt).format('DD/MM/YYYY HH:mm')}
-                  </TableCell>
-                  <TableCell>{notification.content}</TableCell>
-                  <TableCell>
-                    {notification.shown ? <DraftsIcon /> : <MailIcon />}
-                  </TableCell>
-                </TableRow>
-              ))}
+              {notifications
+                .slice(page * limit, (page + 1) * limit)
+                .map(notification => (
+                  <TableRow hover key={notification.id}>
+                    <TableCell>
+                      {notification.createdAt.format('MMMM D, YYYY HH:mm')}
+                    </TableCell>
+                    <TableCell>{notification.content}</TableCell>
+                    <TableCell>
+                      {notification.shown ? <DraftsIcon /> : <MailIcon />}
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </Box>
