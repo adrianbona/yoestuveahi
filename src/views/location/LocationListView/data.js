@@ -1,4 +1,11 @@
 import { v4 as uuid } from 'uuid';
+import moment from 'moment';
+import customers from '../../customer/CustomerListView/data';
+
+const generateRandomDate = () =>
+  moment(new Date(new Date() - Math.floor(Math.random() * 10000000000)));
+
+const generateRandomCustomer = () => customers[Math.floor(Math.random() * 10)];
 
 export default [
   {
@@ -13,8 +20,8 @@ export default [
     state: 'West Virginia',
     city: 'Parkersburg',
     street: '2849 Fulton Street',
-    createdAt: 1555016400000,
-    createdBy: uuid()
+    createdAt: generateRandomDate(),
+    createdBy: generateRandomCustomer()
   },
   {
     id: uuid(),
@@ -28,8 +35,8 @@ export default [
     state: 'Bristow',
     city: 'Iowa',
     street: '1865  Pleasant Hill Road',
-    createdAt: 1555016400000,
-    createdBy: uuid()
+    createdAt: generateRandomDate(),
+    createdBy: generateRandomCustomer()
   },
   {
     id: uuid(),
@@ -43,8 +50,8 @@ export default [
     state: 'Utah',
     city: 'Salt Lake City',
     street: '368 Lamberts Branch Road',
-    createdAt: 1555016400000,
-    createdBy: uuid()
+    createdAt: generateRandomDate(),
+    createdBy: generateRandomCustomer()
   },
   {
     id: uuid(),
@@ -58,8 +65,8 @@ export default [
     state: 'Michigan',
     city: 'Detroit',
     street: '3934  Wildrose Lane',
-    createdAt: 1555016400000,
-    createdBy: uuid()
+    createdAt: generateRandomDate(),
+    createdBy: generateRandomCustomer()
   },
   {
     id: uuid(),
@@ -73,7 +80,7 @@ export default [
     state: 'Nevada',
     city: 'Las Vegas',
     street: '1798  Hickory Ridge Drive',
-    createdAt: 1555016400000,
-    createdBy: uuid()
+    createdAt: generateRandomDate(),
+    createdBy: generateRandomCustomer()
   }
 ];

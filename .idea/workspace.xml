@@ -7,13 +7,10 @@
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/Toolbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/NotificationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/NotificationListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/NotificationListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/NotificationListView/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/registry/RegistryListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/registry/RegistryListView/data.js" afterDir="false" />
     </list>
@@ -116,7 +113,7 @@
       <workItem from="1602946868952" duration="8928000" />
       <workItem from="1602957028284" duration="6232000" />
       <workItem from="1602967710663" duration="8581000" />
-      <workItem from="1603237190619" duration="6606000" />
+      <workItem from="1603237190619" duration="8446000" />
     </task>
     <servers />
   </component>
@@ -139,22 +136,22 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1602344245949" />
-    <state width="1234" height="340" key="GridCell.Tab.0.bottom" timestamp="1603248590021">
+    <state width="1234" height="340" key="GridCell.Tab.0.bottom" timestamp="1603250830265">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1603248590021" />
-    <state width="1234" height="340" key="GridCell.Tab.0.center" timestamp="1603248590021">
+    <state width="1234" height="340" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830265" />
+    <state width="1234" height="340" key="GridCell.Tab.0.center" timestamp="1603250830264">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1603248590021" />
-    <state width="1234" height="340" key="GridCell.Tab.0.left" timestamp="1603248590021">
+    <state width="1234" height="340" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830264" />
+    <state width="1234" height="340" key="GridCell.Tab.0.left" timestamp="1603250830263">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1603248590021" />
-    <state width="1234" height="340" key="GridCell.Tab.0.right" timestamp="1603248590021">
+    <state width="1234" height="340" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830263" />
+    <state width="1234" height="340" key="GridCell.Tab.0.right" timestamp="1603250830264">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1603248590021" />
+    <state width="1234" height="340" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830264" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -167,9 +164,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603246581349" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1603247913122">
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1603249435951">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603247913122" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603249435951" />
   </component>
 </project>

@@ -41,10 +41,10 @@ const Results = ({ className, registries, ...rest }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Registry Id</TableCell>
                 <TableCell>User</TableCell>
-                <TableCell>Entrance Time</TableCell>
-                <TableCell>Exit Time</TableCell>
+                <TableCell>Location</TableCell>
+                <TableCell>Entrance</TableCell>
+                <TableCell>Exit</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -52,10 +52,10 @@ const Results = ({ className, registries, ...rest }) => {
                 .slice(page * limit, (page + 1) * limit)
                 .map(registry => (
                   <TableRow hover key={registry.id}>
-                    <TableCell>{registry.id}</TableCell>
-                    <TableCell>{registry.userId}</TableCell>
+                    <TableCell>{registry.customer.name}</TableCell>
+                    <TableCell>{registry.location.name}</TableCell>
                     <TableCell>
-                      {registry.entranceTime.format('HH:mm')}
+                      {registry.entranceTime.format('MMMM DD, YYYY HH:mm')}
                     </TableCell>
                     <TableCell>{registry.exitTime.format('HH:mm')}</TableCell>
                   </TableRow>

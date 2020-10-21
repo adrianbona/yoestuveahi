@@ -18,6 +18,7 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import StorefrontIcon from '@material-ui/icons/Storefront';
+import DirectionsWalk from '@material-ui/icons/DirectionsWalk';
 import NavItem from './NavItem';
 import customers from '../../../views/customer/CustomerListView/data';
 
@@ -38,8 +39,13 @@ const items = [
     title: 'Notifications'
   },
   {
-    href: '/app/registry',
+    href: '/app/locations',
     icon: StorefrontIcon,
+    title: 'Locations'
+  },
+  {
+    href: '/app/registry',
+    icon: DirectionsWalk,
     title: 'Registry'
   },
   {

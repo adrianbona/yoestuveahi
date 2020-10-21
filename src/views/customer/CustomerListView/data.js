@@ -4,7 +4,7 @@ import moment from 'moment';
 const generateRandomDate = () =>
   moment(new Date(new Date() - Math.floor(Math.random() * 10000000000)));
 
-export default [
+const customers = [
   {
     id: uuid(),
     avatarUrl: '/static/images/avatars/avatar_3.png',
@@ -86,3 +86,13 @@ export default [
     phone: '801-301-7894'
   }
 ];
+
+export default customers.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});

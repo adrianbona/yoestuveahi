@@ -10,6 +10,7 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import RegistryListView from 'src/views/registry/RegistryListView';
 import ScanQRCodeView from 'src/views/registry/ScanQRCodeView';
 import SettingsView from 'src/views/settings/SettingsView';
+import LocationListView from './views/location/LocationListView';
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
       { path: 'customers', element: <CustomerListView /> },
       { path: 'notifications', element: <NotificationListView /> },
       { path: 'dashboard', element: <DashboardView /> },
+      { path: 'locations', element: <LocationListView /> },
       { path: 'registry', element: <RegistryListView /> },
       { path: 'registry/scan', element: <ScanQRCodeView /> },
       { path: 'settings', element: <SettingsView /> },
