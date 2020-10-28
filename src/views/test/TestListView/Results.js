@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
-  Avatar,
   Box,
   Card,
   Table,
@@ -23,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Results = ({ className, customers, ...rest }) => {
+const Results = ({ className, tests, ...rest }) => {
   const classes = useStyles();
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -44,43 +43,39 @@ const Results = ({ className, customers, ...rest }) => {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Registration date</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Address</TableCell>
+                <TableCell>Max Capacity</TableCell>
+                <TableCell>Created By</TableCell>
+                <TableCell>Created On</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers
-                .slice(page * limit, (page + 1) * limit)
-                .map(customer => (
-                  <TableRow hover key={customer.id}>
-                    <TableCell>
-                      <Box alignItems="center" display="flex">
-                        <Avatar
-                          className={classes.avatar}
-                          src={customer.avatarUrl}
-                        >
-                          {customer.name}
-                        </Avatar>
-                        <Typography color="textPrimary" variant="body1">
-                          {customer.name}
-                        </Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>{customer.phone}</TableCell>
-                    <TableCell>
-                      {customer.createdAt.format('MMMM D, YYYY')}
-                    </TableCell>
-                  </TableRow>
-                ))}
+              {tests.slice(page * limit, (page + 1) * limit).map(test => (
+                <TableRow hover key={test.id}>
+                  <TableCell>
+                    <Box alignItems="center" display="flex">
+                      <Typography color="textPrimary" variant="body1">
+                        {test.name}
+                      </Typography>
+                    </Box>
+                  </TableCell>
+                  <TableCell>{test.description}</TableCell>
+                  <TableCell>
+                    {`${test.city}, ${test.state}, ${test.country}`}
+                  </TableCell>
+                  <TableCell>{test.maximumCapacity}</TableCell>
+                  <TableCell>{test.createdBy.name}</TableCell>
+                  <TableCell>{test.createdAt.format('DD/MM/YYYY')}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </Box>
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={tests.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}
@@ -93,7 +88,7 @@ const Results = ({ className, customers, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  customers: PropTypes.array.isRequired
+  locations: PropTypes.array.isRequired
 };
 
 export default Results;

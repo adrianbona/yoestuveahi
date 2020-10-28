@@ -19,6 +19,7 @@ import {
 } from 'react-feather';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import DirectionsWalk from '@material-ui/icons/DirectionsWalk';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import NavItem from './NavItem';
 import customers from '../../../views/customer/CustomerListView/data';
 
@@ -47,6 +48,11 @@ const items = [
     href: '/app/registry',
     icon: DirectionsWalk,
     title: 'Registry'
+  },
+  {
+    href: '/app/tests',
+    icon: LocalHospitalIcon,
+    title: 'Tests'
   },
   {
     href: '/app/settings',

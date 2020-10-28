@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/SimpleModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/test/LoadTestModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/test/AddTestView/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/test/TestListView/Results.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/test/TestListView/data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/test/TestListView/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/TopBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/registry/RegistryListView/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/registry/RegistryListView/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/getInitials.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +51,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/location" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -69,13 +73,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location\LocationListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\test" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\test" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\registry" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views" />
     </key>
   </component>
   <component name="RunManager">
@@ -114,6 +121,10 @@
       <workItem from="1602957028284" duration="6232000" />
       <workItem from="1602967710663" duration="8581000" />
       <workItem from="1603237190619" duration="8446000" />
+      <workItem from="1603683846021" duration="10000" />
+      <workItem from="1603840583467" duration="629000" />
+      <workItem from="1603860032546" duration="9838000" />
+      <workItem from="1603915261575" duration="2100000" />
     </task>
     <servers />
   </component>
@@ -128,30 +139,30 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1374" y="363" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1602951974513" />
-    <state x="1667" y="510" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602730836125">
+    <state x="1667" y="510" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603899103583">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1667" y="510" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1602730836125" />
+    <state x="1667" y="510" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1603899103583" />
     <state x="1700" y="460" key="FileChooserDialogImpl" timestamp="1602344245949">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1602344245949" />
-    <state width="1234" height="340" key="GridCell.Tab.0.bottom" timestamp="1603250830265">
+    <state width="1234" height="338" key="GridCell.Tab.0.bottom" timestamp="1603917074692">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830265" />
-    <state width="1234" height="340" key="GridCell.Tab.0.center" timestamp="1603250830264">
+    <state width="1234" height="338" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1603917074692" />
+    <state width="1234" height="338" key="GridCell.Tab.0.center" timestamp="1603917074692">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830264" />
-    <state width="1234" height="340" key="GridCell.Tab.0.left" timestamp="1603250830263">
+    <state width="1234" height="338" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1603917074692" />
+    <state width="1234" height="338" key="GridCell.Tab.0.left" timestamp="1603917074692">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830263" />
-    <state width="1234" height="340" key="GridCell.Tab.0.right" timestamp="1603250830264">
+    <state width="1234" height="338" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1603917074692" />
+    <state width="1234" height="338" key="GridCell.Tab.0.right" timestamp="1603917074692">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="340" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1603250830264" />
+    <state width="1234" height="338" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1603917074692" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -160,13 +171,13 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1413" y="238" key="SettingsEditor/0.0.2560.1410@0.0.2560.1410" timestamp="1602729382522" />
-    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1603246581349">
+    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1603917104548">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603246581349" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1603249435951">
+    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603917104548" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1603854514889">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603249435951" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1603854514889" />
   </component>
 </project>

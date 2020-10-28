@@ -12,13 +12,17 @@ import {
   makeStyles,
   Typography
 } from '@material-ui/core';
+
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import CameraEnhanceIcon from '@material-ui/icons/CameraEnhance';
+import HowToVoteIcon from '@material-ui/icons/HowToVote';
+
 import Logo from 'src/components/Logo';
 import data from 'src/views/notification/NotificationListView/data';
 import Tooltip from '@material-ui/core/Tooltip';
+import LoadTestModal from '../../components/test/LoadTestModal';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -33,6 +37,7 @@ const useStyles = makeStyles(() => ({
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
   const [notifications] = useState(
     data.filter(notification => !notification.shown)
   );
@@ -52,6 +57,16 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box flexGrow={1} />
         <>
+          <Tooltip title="Report Test">
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                setLoadTestIsOpen(true);
+              }}
+            >
+              <HowToVoteIcon />
+            </IconButton>
+          </Tooltip>
           <Tooltip title="Scan a QR Code">
             <IconButton
               color="inherit"
@@ -95,6 +110,10 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
           </IconButton>
         </Hidden>
       </Toolbar>
+      <LoadTestModal
+        open={loadTestIsOpen}
+        onClose={() => setLoadTestIsOpen(false)}
+      />
     </AppBar>
   );
 };
