@@ -7,7 +7,7 @@ import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
 import { Provider } from 'react-redux';
-import { store } from './configure-store';
+import store from './redux/store';
 
 const App = () => {
   const routing = useRoutes(routes);
