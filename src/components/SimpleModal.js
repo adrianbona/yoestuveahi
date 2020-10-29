@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '20px 30px',
+    padding: '20px',
     backgroundColor: theme.palette.primary.light
   },
   title: {

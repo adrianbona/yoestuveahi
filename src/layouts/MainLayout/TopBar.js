@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, makeStyles, Typography } from '@material-ui/core';
@@ -25,14 +24,12 @@ const TopBar = ({ className, ...rest }) => {
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar className={classes.toolbar}>
-        <RouterLink to="/">
-          <div className={classes.title}>
-            <Logo />
-            <Typography align="center" color="textPrimary" variant="h3">
-              Yo Estuve Ahí App
-            </Typography>
-          </div>
-        </RouterLink>
+        <div className={classes.title}>
+          <Logo />
+          <Typography align="center" color="textPrimary" variant="h3">
+            Yo Estuve Ahí App
+          </Typography>
+        </div>
       </Toolbar>
     </AppBar>
   );
