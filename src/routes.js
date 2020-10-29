@@ -8,7 +8,6 @@ import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import RegistryListView from 'src/views/registry/RegistryListView';
-import ScanQRCodeView from 'src/views/registry/ScanQRCodeView';
 import SettingsView from 'src/views/settings/SettingsView';
 import LocationListView from './views/location/LocationListView';
 import TestListView from './views/test/TestListView';
@@ -24,7 +23,6 @@ const routes = [
       { path: 'locations', element: <LocationListView /> },
       { path: 'tests', element: <TestListView /> },
       { path: 'registry', element: <RegistryListView /> },
-      { path: 'registry/scan', element: <ScanQRCodeView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

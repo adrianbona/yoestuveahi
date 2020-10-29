@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Divider,
-  makeStyles
-} from '@material-ui/core';
-import Page from 'src/components/Page';
+import { Box, Button, Card, CardContent, makeStyles } from '@material-ui/core';
 import QrReader from 'react-qr-scanner';
-import locations from '../../location/LocationListView/data';
-import LocationCard from '../../location/LocationListView/LocationCard';
+import LocationCard from '../../views/location/LocationListView/LocationCard';
+import locations from '../../views/location/LocationListView/data';
+import SimpleModal from '../SimpleModal';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,11 +14,16 @@ const useStyles = makeStyles(theme => ({
   },
   scanAgain: {
     marginRight: theme.spacing(1)
+  },
+  container: {
+    padding: '20px'
   }
 }));
 
-const ScanQRCodeView = () => {
+const ScanQRCodeModal = props => {
+  const { onClose, open } = props;
   const classes = useStyles();
+
   const [delay] = useState(100);
   const [QRData, setQRData] = useState(null);
 
@@ -38,9 +34,18 @@ const ScanQRCodeView = () => {
     }
   };
 
+  const handleClose = () => {
+    setQRData(null);
+    onClose();
+  };
+
   return (
-    <Page className={classes.root} title="Registry">
-      <Container>
+    <SimpleModal
+      title="Scan a QR code to continue"
+      open={open}
+      onClose={handleClose}
+    >
+      <div className={classes.container}>
         {QRData ? (
           <>
             <Box alignItems="center" display="flex" flexDirection="column">
@@ -67,8 +72,6 @@ const ScanQRCodeView = () => {
           </>
         ) : (
           <Card>
-            <CardHeader title="Please scan a QR code to continue" />
-            <Divider />
             <CardContent>
               <Box position="relative">
                 <QrReader
@@ -83,9 +86,9 @@ const ScanQRCodeView = () => {
             </CardContent>
           </Card>
         )}
-      </Container>
-    </Page>
+      </div>
+    </SimpleModal>
   );
 };
 
-export default ScanQRCodeView;
+export default ScanQRCodeModal;

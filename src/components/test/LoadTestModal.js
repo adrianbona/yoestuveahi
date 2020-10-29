@@ -48,22 +48,6 @@ const LoadTestModal = props => {
             <CardContent>
               <FormControl component="fieldset" className={classes.body}>
                 <FormGroup aria-label="position" row>
-                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                      margin="normal"
-                      id="date-picker-dialog"
-                      label="Test Taken On"
-                      format="dd/MM/yyyy"
-                      value={selectedDate}
-                      onChange={setSelectedDate}
-                      disableFuture
-                      KeyboardButtonProps={{
-                        'aria-label': 'change date'
-                      }}
-                    />
-                  </MuiPickersUtilsProvider>
-                </FormGroup>
-                <FormGroup aria-label="position" row>
                   <FormControlLabel
                     value="start"
                     control={
@@ -89,6 +73,22 @@ const LoadTestModal = props => {
                     label="Test Result"
                     labelPlacement="top"
                   />
+                </FormGroup>
+                <FormGroup aria-label="position" row>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                      margin="normal"
+                      id="date-picker-dialog"
+                      label="Test Taken On"
+                      format="dd/MM/yyyy"
+                      value={selectedDate}
+                      onChange={setSelectedDate}
+                      disableFuture
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date'
+                      }}
+                    />
+                  </MuiPickersUtilsProvider>
                 </FormGroup>
               </FormControl>
             </CardContent>

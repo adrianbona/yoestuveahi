@@ -31,10 +31,11 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '0.95px'
   },
   container: {
-    width: '450px',
+    width: '500px',
     maxWidth: '85%',
     position: 'absolute',
-    outline: 0
+    outline: 0,
+    backgroundColor: 'white'
   }
 }));
 

@@ -23,6 +23,7 @@ import Logo from 'src/components/Logo';
 import data from 'src/views/notification/NotificationListView/data';
 import Tooltip from '@material-ui/core/Tooltip';
 import LoadTestModal from '../../components/test/LoadTestModal';
+import ScanQRCodeModal from '../../components/registry/ScanQRCodeModal';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -38,6 +39,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
+  const [scanQRCodeIsOpen, setScanQRCodeIsOpen] = useState(false);
   const [notifications] = useState(
     data.filter(notification => !notification.shown)
   );
@@ -71,7 +73,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
             <IconButton
               color="inherit"
               onClick={() => {
-                navigate('/app/registry/scan', { replace: true });
+                setScanQRCodeIsOpen(true);
               }}
             >
               <CameraEnhanceIcon />
@@ -113,6 +115,10 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
       <LoadTestModal
         open={loadTestIsOpen}
         onClose={() => setLoadTestIsOpen(false)}
+      />
+      <ScanQRCodeModal
+        open={scanQRCodeIsOpen}
+        onClose={() => setScanQRCodeIsOpen(false)}
       />
     </AppBar>
   );
