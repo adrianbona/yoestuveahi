@@ -11,7 +11,11 @@ const useStyles = makeStyles({
   suggestion: {
     lineHeight: '1.33',
     letterSpacing: '0.95px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    padding: '5px 0',
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.light
+    }
   }
 });
 
@@ -26,7 +30,11 @@ const LocationSearchInput = () => {
   const handleSelect = address => {
     setAddress(address);
     geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
+      .then(results => {
+        const result = results[0];
+        console.log(result.place_id);
+        return getLatLng(result);
+      })
       .then(latLng => console.log(latLng))
       .catch(error => console.error(error));
   };
@@ -36,7 +44,8 @@ const LocationSearchInput = () => {
       value={address}
       onChange={handleChange}
       onSelect={handleSelect}
-      shouldFetchSuggestions
+      shouldFetchSuggestions={address.length > 3}
+      searchOptions={{ componentRestrictions: { country: 'ar' } }}
       highlightFirstSuggestion
     >
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
@@ -53,22 +62,10 @@ const LocationSearchInput = () => {
           />
           <div className="autocomplete-dropdown-container">
             {suggestions.map((suggestion, index) => {
-              const className = suggestion.active
-                ? 'suggestion-item--active'
-                : 'suggestion-item';
-              // inline style for demonstration purpose
-              const style = suggestion.active
-                ? {
-                    backgroundColor: theme.palette.secondary.light
-                  }
-                : {};
               return (
                 <div
                   key={`suggestions-${index}`}
-                  {...getSuggestionItemProps(suggestion, {
-                    className,
-                    style
-                  })}
+                  {...getSuggestionItemProps(suggestion, {})}
                 >
                   <Typography className={classes.suggestion} variant="h5">
                     {suggestion.description}
