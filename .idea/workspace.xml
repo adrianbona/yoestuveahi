@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/location/QRCodeDisplayModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LocationSearchInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationSearchInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/reports/DashboardView/LatestOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/reports/DashboardView/LatestOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +45,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/sagas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/location" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -64,19 +67,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\test" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\registry" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location\LocationListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\location" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,9 +175,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604165842423" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604165176146">
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604172425229">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604165176146" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604172425229" />
   </component>
 </project>
