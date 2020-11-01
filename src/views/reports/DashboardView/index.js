@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import { connect } from 'react-redux';
 import Budget from './Budget';
 import LatestOrders from './LatestOrders';
 import LatestProducts from './LatestProducts';
@@ -10,7 +9,6 @@ import TasksProgress from './TasksProgress';
 import TotalCustomers from './TotalCustomers';
 import TotalProfit from './TotalProfit';
 import TrafficByDevice from './TrafficByDevice';
-import { actions } from '../../../redux/modules/posts';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -1,6 +1,9 @@
 import { v4 as uuid } from 'uuid';
 
 import moment from 'moment';
+import customers from '../../customer/CustomerListView/data';
+
+const generateRandomCustomer = () => customers[Math.floor(Math.random() * 10)];
 
 const notifications = () => {
   const randomNotifications = [];
@@ -13,6 +16,8 @@ const notifications = () => {
       id: uuid(),
       content: "A contagion risk was reported at a location you've visited",
       shown: Boolean(Math.random() >= 0.5),
+      contagionSource: generateRandomCustomer(),
+      addressedTo: generateRandomCustomer(),
       createdAt: randomMoment
     });
   }

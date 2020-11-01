@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -21,7 +21,6 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 import DirectionsWalk from '@material-ui/icons/DirectionsWalk';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import NavItem from './NavItem';
-import customers from '../../../views/customer/CustomerListView/data';
 
 const items = [
   {
