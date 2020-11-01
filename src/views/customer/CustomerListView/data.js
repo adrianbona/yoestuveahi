@@ -2,7 +2,6 @@ import { v4 as uuid } from 'uuid';
 import moment from 'moment';
 
 function Status(index) {
-  console.log(index);
   const status = ['Healthy', 'Contagion Risk', 'COVID Positive'];
   return status[index];
 }
