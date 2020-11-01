@@ -16,7 +16,7 @@ export const instance_test = axios.create({
 });
 
 export const google_instance = axios.create({
-  baseURL: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com',
+  baseURL: `${process.env.REACT_APP_CORS_PROXY}https://maps.googleapis.com`,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'

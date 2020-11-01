@@ -7,10 +7,9 @@ import {
   CardContent,
   makeStyles
 } from '@material-ui/core';
-import { getLatLng } from 'react-places-autocomplete';
 import SimpleModal from '../SimpleModal';
 import LocationSearchInput from '../LocationSearchInput';
-import getPhotos from '../../redux/api/photos';
+import getPhotos, { getPhotoSourceFromReference } from '../../redux/api/photos';
 
 const useStyles = makeStyles(() => ({
   fullWidth: {
@@ -36,7 +35,6 @@ const AddLocationModal = props => {
       const { data } = await getPhotos(address.place_id);
       setPlacePhotos(data.result.photos);
     } catch (err) {}
-    getLatLng(address).then(latLng => latLng);
   };
 
   useEffect(() => {
@@ -61,7 +59,9 @@ const AddLocationModal = props => {
                 <Avatar
                   className={classes.fullWidth}
                   alt="Place"
-                  src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${placePhotos[photoIndex].photo_reference}&key=AIzaSyDAvfXiXVeMN803sCuPUexOzkVy-dgnqdE`}
+                  src={getPhotoSourceFromReference(
+                    placePhotos[photoIndex].photo_reference
+                  )}
                   variant="rounded"
                 />
               </Box>
