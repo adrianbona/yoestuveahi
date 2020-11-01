@@ -18,12 +18,14 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import CameraEnhanceIcon from '@material-ui/icons/CameraEnhance';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
+import RoomIcon from '@material-ui/icons/Room';
 
 import Logo from 'src/components/Logo';
 import data from 'src/views/notification/NotificationListView/data';
 import Tooltip from '@material-ui/core/Tooltip';
 import LoadTestModal from '../../components/test/LoadTestModal';
 import ScanQRCodeModal from '../../components/registry/ScanQRCodeModal';
+import AddLocationModal from '../../components/location/AddLocationModal';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -40,6 +42,7 @@ const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
   const navigate = useNavigate();
   const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
   const [scanQRCodeIsOpen, setScanQRCodeIsOpen] = useState(false);
+  const [addLocationIsOpen, setAddLocationIsOpen] = useState(false);
   const [notifications] = useState(
     data.filter(notification => !notification.shown)
   );
@@ -81,6 +84,16 @@ const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
               </IconButton>
             </Tooltip>
           )}
+          <Tooltip title="Add Location">
+            <IconButton
+              color="inherit"
+              onClick={() => {
+                setAddLocationIsOpen(true);
+              }}
+            >
+              <RoomIcon />
+            </IconButton>
+          </Tooltip>
           <Tooltip
             title={`You have ${notifications.length} pending notification${
               notifications.length > 1 ? 's' : ''
@@ -121,6 +134,11 @@ const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
       <ScanQRCodeModal
         open={scanQRCodeIsOpen}
         onClose={() => setScanQRCodeIsOpen(false)}
+      />
+      <AddLocationModal
+        open={addLocationIsOpen}
+        customer={customer}
+        onClose={() => setAddLocationIsOpen(false)}
       />
     </AppBar>
   );

@@ -15,4 +15,12 @@ export const instance_test = axios.create({
   }
 });
 
+export const google_instance = axios.create({
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+});
+
 export default instance;

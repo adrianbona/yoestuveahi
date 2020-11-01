@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
+  geocodeByAddress
 } from 'react-places-autocomplete';
 import { makeStyles, TextField, Typography } from '@material-ui/core';
 import theme from '../theme';
@@ -19,23 +18,21 @@ const useStyles = makeStyles({
   }
 });
 
-const LocationSearchInput = () => {
+const LocationSearchInput = props => {
   const classes = useStyles();
+  const { onSelectedAddress, className } = props;
   const [address, setAddress] = useState('');
 
   const handleChange = address => {
     setAddress(address);
   };
 
-  const handleSelect = address => {
+  const handleSelect = async address => {
     setAddress(address);
     geocodeByAddress(address)
       .then(results => {
-        const result = results[0];
-        console.log(result.place_id);
-        return getLatLng(result);
+        onSelectedAddress(results[0]);
       })
-      .then(latLng => console.log(latLng))
       .catch(error => console.error(error));
   };
 
@@ -49,7 +46,7 @@ const LocationSearchInput = () => {
       highlightFirstSuggestion
     >
       {({ getInputProps, suggestions, getSuggestionItemProps }) => (
-        <div>
+        <div className={className}>
           <TextField
             fullWidth
             label="Search for a location"
