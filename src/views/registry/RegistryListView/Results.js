@@ -37,7 +37,7 @@ const Results = ({ className, registries, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <PerfectScrollbar>
-        <Box minWidth={1050}>
+        <Box>
           <Table>
             <TableHead>
               <TableRow>
@@ -55,7 +55,7 @@ const Results = ({ className, registries, ...rest }) => {
                     <TableCell>{registry.customer.name}</TableCell>
                     <TableCell>{registry.location.name}</TableCell>
                     <TableCell>
-                      {registry.entranceTime.format('MMMM DD, YYYY HH:mm')}
+                      {registry.entranceTime.format('MMMM D, YYYY HH:mm')}
                     </TableCell>
                     <TableCell>{registry.exitTime.format('HH:mm')}</TableCell>
                   </TableRow>

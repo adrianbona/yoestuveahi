@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
+const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
@@ -59,7 +59,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </RouterLink>
         <Box flexGrow={1} />
         <>
-          <Tooltip title="Report Test">
+          <Tooltip title="Load Test Result">
             <IconButton
               color="inherit"
               onClick={() => {
@@ -69,16 +69,18 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               <HowToVoteIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Scan a QR Code">
-            <IconButton
-              color="inherit"
-              onClick={() => {
-                setScanQRCodeIsOpen(true);
-              }}
-            >
-              <CameraEnhanceIcon />
-            </IconButton>
-          </Tooltip>
+          {customer.status !== 'COVID Positive' && (
+            <Tooltip title="Scan a QR Code">
+              <IconButton
+                color="inherit"
+                onClick={() => {
+                  setScanQRCodeIsOpen(true);
+                }}
+              >
+                <CameraEnhanceIcon />
+              </IconButton>
+            </Tooltip>
+          )}
           <Tooltip
             title={`You have ${notifications.length} pending notification${
               notifications.length > 1 ? 's' : ''

@@ -58,7 +58,7 @@ const LocationCard = ({ className, location, ...rest }) => {
             <AccessTimeIcon className={classes.statsIcon} color="action" />
             <Typography color="textSecondary" display="inline" variant="body2">
               Last update at{' '}
-              {moment(location.createdAt).format('DD/MM/YYYY HH:mm')}
+              {moment(location.createdAt).format('MMMM D, YYYY HH:mm')}
             </Typography>
           </Grid>
           <Grid className={classes.statsItem} item>

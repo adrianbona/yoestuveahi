@@ -39,12 +39,13 @@ const Results = ({ className, customers, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <PerfectScrollbar>
-        <Box minWidth={1050}>
+        <Box>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell>Status</TableCell>
                 <TableCell>Phone</TableCell>
                 <TableCell>Registration date</TableCell>
               </TableRow>
@@ -68,6 +69,7 @@ const Results = ({ className, customers, ...rest }) => {
                       </Box>
                     </TableCell>
                     <TableCell>{customer.email}</TableCell>
+                    <TableCell>{customer.status}</TableCell>
                     <TableCell>{customer.phone}</TableCell>
                     <TableCell>
                       {customer.createdAt.format('MMMM D, YYYY')}

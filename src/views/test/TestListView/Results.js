@@ -38,35 +38,31 @@ const Results = ({ className, tests, ...rest }) => {
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <PerfectScrollbar>
-        <Box minWidth={1050}>
+        <Box>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell>Address</TableCell>
-                <TableCell>Max Capacity</TableCell>
-                <TableCell>Created By</TableCell>
-                <TableCell>Created On</TableCell>
+                <TableCell>Date Taken</TableCell>
+                <TableCell>Taken By</TableCell>
+                <TableCell>Result</TableCell>
+                <TableCell>ID</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {tests.slice(page * limit, (page + 1) * limit).map(test => (
                 <TableRow hover key={test.id}>
+                  <TableCell>{test.dateTaken.format('MMMM D, YYYY')}</TableCell>
                   <TableCell>
                     <Box alignItems="center" display="flex">
                       <Typography color="textPrimary" variant="body1">
-                        {test.name}
+                        {test.takenBy.name}
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>{test.description}</TableCell>
                   <TableCell>
-                    {`${test.city}, ${test.state}, ${test.country}`}
+                    {test.isPositive ? 'Positve' : 'Negative'}
                   </TableCell>
-                  <TableCell>{test.maximumCapacity}</TableCell>
-                  <TableCell>{test.createdBy.name}</TableCell>
-                  <TableCell>{test.createdAt.format('DD/MM/YYYY')}</TableCell>
+                  <TableCell>{test.id}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

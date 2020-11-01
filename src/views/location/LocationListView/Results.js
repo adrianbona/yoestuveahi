@@ -14,7 +14,6 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import SimpleModal from '../../../components/SimpleModal';
 import QRCodeDisplayModal from '../../../components/location/QRCodeDisplayModal';
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +45,7 @@ const Results = ({ className, locations, ...rest }) => {
     <>
       <Card className={clsx(classes.root, className)} {...rest}>
         <PerfectScrollbar>
-          <Box minWidth={1050}>
+          <Box>
             <Table>
               <TableHead>
                 <TableRow>
@@ -81,7 +80,7 @@ const Results = ({ className, locations, ...rest }) => {
                       <TableCell>{location.maximumCapacity}</TableCell>
                       <TableCell>{location.createdBy.name}</TableCell>
                       <TableCell>
-                        {location.createdAt.format('DD/MM/YYYY')}
+                        {location.createdAt.format('MMMM D, YYYY')}
                       </TableCell>
                     </TableRow>
                   ))}

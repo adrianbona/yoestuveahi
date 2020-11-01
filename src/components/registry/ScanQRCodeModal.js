@@ -40,11 +40,7 @@ const ScanQRCodeModal = props => {
   };
 
   return (
-    <SimpleModal
-      title="Scan a QR code to continue"
-      open={open}
-      onClose={handleClose}
-    >
+    <SimpleModal title="Scan a QR code" open={open} onClose={handleClose}>
       <div className={classes.container}>
         {QRData ? (
           <>

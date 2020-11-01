@@ -41,7 +41,7 @@ const LoadTestModal = props => {
   const [isPositive, setIsPositive] = useState(false);
 
   return (
-    <SimpleModal title="Load a test result" open={open} onClose={onClose}>
+    <SimpleModal title="Load Test Result" open={open} onClose={onClose}>
       <div className={classes.container}>
         <form>
           <Card>

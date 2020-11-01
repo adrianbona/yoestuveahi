@@ -76,12 +76,10 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const NavBar = ({ onMobileClose, openMobile }) => {
+const NavBar = props => {
   const classes = useStyles();
+  const { onMobileClose, openMobile, customer } = props;
   const location = useLocation();
-  const [customer] = useState(
-    customers[Math.floor(Math.random() * customers.length)]
-  );
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
@@ -96,6 +94,9 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <Avatar className={classes.avatar} src={customer.avatarUrl} />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {customer.name}
+        </Typography>
+        <Typography color="textSecondary" variant="body2">
+          {customer.status}
         </Typography>
         <Typography color="textSecondary" variant="body2">
           {customer.email}
