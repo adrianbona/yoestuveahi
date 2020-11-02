@@ -19,7 +19,7 @@ const LocationListView = () => {
 
   return (
     <Page className={classes.root} title="Locations">
-      <Container>
+      <Container maxWidth={false}>
         <Box mt={3}>
           <Results locations={locations} />
         </Box>

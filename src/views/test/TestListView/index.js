@@ -19,7 +19,7 @@ const TestListView = () => {
 
   return (
     <Page className={classes.root} title="Tests">
-      <Container>
+      <Container maxWidth={false}>
         <Box mt={3}>
           <Results tests={tests} />
         </Box>
