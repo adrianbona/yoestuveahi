@@ -46,7 +46,6 @@ const Results = ({ className, customers, ...rest }) => {
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Phone</TableCell>
                 <TableCell>Registration date</TableCell>
               </TableRow>
             </TableHead>
@@ -70,7 +69,6 @@ const Results = ({ className, customers, ...rest }) => {
                     </TableCell>
                     <TableCell>{customer.email}</TableCell>
                     <TableCell>{customer.status}</TableCell>
-                    <TableCell>{customer.phone}</TableCell>
                     <TableCell>
                       {customer.createdAt.format('MMMM D, YYYY')}
                     </TableCell>
