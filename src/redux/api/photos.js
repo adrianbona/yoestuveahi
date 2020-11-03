@@ -1,4 +1,4 @@
-import { google_instance } from './axios';
+import { google } from './axios';
 
 function getPhotos(placeId) {
   const params = {
@@ -6,7 +6,7 @@ function getPhotos(placeId) {
     key: process.env.REACT_APP_API_KEY_GOOGLE,
     fields: 'photos'
   };
-  return google_instance.get('/maps/api/place/details/json', { params });
+  return google.get('/maps/api/place/details/json', { params });
 }
 
 export function getPhotoSourceFromReference(photoReference, width = 400) {

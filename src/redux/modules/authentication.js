@@ -8,11 +8,10 @@ export const constants = {
 
 // Action Creators
 export const actions = {
-  login: ({ email, password, location }) => ({
+  login: ({ email, password }) => ({
     type: constants.AUTHENTICATION_LOGIN.REQUEST,
     email,
-    password,
-    location
+    password
   }),
   logout: () => ({
     type: constants.AUTHENTICATION_LOGOUT.REQUEST

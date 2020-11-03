@@ -7,15 +7,7 @@ export const instance = axios.create({
   }
 });
 
-export const instance_test = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-});
-
-export const google_instance = axios.create({
+export const google = axios.create({
   baseURL: `${process.env.REACT_APP_CORS_PROXY}https://maps.googleapis.com`,
   headers: {
     Accept: 'application/json',

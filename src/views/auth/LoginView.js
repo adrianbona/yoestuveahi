@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -11,6 +11,9 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { actions } from '../../redux/modules/authentication';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,9 +24,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LoginView = () => {
+const LoginView = props => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const { login, user } = props;
+
+  const onSubmit = values => {
+    login(values);
+  };
+
+  useEffect(() => {
+    if (user) {
+      navigate('/app/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
 
   return (
     <Page className={classes.root} title="Login">
@@ -35,7 +49,10 @@ const LoginView = () => {
       >
         <Container maxWidth="sm">
           <Formik
-            initialValues={{}}
+            initialValues={{
+              email: '',
+              password: ''
+            }}
             validationSchema={Yup.object().shape({
               email: Yup.string()
                 .email('Must be a valid email')
@@ -45,9 +62,7 @@ const LoginView = () => {
                 .max(255)
                 .required('Password is required')
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
+            onSubmit={onSubmit}
           >
             {({
               errors,
@@ -122,4 +137,16 @@ const LoginView = () => {
   );
 };
 
-export default LoginView;
+const mapStateToProps = state => ({
+  userData: state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: data => dispatch(actions.login(data))
+});
+
+LoginView.propTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

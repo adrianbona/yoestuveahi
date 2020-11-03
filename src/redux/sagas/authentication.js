@@ -6,7 +6,6 @@ import * as api from '../api/authentication';
 export function* login(action) {
   try {
     const user = yield call(api.login, { ...action });
-
     yield put({ type: constants.AUTHENTICATION_LOGIN.SUCCESS, user });
   } catch (e) {
     yield put({
