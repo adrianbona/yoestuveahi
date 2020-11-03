@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/authentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/clients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/company-agents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/company-agents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/LoginCodeStep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/LoginEmailStep.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/LoginView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/LoginView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/customer/CustomerListView" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/location" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -70,18 +66,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\registry" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location\LocationListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\customer\CustomerListView" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\location" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\location" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -127,7 +123,7 @@
       <workItem from="1603939032059" duration="4160000" />
       <workItem from="1603980840017" duration="4170000" />
       <workItem from="1603991513640" duration="11441000" />
-      <workItem from="1604186327204" duration="25474000" />
+      <workItem from="1604186327204" duration="6197000" />
     </task>
     <servers />
   </component>
@@ -150,37 +146,37 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1603995262921" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604374618489">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604163763792">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604374618489" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604374618488">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604163763792" />
+    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604163763791">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604374618488" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604374618488">
+    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604163763791" />
+    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604163763791">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604374618488" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604374618489">
+    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604163763791" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604163763792">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604374618489" />
-    <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1604369214269">
+    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604163763792" />
+    <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1717" y="411" key="RollbackChangesDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1604369214269" />
+    <state x="1717" y="411" key="RollbackChangesDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1602729322139" />
     <state x="1413" y="238" key="SettingsEditor" timestamp="1602729382522">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1413" y="238" key="SettingsEditor/0.0.2560.1410@0.0.2560.1410" timestamp="1602729382522" />
-    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1604372301771">
+    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1604245376310">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604372301771" />
-    <state x="1497" y="456" width="672" height="678" key="search.everywhere.popup" timestamp="1604374734557">
+    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604245376310" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604247932981">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1497" y="456" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604374734557" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604247932981" />
   </component>
 </project>

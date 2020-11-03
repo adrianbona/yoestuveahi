@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
-import { Box, Container, makeStyles, Typography } from '@material-ui/core';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { Formik } from 'formik';
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  makeStyles
+} from '@material-ui/core';
 import Page from 'src/components/Page';
-import LoginEmailStep from './LoginEmailStep';
-import LoginCodeStep from './LoginCodeStep';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,17 +22,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const LoginView = () => {
-  const navigate = useNavigate();
   const classes = useStyles();
-  const [isFirstStep, setIsFirstStep] = useState(true);
-
-  const onSubmitEmailStep = () => {
-    setIsFirstStep(false);
-  };
-
-  const onSubmitCodeStep = () => {
-    navigate('/app/dashboard', { replace: true });
-  };
+  const navigate = useNavigate();
 
   return (
     <Page className={classes.root} title="Login">
@@ -36,12 +34,85 @@ const LoginView = () => {
         justifyContent="center"
       >
         <Container maxWidth="sm">
-          {isFirstStep ? (
-            <LoginEmailStep onSubmit={onSubmitEmailStep} />
-          ) : (
-            <LoginCodeStep onSubmit={onSubmitCodeStep} />
-          )}
-
+          <Formik
+            initialValues={{}}
+            validationSchema={Yup.object().shape({
+              email: Yup.string()
+                .email('Must be a valid email')
+                .max(255)
+                .required('Email is required'),
+              password: Yup.string()
+                .max(255)
+                .required('Password is required')
+            })}
+            onSubmit={() => {
+              navigate('/app/dashboard', { replace: true });
+            }}
+          >
+            {({
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              touched,
+              values
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <Box mb={3}>
+                  <Typography color="textPrimary" variant="h2">
+                    Sign in
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    gutterBottom
+                    variant="body2"
+                  >
+                    #YoEstuveAhí
+                  </Typography>
+                </Box>
+                <Box mt={3} mb={1} />
+                <TextField
+                  error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  helperText={touched.email && errors.email}
+                  label="Email Address"
+                  margin="normal"
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="email"
+                  value={values.email}
+                  variant="outlined"
+                />
+                <TextField
+                  error={Boolean(touched.password && errors.password)}
+                  fullWidth
+                  helperText={touched.password && errors.password}
+                  label="Password"
+                  margin="normal"
+                  name="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  type="password"
+                  value={values.password}
+                  variant="outlined"
+                />
+                <Box my={2}>
+                  <Button
+                    color="primary"
+                    disabled={isSubmitting}
+                    fullWidth
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                  >
+                    Sign in
+                  </Button>
+                </Box>
+              </form>
+            )}
+          </Formik>
           <Typography variant="body2" color="textSecondary" align="center">
             {`Copyright © Yo Estuve Ahí App ${new Date().getFullYear()}`}
           </Typography>
