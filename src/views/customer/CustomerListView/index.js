@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Results from './Results';
-import data from './data';
+import { actions } from '../../../redux/modules/users';
+import NoResults from '../../../components/NoResults';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,19 +16,46 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomerListView = () => {
+const CustomerListView = props => {
+  const { usersData, getUsers } = props;
   const classes = useStyles();
-  const [customers] = useState(data);
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
 
   return (
     <Page className={classes.root} title="Customers">
       <Container maxWidth={false}>
         <Box mt={3}>
-          <Results customers={customers} />
+          {usersData.list.users > 0 ? (
+            <Results customers={usersData.list.users} />
+          ) : (
+            <NoResults />
+          )}
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default CustomerListView;
+const mapStateToProps = state => ({
+  usersData: state.users
+});
+
+const mapDispatchToProps = dispatch => ({
+  getUsers: () => dispatch(actions.getUsers())
+});
+
+CustomerListView.propTypes = {
+  getUsers: PropTypes.func.isRequired,
+  usersData: PropTypes.shape({
+    error: PropTypes.object,
+    loading: PropTypes.bool,
+    list: PropTypes.shape({
+      users: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
+    })
+  }).isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomerListView);

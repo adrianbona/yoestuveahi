@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddLocationModal = props => {
-  const { onClose, open, customer } = props;
+  const { onClose, open } = props;
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placePhotos, setPlacePhotos] = useState([]);
   const [photoIndex, setPhotoIndex] = useState(0);

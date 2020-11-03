@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/api/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/modules/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/sagas/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/NoResults.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/Results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/customer/CustomerListView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/customer/CustomerListView/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +42,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/sagas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/customer/CustomerListView" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -76,11 +72,11 @@
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\customer\CustomerListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\location" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -149,22 +145,22 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1603995262921" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604274503874">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604369728967">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604274503874" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604274503874">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604369728967" />
+    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604369728967">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604274503874" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604274503874">
+    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604369728967" />
+    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604369728967">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604274503874" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604274503874">
+    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604369728967" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604369728967">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604274503874" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604369728967" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1604369214269">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
