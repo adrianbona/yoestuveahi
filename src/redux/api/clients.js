@@ -1,4 +1,4 @@
-import axios from './axios';
+import { instance } from './axios';
 
 export function getClients({
   userId,
@@ -66,7 +66,7 @@ export function getClients({
   });
 
   // eslint-disable-next-line no-unreachable
-  return axios.post(`/user/${userId}/clients`, {
+  return instance.post(`/user/${userId}/clients`, {
     page,
     pageSize,
     orderField,
@@ -92,7 +92,7 @@ export function getClient({ userId, clientId }) {
   });
 
   // eslint-disable-next-line no-unreachable
-  return axios.get(`/user/${userId}/client/${clientId}`);
+  return instance.get(`/user/${userId}/client/${clientId}`);
 }
 
 export default {

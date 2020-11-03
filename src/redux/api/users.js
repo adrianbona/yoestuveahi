@@ -1,7 +1,7 @@
 import { instance } from './axios';
 
 export function getUsers() {
-  return instance.get('/users/');
+  return instance.get('/user/');
 }
 
 export default {

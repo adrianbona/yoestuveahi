@@ -1,4 +1,4 @@
-import axios from './axios';
+import { instance } from './axios';
 
 export function getCompanyAgents({
   userId,
@@ -56,7 +56,7 @@ export function getCompanyAgents({
   });
 
   // eslint-disable-next-line no-unreachable
-  return axios.post(`/user/${userId}/company-agents`, {
+  return instance.post(`/user/${userId}/company-agents`, {
     page,
     pageSize,
     orderField,
@@ -80,7 +80,7 @@ export function getCompanyAgent({ userId, companyAgentId }) {
   });
 
   // eslint-disable-next-line no-unreachable
-  return axios.get(`/user/${userId}/company-agent/${companyAgentId}`);
+  return instance.get(`/user/${userId}/company-agent/${companyAgentId}`);
 }
 
 export default {

@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'localhost:8000',
+export const instance = axios.create({
+  baseURL: 'http://localhost:8000',
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
 export const instance_test = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/',
+  baseURL: 'https://jsonplaceholder.typicode.com',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
@@ -22,5 +22,3 @@ export const google_instance = axios.create({
     'Content-Type': 'application/json'
   }
 });
-
-export default instance;

@@ -1,4 +1,4 @@
-import axios from './axios';
+import { instance } from './axios';
 
 export function login({ email, password }) {
   // TODO: REMOVE AFTER API IMPLEMENTATION
@@ -9,7 +9,7 @@ export function login({ email, password }) {
     });
   }
 
-  return axios.post('/auth/login', {
+  return instance().post('/auth/login', {
     body: {
       email,
       password
