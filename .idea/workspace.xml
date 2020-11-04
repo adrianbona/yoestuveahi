@@ -6,23 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/clients.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/company-agents.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/photos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/photos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/api/posts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/authentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/clients.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/company-agents.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/posts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/authentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/clients.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/company-agents.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/posts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/auth/LoginView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/LoginView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,6 +122,7 @@
       <workItem from="1603980840017" duration="4170000" />
       <workItem from="1603991513640" duration="11441000" />
       <workItem from="1604186327204" duration="6197000" />
+      <workItem from="1604531734713" duration="40000" />
     </task>
     <servers />
   </component>
