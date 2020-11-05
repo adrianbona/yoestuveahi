@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
-import customers from '../../customer/CustomerListView/data';
+import customers from '../../user/UserListView/data';
 
 const generateRandomDate = () =>
   moment(new Date(new Date() - Math.floor(Math.random() * 10000000000)));

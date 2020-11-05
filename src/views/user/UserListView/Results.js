@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Results = ({ className, customers, ...rest }) => {
+const Results = ({ className, users, ...rest }) => {
   const classes = useStyles();
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -50,37 +50,35 @@ const Results = ({ className, customers, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {customers
-                .slice(page * limit, (page + 1) * limit)
-                .map(customer => (
-                  <TableRow hover key={customer.id}>
+              {users.slice(page * limit, (page + 1) * limit).map(user => {
+                console.log(user);
+                return (
+                  <TableRow hover key={user.id}>
                     <TableCell>
                       <Box alignItems="center" display="flex">
-                        <Avatar
-                          className={classes.avatar}
-                          src={customer.avatarUrl}
-                        >
-                          {customer.name}
+                        <Avatar className={classes.avatar} src={user.avatarUrl}>
+                          {user.name}
                         </Avatar>
                         <Typography color="textPrimary" variant="body1">
-                          {customer.name}
+                          {user.name}
                         </Typography>
                       </Box>
                     </TableCell>
-                    <TableCell>{customer.email}</TableCell>
-                    <TableCell>{customer.status}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.status}</TableCell>
                     <TableCell>
-                      {customer.createdAt.format('MMMM D, YYYY')}
+                      {user.createdAt && user.createdAt.format('MMMM D, YYYY')}
                     </TableCell>
                   </TableRow>
-                ))}
+                );
+              })}
             </TableBody>
           </Table>
         </Box>
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={users.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}
@@ -93,7 +91,8 @@ const Results = ({ className, customers, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  customers: PropTypes.array.isRequired
+  users: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
+    .isRequired
 };
 
 export default Results;

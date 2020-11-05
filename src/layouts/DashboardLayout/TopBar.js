@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
+const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
@@ -72,7 +72,7 @@ const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
               <HowToVoteIcon />
             </IconButton>
           </Tooltip>
-          {customer.status !== 'COVID Positive' && (
+          {user.status !== 'COVID Positive' && (
             <Tooltip title="Scan a QR Code">
               <IconButton
                 color="inherit"
@@ -137,7 +137,7 @@ const TopBar = ({ className, onMobileNavOpen, customer, ...rest }) => {
       />
       <AddLocationModal
         open={addLocationIsOpen}
-        customer={customer}
+        customer={user}
         onClose={() => setAddLocationIsOpen(false)}
       />
     </AppBar>

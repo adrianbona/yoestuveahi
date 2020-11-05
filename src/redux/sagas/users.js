@@ -3,7 +3,7 @@ import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
 import { constants } from '../modules/users';
 import * as api from '../api/users';
 
-export function* getUsers(action) {
+export function* getUsers() {
   try {
     const { data: users } = yield call(api.getUsers);
     yield put({

@@ -1,9 +1,9 @@
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
-import customers from '../../customer/CustomerListView/data';
+import users from '../../user/UserListView/data';
 import locations from '../../location/LocationListView/data';
 
-const generateRandomCustomer = () => customers[Math.floor(Math.random() * 10)];
+const generateRandomCustomer = () => users[Math.floor(Math.random() * 10)];
 
 const generateRandomLocation = () => locations[Math.floor(Math.random() * 5)];
 

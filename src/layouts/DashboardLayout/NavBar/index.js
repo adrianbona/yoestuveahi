@@ -29,9 +29,9 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/app/users',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'Users'
   },
   {
     href: '/app/notifications',
@@ -77,7 +77,7 @@ const useStyles = makeStyles(() => ({
 
 const NavBar = props => {
   const classes = useStyles();
-  const { onMobileClose, openMobile, customer } = props;
+  const { onMobileClose, openMobile, user } = props;
   const location = useLocation();
 
   useEffect(() => {
@@ -90,15 +90,15 @@ const NavBar = props => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar className={classes.avatar} src={customer.avatarUrl} />
+        <Avatar className={classes.avatar} src={user.avatarUrl} />
         <Typography className={classes.name} color="textPrimary" variant="h5">
-          {customer.name}
+          {user.name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {customer.status}
+          {user.status}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {customer.email}
+          {user.email}
         </Typography>
       </Box>
       <Divider />
@@ -146,7 +146,13 @@ const NavBar = props => {
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    status: PropTypes.string,
+    email: PropTypes.string,
+    avatarUrl: PropTypes.string
+  })
 };
 
 NavBar.defaultProps = {

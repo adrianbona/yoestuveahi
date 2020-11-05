@@ -18,7 +18,7 @@ const NotificationListView = () => {
   const [notifications] = useState(data);
 
   return (
-    <Page className={classes.root} title="Customers">
+    <Page className={classes.root} title="Users">
       <Container maxWidth={false}>
         <Box mt={3}>
           <Results notifications={notifications} />
