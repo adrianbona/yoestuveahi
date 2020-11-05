@@ -13,6 +13,8 @@ import {
 import Page from 'src/components/Page';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
 import { actions } from '../../redux/modules/authentication';
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +29,9 @@ const useStyles = makeStyles(theme => ({
 const LoginView = props => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const { login, user } = props;
+  const { login, user, loggingIn, error } = props;
+
+  console.log({ login, user, loggingIn });
 
   const onSubmit = values => {
     login(values);
@@ -69,7 +73,6 @@ const LoginView = props => {
               handleBlur,
               handleChange,
               handleSubmit,
-              isSubmitting,
               touched,
               values
             }) => (
@@ -86,6 +89,12 @@ const LoginView = props => {
                     #YoEstuveAhí
                   </Typography>
                 </Box>
+                {error && (
+                  <Alert severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    {error}
+                  </Alert>
+                )}
                 <Box mt={3} mb={1} />
                 <TextField
                   error={Boolean(touched.email && errors.email)}
@@ -116,7 +125,7 @@ const LoginView = props => {
                 <Box my={2}>
                   <Button
                     color="primary"
-                    disabled={isSubmitting}
+                    disabled={loggingIn}
                     fullWidth
                     size="large"
                     type="submit"
@@ -138,7 +147,9 @@ const LoginView = props => {
 };
 
 const mapStateToProps = state => ({
-  userData: state.user
+  user: state.authentication.user,
+  loggingIn: state.authentication.loggingIn,
+  error: state.authentication.error
 });
 
 const mapDispatchToProps = dispatch => ({

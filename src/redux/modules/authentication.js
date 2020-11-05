@@ -20,7 +20,9 @@ export const actions = {
 
 // Reducer
 const initialState = {
-  user: null
+  loading: false,
+  user: null,
+  error: null
 };
 
 export default (state = initialState, action) => {
@@ -30,11 +32,16 @@ export default (state = initialState, action) => {
 
     case constants.AUTHENTICATION_LOGIN.SUCCESS: {
       const { user } = action;
-      return { ...state, user };
+      return {
+        ...state,
+        user,
+        error: null,
+        loggingIn: false
+      };
     }
 
     case constants.AUTHENTICATION_LOGIN.FAILURE:
-      return { ...state, error: action.message };
+      return { ...state, error: action.message, loggingIn: false };
 
     case constants.AUTHENTICATION_LOGOUT.REQUEST:
       return { ...initialState };

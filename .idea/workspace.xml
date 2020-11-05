@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/photos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/photos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/LoginView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/LoginView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +130,7 @@
       <workItem from="1603991513640" duration="11441000" />
       <workItem from="1604186327204" duration="6197000" />
       <workItem from="1604531734713" duration="40000" />
+      <workItem from="1604544889304" duration="4162000" />
     </task>
     <servers />
   </component>
@@ -145,22 +153,22 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1603995262921" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604414165814">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604548932985">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604414165814" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604414165814">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604548932985" />
+    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604548932985">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604414165814" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604414165814">
+    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604548932985" />
+    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604548932985">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604414165814" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604414165814">
+    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604548932985" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604548932985">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604414165814" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604548932985" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -169,13 +177,13 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1413" y="238" key="SettingsEditor/0.0.2560.1410@0.0.2560.1410" timestamp="1602729382522" />
-    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1604412130746">
+    <state x="1571" y="527" width="740" height="596" key="find.popup" timestamp="1604548530341">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604412130746" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604247932981">
+    <state x="1571" y="527" width="740" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604548530341" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604548567560">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604247932981" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604548567560" />
   </component>
 </project>

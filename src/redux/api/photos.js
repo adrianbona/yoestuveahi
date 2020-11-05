@@ -10,7 +10,7 @@ function getPhotos(placeId) {
 }
 
 export function getPhotoSourceFromReference(photoReference, width = 400) {
-  return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${width}&photoreference=${photoReference}&key=${process.env.REACT_APP_API_KEY_GOOGLE}`;
+  return `${process.env.REACT_APP_URL_GOOGLE}maps/api/place/photo?maxwidth=${width}&photoreference=${photoReference}&key=${process.env.REACT_APP_API_KEY_GOOGLE}`;
 }
 
 export default getPhotos;
