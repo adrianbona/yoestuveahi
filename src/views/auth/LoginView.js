@@ -31,8 +31,6 @@ const LoginView = props => {
   const navigate = useNavigate();
   const { login, user, loggingIn, error } = props;
 
-  console.log({ login, user, loggingIn });
-
   const onSubmit = values => {
     login(values);
   };

@@ -51,7 +51,6 @@ const Results = ({ className, users, ...rest }) => {
             </TableHead>
             <TableBody>
               {users.slice(page * limit, (page + 1) * limit).map(user => {
-                console.log(user);
                 return (
                   <TableRow hover key={user.id}>
                     <TableCell>
