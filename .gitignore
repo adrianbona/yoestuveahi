@@ -25,3 +25,4 @@ yarn-error.log*
 # python
 *.pyc
 db.sqlite3
+.env
