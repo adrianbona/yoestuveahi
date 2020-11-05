@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
-  Avatar,
   Box,
   Card,
   Table,
@@ -54,14 +53,9 @@ const Results = ({ className, users, ...rest }) => {
                 return (
                   <TableRow hover key={user.id}>
                     <TableCell>
-                      <Box alignItems="center" display="flex">
-                        <Avatar className={classes.avatar} src={user.avatarUrl}>
-                          {user.name}
-                        </Avatar>
-                        <Typography color="textPrimary" variant="body1">
-                          {user.name}
-                        </Typography>
-                      </Box>
+                      <Typography color="textPrimary" variant="body1">
+                        {user.name}
+                      </Typography>
                     </TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>{user.status}</TableCell>

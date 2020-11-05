@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Box,
   Divider,
   Drawer,
@@ -20,6 +19,7 @@ import {
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import DirectionsWalk from '@material-ui/icons/DirectionsWalk';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import Avatar from 'avataaars';
 import NavItem from './NavItem';
 
 const items = [
@@ -90,7 +90,18 @@ const NavBar = props => {
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar className={classes.avatar} src={user.avatarUrl} />
+        <Avatar
+          style={{ width: '64px', height: '64px' }}
+          avatarStyle="Transparent"
+          topType="LongHairMiaWallace"
+          hairColor="BrownDark"
+          clotheType="Hoodie"
+          clotheColor="Gray02"
+          eyeType="Default"
+          eyebrowType="Default"
+          mouthType="Smile"
+          skinColor="Light"
+        />
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
