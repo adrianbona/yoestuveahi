@@ -99,7 +99,7 @@ const Results = ({ className, locations, ...rest }) => {
         />
       </Card>
       <QRCodeDisplayModal
-        open={selectedLocation}
+        open={!!selectedLocation}
         value={selectedLocation}
         onClose={() => setSelectedLocation(null)}
       />

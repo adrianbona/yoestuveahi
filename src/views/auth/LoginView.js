@@ -155,7 +155,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 LoginView.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  loggingIn: PropTypes.bool,
+  error: PropTypes.string,
+  user: PropTypes.shape({ name: PropTypes.string })
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

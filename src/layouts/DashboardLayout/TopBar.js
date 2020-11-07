@@ -114,7 +114,7 @@ const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
             <IconButton
               color="inherit"
               onClick={() => {
-                navigate('/login', { replace: true });
+                navigate('/logout', { replace: true });
               }}
             >
               <InputIcon />

@@ -12,11 +12,16 @@ import RegistryListView from 'src/views/registry/RegistryListView';
 import SettingsView from 'src/views/settings/SettingsView';
 import LocationListView from './views/location/LocationListView';
 import TestListView from './views/test/TestListView';
+import EnsureAuthentication from './components/authentication/EnsureAuthentication';
 
 const routes = [
   {
     path: 'app',
-    element: <DashboardLayout />,
+    element: (
+      <EnsureAuthentication>
+        <DashboardLayout />
+      </EnsureAuthentication>
+    ),
     children: [
       { path: 'users', element: <UserListView /> },
       { path: 'notifications', element: <NotificationListView /> },

@@ -6,15 +6,24 @@ import { actions } from '../../redux/modules/authentication';
 
 const LogoutView = props => {
   const navigate = useNavigate();
-  const { logout } = props;
+  const { logout, user } = props;
 
   useEffect(() => {
     logout();
-    navigate('/login', { replace: true });
-  }, [logout, navigate]);
+  }, [logout]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login', { replace: true });
+    }
+  }, [user, navigate]);
 
   return null;
 };
+
+const mapStateToProps = state => ({
+  user: state.authentication.user || null
+});
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(actions.logout())
@@ -24,4 +33,4 @@ LogoutView.propTypes = {
   logout: PropTypes.func.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(LogoutView);
+export default connect(mapStateToProps, mapDispatchToProps)(LogoutView);
