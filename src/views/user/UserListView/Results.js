@@ -14,6 +14,8 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import CheckIcon from '@material-ui/icons/Check';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -46,6 +48,7 @@ const Results = ({ className, users, ...rest }) => {
                 <TableCell>Email</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell>Registration date</TableCell>
+                <TableCell>Administrator</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -61,6 +64,13 @@ const Results = ({ className, users, ...rest }) => {
                     <TableCell>{user.status}</TableCell>
                     <TableCell>
                       {user.createdAt && user.createdAt.format('MMMM D, YYYY')}
+                    </TableCell>
+                    <TableCell>
+                      {user.isAdministrator ? (
+                        <CheckIcon />
+                      ) : (
+                        <NotInterestedIcon />
+                      )}
                     </TableCell>
                   </TableRow>
                 );
