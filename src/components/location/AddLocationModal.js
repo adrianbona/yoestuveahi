@@ -14,7 +14,8 @@ import getPhotos, { getPhotoSourceFromReference } from '../../redux/api/photos';
 const useStyles = makeStyles(() => ({
   fullWidth: {
     width: '100%',
-    height: 'inherit'
+    height: 'inherit',
+    maxHeight: '50vh'
   }
 }));
 
@@ -86,7 +87,7 @@ const AddLocationModal = props => {
                   variant="contained"
                   onClick={handleClose}
                 >
-                  Create
+                  Create location
                 </Button>
               </Box>
             </>
