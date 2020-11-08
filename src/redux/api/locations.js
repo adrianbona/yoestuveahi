@@ -7,8 +7,9 @@ export function getLocations() {
 export function createLocation({ name, address, maxCapacity, imageUrl }) {
   return instance.post('/location/', {
     name,
+    description: name,
     address,
     max_capacity: maxCapacity,
-    image_url: imageUrl
+    logo: imageUrl
   });
 }

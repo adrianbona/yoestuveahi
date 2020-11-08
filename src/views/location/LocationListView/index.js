@@ -50,8 +50,6 @@ const mapDispatchToProps = dispatch => ({
 LocationListView.propTypes = {
   getLocations: PropTypes.func.isRequired,
   locations: PropTypes.shape({
-    error: PropTypes.object,
-    loading: PropTypes.bool,
     list: PropTypes.shape({
       locations: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
     })

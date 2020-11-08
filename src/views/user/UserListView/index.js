@@ -50,8 +50,6 @@ const mapDispatchToProps = dispatch => ({
 UserListView.propTypes = {
   getUsers: PropTypes.func.isRequired,
   users: PropTypes.shape({
-    error: PropTypes.object,
-    loading: PropTypes.bool,
     list: PropTypes.shape({
       users: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
     })

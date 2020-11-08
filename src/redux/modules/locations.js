@@ -9,12 +9,16 @@ export const constants = {
 // Action Creators
 export const actions = {
   getLocations: () => ({ type: constants.LOCATIONS_GET.REQUEST }),
-  createLocation: () => ({ type: constants.LOCATIONS_CREATE.REQUEST })
+  createLocation: data => ({
+    type: constants.LOCATIONS_CREATE.REQUEST,
+    ...data
+  })
 };
 
 // Reducer
 const initialState = {
   loading: false,
+  locationCreated: false,
   list: {
     locations: []
   }
@@ -38,7 +42,7 @@ export default (state = initialState, action) => {
     case constants.LOCATIONS_GET.FAILURE: {
       return {
         ...state,
-        list: { ...state.list, locations: [] },
+        list: { ...state.list },
         error: action.message,
         loading: false
       };
@@ -53,6 +57,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         list: { ...action.list.locations, location },
+        locationCreated: true,
         loading: false
       };
     }

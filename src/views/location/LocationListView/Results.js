@@ -109,7 +109,8 @@ const Results = ({ className, locations, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  locations: PropTypes.array.isRequired
+  locations: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
+    .isRequired
 };
 
 export default Results;

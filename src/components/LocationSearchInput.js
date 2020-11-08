@@ -23,15 +23,15 @@ const LocationSearchInput = props => {
   const { onSelectedAddress, className } = props;
   const [address, setAddress] = useState('');
 
-  const handleChange = address => {
-    setAddress(address);
+  const handleChange = selectedAddress => {
+    setAddress(selectedAddress);
   };
 
-  const handleSelect = async address => {
-    setAddress(address);
-    geocodeByAddress(address)
+  const handleSelect = async selectedAddress => {
+    setAddress(selectedAddress);
+    geocodeByAddress(selectedAddress)
       .then(results => {
-        onSelectedAddress(results[0]);
+        onSelectedAddress(results[0], selectedAddress);
       })
       .catch(error => console.error(error));
   };
