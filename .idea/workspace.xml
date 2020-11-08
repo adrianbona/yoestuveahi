@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LocationSearchInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationSearchInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/TopBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/locations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/modules/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/locations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/UserListView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserListView/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/settings/SettingsView/UserDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/settings/SettingsView/UserDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +134,7 @@
       <workItem from="1604715619838" duration="5737000" />
       <workItem from="1604843675344" duration="13842000" />
       <workItem from="1604861017997" duration="1291000" />
+      <workItem from="1604875576753" duration="4125000" />
     </task>
     <servers />
   </component>
@@ -184,13 +185,13 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1525" y="319" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1604846859498" />
-    <state x="1571" y="527" width="755" height="596" key="find.popup" timestamp="1604861027851">
+    <state x="1571" y="527" width="755" height="596" key="find.popup" timestamp="1604878901489">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1571" y="527" width="755" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604861027851" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604861668016">
+    <state x="1571" y="527" width="755" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604878901489" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604877269165">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604861668016" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604877269165" />
   </component>
 </project>

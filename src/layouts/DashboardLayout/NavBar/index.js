@@ -81,6 +81,8 @@ const NavBar = props => {
   const { onMobileClose, openMobile, user } = props;
   const location = useLocation();
 
+  console.log(user);
+
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
@@ -118,7 +120,9 @@ const NavBar = props => {
         <List>
           {items
             .filter(
-              item => item.requiresAdminPrivilege === user.isAdministrator
+              item =>
+                !item.requiresAdminPrivilege ||
+                item.requiresAdminPrivilege === user.isAdministrator
             )
             .map(item => (
               <NavItem

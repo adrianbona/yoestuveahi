@@ -30,6 +30,7 @@ export const actions = {
 const initialState = {
   userUpdated: false,
   loggingIn: false,
+  error: null,
   user: null
 };
 
@@ -43,7 +44,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user,
-        error: null,
         loggingIn: false
       };
     }
@@ -59,7 +59,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user,
-        error: null,
+        loggingIn: false,
         userUpdated: true
       };
     }

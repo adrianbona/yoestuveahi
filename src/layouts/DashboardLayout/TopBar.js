@@ -146,7 +146,13 @@ const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
 
 TopBar.propTypes = {
   className: PropTypes.string,
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    status: PropTypes.string,
+    email: PropTypes.string,
+    isAdministrator: PropTypes.bool
+  })
 };
 
 export default TopBar;

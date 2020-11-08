@@ -1,21 +1,20 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
-
-import { now } from 'moment';
+import moment from 'moment';
 import { constants } from '../modules/authentication';
 import * as authApi from '../api/authentication';
 import * as usersApi from '../api/users';
 
 export function* login(action) {
   try {
-    const { data: user } = yield call(authApi.login, { ...action });
+    const { data } = yield call(authApi.login, { ...action });
+    const user = {
+      ...data,
+      isAdministrator: data.is_admin,
+      creationDate: moment(data.creation_date)
+    };
     yield put({
       type: constants.AUTHENTICATION_LOGIN.SUCCESS,
-      user: {
-        ...user,
-        name: 'Welcome',
-        status: 'Healthy',
-        dateCreated: now()
-      }
+      user
     });
   } catch (e) {
     yield put({
@@ -37,8 +36,12 @@ export function* watchLogout() {
 
 export function* updateDetails(action) {
   try {
-    const { data: user } = yield call(usersApi.updateDetails, { ...action });
-    console.log(user);
+    const { data } = yield call(usersApi.updateDetails, { ...action });
+    const user = {
+      ...data,
+      isAdministrator: data.is_admin,
+      creationDate: moment(data.creation_date)
+    };
     yield put({ type: constants.AUTHENTICATION_UPDATE_DETAILS.SUCCESS, user });
   } catch (e) {
     yield put({

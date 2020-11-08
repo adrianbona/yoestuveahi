@@ -120,7 +120,7 @@ const UserDetails = props => {
       </Formik>
       <Snackbar
         open={showConfirmation}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={() => setShowConfirmation(false)}
       >
         <Alert
