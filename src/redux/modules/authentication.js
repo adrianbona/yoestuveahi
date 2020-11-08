@@ -3,7 +3,10 @@ import { createSagaActions } from '../utils/saga';
 // Constants
 export const constants = {
   AUTHENTICATION_LOGIN: createSagaActions('AUTHENTICATION_LOGIN'),
-  AUTHENTICATION_LOGOUT: createSagaActions('AUTHENTICATION_LOGOUT')
+  AUTHENTICATION_LOGOUT: createSagaActions('AUTHENTICATION_LOGOUT'),
+  AUTHENTICATION_UPDATE_DETAILS: createSagaActions(
+    'AUTHENTICATION_UPDATE_DETAILS'
+  )
 };
 
 // Action Creators
@@ -15,14 +18,18 @@ export const actions = {
   }),
   logout: () => ({
     type: constants.AUTHENTICATION_LOGOUT.REQUEST
+  }),
+  updateDetails: ({ name, isAdministrator }) => ({
+    type: constants.AUTHENTICATION_UPDATE_DETAILS.REQUEST,
+    name,
+    isAdministrator
   })
 };
 
 // Reducer
 const initialState = {
-  loading: false,
-  user: null,
-  error: null
+  loggingIn: false,
+  user: null
 };
 
 export default (state = initialState, action) => {
@@ -41,6 +48,22 @@ export default (state = initialState, action) => {
     }
 
     case constants.AUTHENTICATION_LOGIN.FAILURE:
+      return { ...state, error: action.message, loggingIn: false };
+
+    case constants.AUTHENTICATION_UPDATE_DETAILS.REQUEST:
+      return { ...state, error: null, loggingIn: true };
+
+    case constants.AUTHENTICATION_UPDATE_DETAILS.SUCCESS: {
+      const { user } = action;
+      return {
+        ...state,
+        user,
+        error: null,
+        loggingIn: false
+      };
+    }
+
+    case constants.AUTHENTICATION_UPDATE_DETAILS.FAILURE:
       return { ...state, error: action.message, loggingIn: false };
 
     case constants.AUTHENTICATION_LOGOUT.REQUEST:

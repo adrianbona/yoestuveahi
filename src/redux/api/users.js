@@ -4,6 +4,9 @@ export function getUsers() {
   return instance.get('/user/');
 }
 
-export default {
-  getUsers
-};
+export function updateDetails({ name, isAdministrator }) {
+  return instance.put('/user/', {
+    name,
+    is_administrator: isAdministrator
+  });
+}
