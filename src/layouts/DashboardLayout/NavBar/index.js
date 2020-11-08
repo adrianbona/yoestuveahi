@@ -161,13 +161,11 @@ NavBar.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string,
     status: PropTypes.string,
-    email: PropTypes.string,
-    avatarUrl: PropTypes.string
+    email: PropTypes.string
   })
 };
 
 NavBar.defaultProps = {
-  onMobileClose: () => {},
   openMobile: false
 };
 

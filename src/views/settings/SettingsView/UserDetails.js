@@ -17,23 +17,31 @@ import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import { actions as authActions } from '../../../redux/modules/authentication';
 import { actions as userActions } from '../../../redux/modules/users';
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%'
+  }
+}));
+
 const UserDetails = props => {
-  const { updateDetails, usersRefetch, user, loggingIn, error } = props;
+  const { updateDetails, userUpdated, usersRefetch, loggingIn, error } = props;
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const classes = useStyles();
 
   const onSubmit = values => {
     updateDetails(values);
   };
 
   useEffect(() => {
-    if (user) {
-      setShowConfirmation(true);
+    if (userUpdated) {
+      setShowConfirmation(userUpdated);
       usersRefetch();
     }
-  }, [user, usersRefetch]);
+  }, [userUpdated, usersRefetch]);
 
   return (
     <>
@@ -115,7 +123,12 @@ const UserDetails = props => {
         autoHideDuration={6000}
         onClose={() => setShowConfirmation(false)}
       >
-        <Alert onClose={() => setShowConfirmation(false)} severity="success">
+        <Alert
+          className={classes.root}
+          onClose={() => setShowConfirmation(false)}
+          variant="filled"
+          severity="success"
+        >
           User details were updated!
         </Alert>
       </Snackbar>
@@ -124,7 +137,7 @@ const UserDetails = props => {
 };
 
 const mapStateToProps = state => ({
-  user: state.authentication.user,
+  userUpdated: state.authentication.userUpdated,
   loggingIn: state.authentication.loggingIn,
   error: state.authentication.error
 });
@@ -137,9 +150,9 @@ const mapDispatchToProps = dispatch => ({
 UserDetails.propTypes = {
   updateDetails: PropTypes.func.isRequired,
   usersRefetch: PropTypes.func.isRequired,
+  userUpdated: PropTypes.bool,
   loggingIn: PropTypes.bool,
-  error: PropTypes.string,
-  user: PropTypes.shape({ name: PropTypes.string })
+  error: PropTypes.string
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

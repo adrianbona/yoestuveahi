@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
-import users from '../../views/user/UserListView/data';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,20 +35,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DashboardLayout = () => {
+const DashboardLayout = props => {
   const classes = useStyles();
+  const { user } = props;
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-
-  const [user] = useState(users[Math.floor(Math.random() * users.length)]);
 
   return (
     <div className={classes.root}>
-      <TopBar user={user} onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <NavBar
-        user={user}
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
-      />
+      {user && (
+        <>
+          <TopBar user={user} onMobileNavOpen={() => setMobileNavOpen(true)} />
+          <NavBar
+            user={user}
+            onMobileClose={() => setMobileNavOpen(false)}
+            openMobile={isMobileNavOpen}
+          />
+        </>
+      )}
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
@@ -59,4 +63,12 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+const mapStateToProps = state => ({
+  user: state.authentication.user
+});
+
+DashboardLayout.propTypes = {
+  user: PropTypes.shape({ name: PropTypes.string })
+};
+
+export default connect(mapStateToProps, null)(DashboardLayout);
