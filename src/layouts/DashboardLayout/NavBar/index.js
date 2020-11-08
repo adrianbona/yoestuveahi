@@ -31,7 +31,8 @@ const items = [
   {
     href: '/app/users',
     icon: UsersIcon,
-    title: 'Users'
+    title: 'Users',
+    requiresAdminPrivilege: true
   },
   {
     href: '/app/notifications',
@@ -115,14 +116,18 @@ const NavBar = props => {
       <Divider />
       <Box p={2}>
         <List>
-          {items.map(item => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
+          {items
+            .filter(
+              item => item.requiresAdminPrivilege === user.isAdministrator
+            )
+            .map(item => (
+              <NavItem
+                href={item.href}
+                key={item.title}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
         </List>
       </Box>
     </Box>
@@ -161,7 +166,8 @@ NavBar.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string,
     status: PropTypes.string,
-    email: PropTypes.string
+    email: PropTypes.string,
+    isAdministrator: PropTypes.bool
   })
 };
 
