@@ -56,7 +56,10 @@ export default (state = initialState, action) => {
       const { location } = action;
       return {
         ...state,
-        list: { ...action.list.locations, location },
+        list: {
+          ...state.list,
+          locations: state.list.locations.concat(location)
+        },
         locationCreated: true,
         loading: false
       };

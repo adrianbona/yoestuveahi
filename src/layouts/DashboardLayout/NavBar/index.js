@@ -81,8 +81,6 @@ const NavBar = props => {
   const { onMobileClose, openMobile, user } = props;
   const location = useLocation();
 
-  console.log(user);
-
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();

@@ -15,7 +15,7 @@ const QRCodeDisplayModal = props => {
       <Card>
         <CardContent>
           <Box alignItems="center" display="flex" flexDirection="column">
-            <QRCode value={value} size="150" renderAs="svg" />
+            <QRCode value={`${value}`} size={150} renderAs="svg" />
           </Box>
         </CardContent>
       </Card>

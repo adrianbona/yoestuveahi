@@ -31,7 +31,7 @@ const LocationSearchInput = props => {
     setAddress(selectedAddress);
     geocodeByAddress(selectedAddress)
       .then(results => {
-        onSelectedAddress(results[0], selectedAddress);
+        onSelectedAddress(selectedAddress, results[0]);
       })
       .catch(error => console.error(error));
   };

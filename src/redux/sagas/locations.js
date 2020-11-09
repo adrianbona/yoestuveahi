@@ -1,5 +1,5 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
-
+import moment from 'moment';
 import { constants } from '../modules/locations';
 import * as api from '../api/locations';
 
@@ -8,7 +8,14 @@ export function* getLocations() {
     const { data: locations } = yield call(api.getLocations);
     yield put({
       type: constants.LOCATIONS_GET.SUCCESS,
-      locations
+      locations: locations.map(location => {
+        return {
+          ...location,
+          maximumCapacity: location.maximum_capacity,
+          openingTime: moment(location.opening_time),
+          closingTime: moment(location.closing_time)
+        };
+      })
     });
   } catch (e) {
     yield put({
@@ -24,8 +31,13 @@ export function* watchGetLocations() {
 
 export function* createLocation(action) {
   try {
-    const { data: location } = yield call(api.createLocation, { ...action });
-    console.log(location);
+    const { data } = yield call(api.createLocation, { ...action });
+    const location = {
+      ...data,
+      maximumCapacity: data.maximum_capacity,
+      openingTime: moment(data.opening_time),
+      closingTime: moment(data.closing_time)
+    };
     yield put({ type: constants.LOCATIONS_CREATE.SUCCESS, location });
   } catch (e) {
     yield put({

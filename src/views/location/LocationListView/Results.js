@@ -12,7 +12,8 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  makeStyles
+  makeStyles,
+  Avatar
 } from '@material-ui/core';
 import QRCodeDisplayModal from '../../../components/location/QRCodeDisplayModal';
 
@@ -49,9 +50,9 @@ const Results = ({ className, locations, ...rest }) => {
             <Table>
               <TableHead>
                 <TableRow>
+                  <TableCell>Logo</TableCell>
                   <TableCell>Name</TableCell>
                   <TableCell>Description</TableCell>
-                  <TableCell>Address</TableCell>
                   <TableCell>Max Capacity</TableCell>
                   <TableCell>Created By</TableCell>
                   <TableCell>Created On</TableCell>
@@ -67,6 +68,13 @@ const Results = ({ className, locations, ...rest }) => {
                       onClick={() => handleShowQRCode(location.id)}
                     >
                       <TableCell>
+                        <Avatar
+                          alt="Place"
+                          src={location.logo}
+                          variant="rounded"
+                        />
+                      </TableCell>
+                      <TableCell>
                         <Box alignItems="center" display="flex">
                           <Typography color="textPrimary" variant="body1">
                             {location.name}
@@ -74,13 +82,13 @@ const Results = ({ className, locations, ...rest }) => {
                         </Box>
                       </TableCell>
                       <TableCell>{location.description}</TableCell>
-                      <TableCell>
-                        {`${location.city}, ${location.state}, ${location.country}`}
-                      </TableCell>
                       <TableCell>{location.maximumCapacity}</TableCell>
-                      <TableCell>{location.createdBy.name}</TableCell>
                       <TableCell>
-                        {location.createdAt.format('MMMM D, YYYY')}
+                        {location.createdBy && location.createdBy.name}
+                      </TableCell>
+                      <TableCell>
+                        {location.createdAt &&
+                          location.createdAt.format('MMMM D, YYYY')}
                       </TableCell>
                     </TableRow>
                   ))}

@@ -18,17 +18,16 @@ import AlertTitle from '@material-ui/lab/AlertTitle';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { actions as authActions } from '../../../redux/modules/authentication';
-import { actions as userActions } from '../../../redux/modules/users';
+import { actions } from '../../../redux/modules/authentication';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%'
   }
 }));
 
 const UserDetails = props => {
-  const { updateDetails, userUpdated, usersRefetch, loggingIn, error } = props;
+  const { updateDetails, userUpdated, loggingIn, error, user } = props;
   const [showConfirmation, setShowConfirmation] = useState(false);
   const classes = useStyles();
 
@@ -39,16 +38,19 @@ const UserDetails = props => {
   useEffect(() => {
     if (userUpdated) {
       setShowConfirmation(userUpdated);
-      usersRefetch();
     }
-  }, [userUpdated, usersRefetch]);
+  }, [userUpdated]);
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <>
       <Formik
         initialValues={{
-          name: '',
-          isAdministrator: false
+          name: user.name,
+          isAdministrator: user.isAdministrator
         }}
         validationSchema={Yup.object().shape({
           name: Yup.string()
@@ -137,19 +139,19 @@ const UserDetails = props => {
 };
 
 const mapStateToProps = state => ({
+  user: state.authentication.user,
   userUpdated: state.authentication.userUpdated,
   loggingIn: state.authentication.loggingIn,
   error: state.authentication.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateDetails: data => dispatch(authActions.updateDetails(data)),
-  usersRefetch: data => dispatch(userActions.getUsers(data))
+  updateDetails: data => dispatch(actions.updateDetails(data))
 });
 
 UserDetails.propTypes = {
   updateDetails: PropTypes.func.isRequired,
-  usersRefetch: PropTypes.func.isRequired,
+  user: PropTypes.object,
   userUpdated: PropTypes.bool,
   loggingIn: PropTypes.bool,
   error: PropTypes.string

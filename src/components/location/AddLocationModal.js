@@ -37,13 +37,12 @@ const AddLocationModal = props => {
 
   const handleCreate = imageUrl => {
     createLocation({
-      address: {
-        id: selectedAddress.place_id,
-        address: selectedAddress.formatted_address,
-        latitude: selectedAddress.geometry.location.lat(),
-        longitude: selectedAddress.geometry.location.lng(),
-        logo: imageUrl
-      }
+      id: selectedAddress.place_id,
+      name: selectedAddress.name.split(',')[0],
+      description: selectedAddress.formatted_address,
+      latitude: selectedAddress.geometry.location.lat(),
+      longitude: selectedAddress.geometry.location.lng(),
+      logo: imageUrl
     });
   };
 
@@ -80,7 +79,7 @@ const AddLocationModal = props => {
           <Box alignItems="center" display="flex" flexDirection="column">
             <LocationSearchInput
               className={classes.fullWidth}
-              onSelectedAddress={(address, name) =>
+              onSelectedAddress={(name, address) =>
                 setSelectedAddress({ ...address, name })
               }
             />
