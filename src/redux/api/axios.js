@@ -2,8 +2,9 @@ import axios from 'axios';
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_URL_BACKEND,
+  xsrfCookieName: 'csrftoken',
+  xsrfHeaderName: 'X-CSRFToken',
   headers: {
-    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json'
   }
 });

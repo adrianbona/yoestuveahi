@@ -8,7 +8,12 @@ export function* getUsers() {
     const { data: users } = yield call(api.getUsers);
     yield put({
       type: constants.USERS_GET.SUCCESS,
-      users
+      users: users.map(user => {
+        return {
+          ...user,
+          isAdministrator: user.is_admin
+        };
+      })
     });
   } catch (e) {
     yield put({
