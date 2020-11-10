@@ -3,10 +3,12 @@ import moment from 'moment';
 import { constants } from '../modules/authentication';
 import * as authApi from '../api/authentication';
 import * as usersApi from '../api/users';
+import { setUserToken } from '../../components/authentication/session';
 
 export function* login(action) {
   try {
     const { data } = yield call(authApi.login, { ...action });
+    setUserToken(data.token);
     const user = {
       ...data,
       isAdministrator: data.is_admin,
@@ -28,7 +30,9 @@ export function* watchLogin() {
   yield takeLatest(constants.AUTHENTICATION_LOGIN.REQUEST, login);
 }
 
-export function* logout() {}
+export function* logout() {
+  yield call(authApi.logout);
+}
 
 export function* watchLogout() {
   yield takeLatest(constants.AUTHENTICATION_LOGOUT.REQUEST, logout);

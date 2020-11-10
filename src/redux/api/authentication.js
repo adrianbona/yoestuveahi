@@ -7,6 +7,6 @@ export function login({ email, password }) {
   });
 }
 
-export default {
-  login
-};
+export function logout() {
+  return instance.get('/logout');
+}

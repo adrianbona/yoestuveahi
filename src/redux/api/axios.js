@@ -1,11 +1,13 @@
 import axios from 'axios';
+import { getUserToken } from '../../components/authentication/session';
+
+const token = getUserToken();
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_URL_BACKEND,
-  xsrfCookieName: 'csrftoken',
-  xsrfHeaderName: 'X-CSRFToken',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: token ? `token ${token}` : ''
   }
 });
 

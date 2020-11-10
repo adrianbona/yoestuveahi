@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/modules/authentication';
+import { removeUserToken } from '../../components/authentication/session';
 
 const LogoutView = props => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const LogoutView = props => {
 
   useEffect(() => {
     if (!user) {
+      removeUserToken();
       navigate('/login', { replace: true });
     }
   }, [user, navigate]);

@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/localStorage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/authentication/session.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/authentication.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/UserListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserListView/Results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/locations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/locations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/authentication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/auth/LogoutView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/auth/LogoutView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +50,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/sagas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/authentication" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,19 +73,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\authentication" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\auth" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\registry" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location\LocationListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\authentication" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -133,6 +140,8 @@
       <workItem from="1604861017997" duration="1291000" />
       <workItem from="1604875576753" duration="11427000" />
       <workItem from="1604957876623" duration="5739000" />
+      <workItem from="1605012938499" duration="14000" />
+      <workItem from="1605036222788" duration="7432000" />
     </task>
     <servers />
   </component>
@@ -155,22 +164,22 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1603995262921" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1604961751219">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1605050957591">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1604961751219" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1604961751219">
+    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1605050957591" />
+    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1605050957591">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1604961751218" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1604961751218">
+    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1605050957591" />
+    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1605050957590">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1604961751218" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1604961751219">
+    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1605050957590" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1605050957591">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1604961751219" />
+    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1605050957591" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -183,13 +192,13 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1525" y="319" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1604846859498" />
-    <state x="1571" y="527" width="755" height="596" key="find.popup" timestamp="1604892877479">
+    <state x="1571" y="527" width="755" height="596" key="find.popup" timestamp="1605050070025">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1571" y="527" width="755" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604892877479" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1604893051339">
+    <state x="1571" y="527" width="755" height="596" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605050070025" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1605038917300">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1604893051339" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605038917300" />
   </component>
 </project>

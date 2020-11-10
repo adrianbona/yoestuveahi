@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Avatar,
   Box,
@@ -25,15 +25,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddLocationModal = props => {
-  const { onClose, open, createLocation, locationCreated, error } = props;
+  const { onClose, open, createLocation, error } = props;
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placePhotos, setPlacePhotos] = useState({ index: 0, list: [] });
   const classes = useStyles();
 
-  const handleClose = useCallback(() => {
+  const handleClose = () => {
     setPlacePhotos({ index: 0, list: [] });
     onClose();
-  }, [onClose]);
+  };
 
   const handleCreate = imageUrl => {
     createLocation({
@@ -44,6 +44,7 @@ const AddLocationModal = props => {
       longitude: selectedAddress.geometry.location.lng(),
       logo: imageUrl
     });
+    handleClose();
   };
 
   const getPictures = async address => {
@@ -65,12 +66,6 @@ const AddLocationModal = props => {
       getPictures(selectedAddress);
     }
   }, [selectedAddress]);
-
-  useEffect(() => {
-    if (locationCreated) {
-      handleClose();
-    }
-  }, [locationCreated, handleClose]);
 
   return (
     <SimpleModal title="Add a new location" open={open} onClose={handleClose}>
@@ -146,7 +141,6 @@ const AddLocationModal = props => {
 };
 
 const mapStateToProps = state => ({
-  locationCreated: state.locations.locationCreated,
   loading: state.locations.loading,
   error: state.locations.error
 });
@@ -159,7 +153,6 @@ AddLocationModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   createLocation: PropTypes.func.isRequired,
   open: PropTypes.bool,
-  locationCreated: PropTypes.bool,
   error: PropTypes.string
 };
 

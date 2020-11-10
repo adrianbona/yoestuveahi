@@ -18,7 +18,6 @@ export const actions = {
 // Reducer
 const initialState = {
   loading: false,
-  locationCreated: false,
   list: {
     locations: []
   }
@@ -60,7 +59,6 @@ export default (state = initialState, action) => {
           ...state.list,
           locations: state.list.locations.concat(location)
         },
-        locationCreated: true,
         loading: false
       };
     }
