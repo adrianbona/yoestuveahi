@@ -1,5 +1,5 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
-
+import moment from 'moment';
 import { constants } from '../modules/users';
 import * as api from '../api/users';
 
@@ -11,7 +11,8 @@ export function* getUsers() {
       users: users.map(user => {
         return {
           ...user,
-          isAdministrator: user.is_admin
+          isAdministrator: user.is_admin,
+          createdAt: moment(user.creation_date)
         };
       })
     });

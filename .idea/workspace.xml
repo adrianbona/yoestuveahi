@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/DashboardLayout/NavBar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +133,7 @@
       <workItem from="1604957876623" duration="5739000" />
       <workItem from="1605012938499" duration="14000" />
       <workItem from="1605036222788" duration="7685000" />
-      <workItem from="1605060725683" duration="4823000" />
+      <workItem from="1605060725683" duration="5165000" />
     </task>
     <servers />
   </component>
@@ -189,9 +188,9 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1458" y="316" width="877" height="781" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605064451061" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1605065263433">
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1605066201940">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605065263433" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605066201940" />
   </component>
 </project>
