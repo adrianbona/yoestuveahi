@@ -61,7 +61,7 @@ const items = [
   }
 ];
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   mobileDrawer: {
     width: 256
   },
@@ -73,6 +73,12 @@ const useStyles = makeStyles(() => ({
   avatar: {
     width: 64,
     height: 64
+  },
+  healthStatus: {
+    marginTop: '5px',
+    padding: '5px',
+    border: '1px solid',
+    backgroundColor: theme.palette.primary.light
   }
 }));
 
@@ -108,10 +114,14 @@ const NavBar = props => {
           {user.name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.status}
-        </Typography>
-        <Typography color="textSecondary" variant="body2">
           {user.email}
+        </Typography>
+        <Typography
+          color="textSecondary"
+          variant="body2"
+          className={classes.healthStatus}
+        >
+          {user.status}
         </Typography>
       </Box>
       <Divider />
