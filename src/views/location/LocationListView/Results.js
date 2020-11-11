@@ -84,7 +84,7 @@ const Results = ({ className, locations, ...rest }) => {
                       <TableCell>{location.description}</TableCell>
                       <TableCell>{location.maximumCapacity}</TableCell>
                       <TableCell>
-                        {location.createdBy && location.createdBy.name}
+                        {location.createdBy && location.createdBy}
                       </TableCell>
                       <TableCell>
                         {location.createdAt &&

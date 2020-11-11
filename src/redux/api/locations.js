@@ -13,6 +13,9 @@ export function createLocation({
   id,
   name,
   description,
+  maximumCapacity,
+  openingTime,
+  closingTime,
   logo,
   latitude,
   longitude
@@ -23,12 +26,12 @@ export function createLocation({
       id,
       name,
       description,
-      maximum_capacity: 15,
+      maximum_capacity: maximumCapacity,
       logo,
       latitude,
       longitude,
-      opening_time: '9AM',
-      closing_time: '6PM'
+      opening_time: openingTime,
+      closing_time: closingTime
     },
     {
       headers: {

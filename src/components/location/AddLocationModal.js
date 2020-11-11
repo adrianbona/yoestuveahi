@@ -5,12 +5,15 @@ import {
   Button,
   Card,
   CardContent,
-  makeStyles
+  makeStyles,
+  TextField
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
+import * as Yup from 'yup';
+import { Formik } from 'formik';
 import SimpleModal from '../SimpleModal';
 import LocationSearchInput from '../LocationSearchInput';
 import getPhotos, { getPhotoSourceFromReference } from '../../redux/api/photos';
@@ -20,7 +23,7 @@ const useStyles = makeStyles(() => ({
   fullWidth: {
     width: '100%',
     height: 'inherit',
-    maxHeight: '50vh'
+    maxHeight: '30vh'
   }
 }));
 
@@ -35,13 +38,16 @@ const AddLocationModal = props => {
     onClose();
   };
 
-  const handleCreate = imageUrl => {
+  const handleCreate = (values, imageUrl) => {
     createLocation({
       id: selectedAddress.place_id,
-      name: selectedAddress.name.split(',')[0],
-      description: selectedAddress.formatted_address,
+      name: values.name,
+      description: values.description,
       latitude: selectedAddress.geometry.location.lat(),
       longitude: selectedAddress.geometry.location.lng(),
+      maximumCapacity: values.maximumCapacity,
+      openingTime: values.openingTime,
+      closingTime: values.closingTime,
       logo: imageUrl
     });
   };
@@ -86,14 +92,104 @@ const AddLocationModal = props => {
             />
           </Box>
           {placePhotos.list.length > 1 && (
-            <Box alignItems="center" display="flex" flexDirection="column">
-              <Avatar
-                className={classes.fullWidth}
-                alt="Place"
-                src={photoSource}
-                variant="rounded"
-              />
-            </Box>
+            <>
+              <Box alignItems="center" display="flex" flexDirection="column">
+                <Formik
+                  initialValues={{
+                    name: selectedAddress.name.split(',')[0],
+                    description: selectedAddress.formatted_address,
+                    maximumCapacity: 0,
+                    openingTime: '9:00',
+                    closingTime: '18:00'
+                  }}
+                  validationSchema={Yup.object().shape({
+                    name: Yup.string()
+                      .max(255)
+                      .required('Name is required'),
+                    description: Yup.string()
+                      .max(255)
+                      .required('Description is required'),
+                    maximumCapacity: Yup.number()
+                      .integer()
+                      .min(1)
+                      .required('Maximum capacity is required'),
+                    openingTime: Yup.string().required(
+                      'Opening time is required'
+                    ),
+                    closingTime: Yup.string().required(
+                      'Closing time is required'
+                    )
+                  })}
+                  onSubmit={values => handleCreate(values, photoSource)}
+                >
+                  {({
+                    errors,
+                    handleBlur,
+                    handleChange,
+                    handleSubmit,
+                    touched,
+                    values
+                  }) => (
+                    <form
+                      id="create-location"
+                      onSubmit={handleSubmit}
+                      className={classes.fullWidth}
+                    >
+                      <TextField
+                        error={Boolean(touched.name && errors.name)}
+                        fullWidth
+                        helperText={touched.name && errors.name}
+                        label="Name"
+                        margin="normal"
+                        name="name"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.name}
+                        variant="outlined"
+                      />
+                      <TextField
+                        error={Boolean(
+                          touched.description && errors.description
+                        )}
+                        fullWidth
+                        helperText={touched.description && errors.description}
+                        label="Description"
+                        margin="normal"
+                        name="description"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.description}
+                        variant="outlined"
+                      />
+                      <TextField
+                        error={Boolean(
+                          touched.maximumCapacity && errors.maximumCapacity
+                        )}
+                        fullWidth
+                        helperText={
+                          touched.maximumCapacity && errors.maximumCapacity
+                        }
+                        label="Maximum Capacity"
+                        margin="normal"
+                        name="maximumCapacity"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.maximumCapacity}
+                        variant="outlined"
+                      />
+                    </form>
+                  )}
+                </Formik>
+              </Box>
+              <Box alignItems="center" display="flex" flexDirection="column">
+                <Avatar
+                  className={classes.fullWidth}
+                  alt="Place"
+                  src={photoSource}
+                  variant="rounded"
+                />
+              </Box>
+            </>
           )}
           {error && (
             <Box
@@ -134,7 +230,8 @@ const AddLocationModal = props => {
               color="primary"
               variant="contained"
               disabled={placePhotos.list.length === 0}
-              onClick={() => handleCreate(photoSource)}
+              form="create-location"
+              type="submit"
             >
               Create location
             </Button>

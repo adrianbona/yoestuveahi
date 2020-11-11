@@ -13,7 +13,9 @@ export function* getLocations() {
           ...location,
           maximumCapacity: location.maximum_capacity,
           openingTime: moment(location.opening_time),
-          closingTime: moment(location.closing_time)
+          closingTime: moment(location.closing_time),
+          createdAt: moment(location.created_at),
+          createdBy: location.created_by
         };
       })
     });
@@ -36,7 +38,9 @@ export function* createLocation(action) {
       ...data,
       maximumCapacity: data.maximum_capacity,
       openingTime: moment(data.opening_time),
-      closingTime: moment(data.closing_time)
+      closingTime: moment(data.closing_time),
+      createdAt: moment(data.created_at),
+      createdBy: data.created_by
     };
     yield put({ type: constants.LOCATIONS_CREATE.SUCCESS, location });
   } catch (e) {
