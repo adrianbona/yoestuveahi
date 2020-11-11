@@ -81,6 +81,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const avatar = user => {
+  return {
+    mouthType:
+      user.status === 'COVID Positive'
+        ? 'Vomit'
+        : user.status === 'COVID Positive'
+        ? 'Concerned'
+        : 'Smile'
+  };
+};
+
 const NavBar = props => {
   const classes = useStyles();
   const { onMobileClose, openMobile, user } = props;
@@ -97,7 +108,7 @@ const NavBar = props => {
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
-          style={{ width: '64px', height: '64px' }}
+          style={{ width: '70px', height: '70px' }}
           avatarStyle="Transparent"
           topType="ShortHairShortCurly"
           accessoriesType={user.isAdministrator ? 'Wayfarers' : null}
@@ -106,7 +117,7 @@ const NavBar = props => {
           clotheColor="Gray02"
           eyeType="Default"
           eyebrowType="Default"
-          mouthType="Smile"
+          mouthType={avatar(user).mouthType}
           skinColor="Light"
         />
         <Typography className={classes.name} color="textPrimary" variant="h5">
