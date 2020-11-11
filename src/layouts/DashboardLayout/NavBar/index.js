@@ -77,7 +77,6 @@ const useStyles = makeStyles(theme => ({
   healthStatus: {
     marginTop: '5px',
     padding: '5px',
-    border: '1px solid',
     backgroundColor: theme.palette.primary.light
   }
 }));

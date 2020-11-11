@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddLocationModal = props => {
-  const { onClose, open, createLocation, error } = props;
+  const { onClose, open, createLocation, error, locations } = props;
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placePhotos, setPlacePhotos] = useState({ index: 0, list: [] });
   const classes = useStyles();
@@ -44,13 +44,12 @@ const AddLocationModal = props => {
       longitude: selectedAddress.geometry.location.lng(),
       logo: imageUrl
     });
-    handleClose();
   };
 
   const getPictures = async address => {
     try {
       const { data } = await getPhotos(address.place_id);
-      setPlacePhotos({ index: 0, list: data.result.photos });
+      setPlacePhotos({ index: 0, list: data.result.photos || [] });
     } catch (err) {}
   };
 
@@ -63,9 +62,16 @@ const AddLocationModal = props => {
 
   useEffect(() => {
     if (selectedAddress) {
+      setPlacePhotos({ index: 0, list: [] });
       getPictures(selectedAddress);
     }
   }, [selectedAddress]);
+
+  useEffect(() => {
+    if (!error) {
+      handleClose();
+    }
+  }, [error, locations]);
 
   return (
     <SimpleModal title="Add a new location" open={open} onClose={handleClose}>
@@ -79,61 +85,60 @@ const AddLocationModal = props => {
               }
             />
           </Box>
-          {placePhotos.list.length > 0 && (
-            <>
-              <Box alignItems="center" display="flex" flexDirection="column">
-                <Avatar
-                  className={classes.fullWidth}
-                  alt="Place"
-                  src={photoSource}
-                  variant="rounded"
-                />
-              </Box>
-              {error && (
-                <Box
-                  p={2}
-                  alignItems="center"
-                  display="flex"
-                  flexDirection="column"
-                >
-                  <Alert className={classes.fullWidth} severity="error">
-                    <AlertTitle>Error</AlertTitle>
-                    {error}
-                  </Alert>
-                </Box>
-              )}
-              <Box
-                p={2}
-                display="flex"
-                flexDirection="row"
-                justifyContent="space-evenly"
-              >
-                {placePhotos.list.length > 1 && (
-                  <Button
-                    className={classes.scanAgain}
-                    color="secondary"
-                    variant="contained"
-                    onClick={() =>
-                      setPlacePhotos({
-                        index:
-                          (placePhotos.index + 1) % placePhotos.list.length,
-                        list: placePhotos.list
-                      })
-                    }
-                  >
-                    Change image
-                  </Button>
-                )}
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={() => handleCreate(photoSource)}
-                >
-                  Create location
-                </Button>
-              </Box>
-            </>
+          {placePhotos.list.length > 1 && (
+            <Box alignItems="center" display="flex" flexDirection="column">
+              <Avatar
+                className={classes.fullWidth}
+                alt="Place"
+                src={photoSource}
+                variant="rounded"
+              />
+            </Box>
           )}
+          {error && (
+            <Box
+              p={2}
+              alignItems="center"
+              display="flex"
+              flexDirection="column"
+            >
+              <Alert className={classes.fullWidth} severity="error">
+                <AlertTitle>Error</AlertTitle>
+                {error}
+              </Alert>
+            </Box>
+          )}
+          <Box
+            p={2}
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-evenly"
+          >
+            {placePhotos.list.length > 1 && (
+              <Button
+                className={classes.scanAgain}
+                color="secondary"
+                variant="contained"
+                disabled={placePhotos.list.length === 0}
+                onClick={() =>
+                  setPlacePhotos({
+                    index: (placePhotos.index + 1) % placePhotos.list.length,
+                    list: placePhotos.list
+                  })
+                }
+              >
+                Change image
+              </Button>
+            )}
+            <Button
+              color="primary"
+              variant="contained"
+              disabled={placePhotos.list.length === 0}
+              onClick={() => handleCreate(photoSource)}
+            >
+              Create location
+            </Button>
+          </Box>
         </CardContent>
       </Card>
     </SimpleModal>
@@ -141,6 +146,7 @@ const AddLocationModal = props => {
 };
 
 const mapStateToProps = state => ({
+  locations: state.locations.list,
   loading: state.locations.loading,
   error: state.locations.error
 });
@@ -152,6 +158,7 @@ const mapDispatchToProps = dispatch => ({
 AddLocationModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   createLocation: PropTypes.func.isRequired,
+  locations: PropTypes.object,
   open: PropTypes.bool,
   error: PropTypes.string
 };
