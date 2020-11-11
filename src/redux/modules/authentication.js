@@ -28,7 +28,6 @@ export const actions = {
 
 // Reducer
 const initialState = {
-  userUpdated: false,
   loggingIn: false,
   error: null,
   user: null
@@ -59,8 +58,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         user,
-        loggingIn: false,
-        userUpdated: true
+        loggingIn: false
       };
     }
 

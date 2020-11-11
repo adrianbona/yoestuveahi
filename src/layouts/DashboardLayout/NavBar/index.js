@@ -94,7 +94,8 @@ const NavBar = props => {
         <Avatar
           style={{ width: '64px', height: '64px' }}
           avatarStyle="Transparent"
-          topType="LongHairMiaWallace"
+          topType="ShortHairShortCurly"
+          accessoriesType={user.isAdministrator ? 'Wayfarers' : null}
           hairColor="BrownDark"
           clotheType="Hoodie"
           clotheColor="Gray02"

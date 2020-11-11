@@ -27,19 +27,26 @@ const useStyles = makeStyles(() => ({
 }));
 
 const UserDetails = props => {
-  const { updateDetails, userUpdated, loggingIn, error, user } = props;
+  const { updateDetails, loggingIn, error, user } = props;
+  const [detailsUpdated, setDetailsUpdated] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const classes = useStyles();
 
   const onSubmit = values => {
     updateDetails(values);
+    setDetailsUpdated(true);
+  };
+
+  const handleCloseConfirmation = () => {
+    setDetailsUpdated(false);
+    setShowConfirmation(false);
   };
 
   useEffect(() => {
-    if (userUpdated) {
-      setShowConfirmation(userUpdated);
+    if (user && detailsUpdated) {
+      setShowConfirmation(true);
     }
-  }, [userUpdated]);
+  }, [user]);
 
   if (!user) {
     return null;
@@ -93,7 +100,11 @@ const UserDetails = props => {
                 />
                 <FormControlLabel
                   control={
-                    <Checkbox name="isAdministrator" onChange={handleChange} />
+                    <Checkbox
+                      name="isAdministrator"
+                      checked={values.isAdministrator}
+                      onChange={handleChange}
+                    />
                   }
                   label="Is Administrator"
                 />
@@ -123,11 +134,11 @@ const UserDetails = props => {
       <Snackbar
         open={showConfirmation}
         autoHideDuration={5000}
-        onClose={() => setShowConfirmation(false)}
+        onClose={handleCloseConfirmation}
       >
         <Alert
           className={classes.root}
-          onClose={() => setShowConfirmation(false)}
+          onClose={handleCloseConfirmation}
           variant="filled"
           severity="success"
         >
@@ -140,7 +151,6 @@ const UserDetails = props => {
 
 const mapStateToProps = state => ({
   user: state.authentication.user,
-  userUpdated: state.authentication.userUpdated,
   loggingIn: state.authentication.loggingIn,
   error: state.authentication.error
 });
@@ -152,7 +162,6 @@ const mapDispatchToProps = dispatch => ({
 UserDetails.propTypes = {
   updateDetails: PropTypes.func.isRequired,
   user: PropTypes.object,
-  userUpdated: PropTypes.bool,
   loggingIn: PropTypes.bool,
   error: PropTypes.string
 };
