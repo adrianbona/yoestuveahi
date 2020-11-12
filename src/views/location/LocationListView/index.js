@@ -28,8 +28,8 @@ const LocationListView = props => {
     <Page className={classes.root} title="Locations">
       <Container maxWidth={false}>
         <Box mt={3}>
-          {locations.list.locations.length > 0 ? (
-            <Results locations={locations.list.locations} />
+          {locations.length > 0 ? (
+            <Results locations={locations} />
           ) : (
             <NoResults />
           )}
@@ -40,7 +40,7 @@ const LocationListView = props => {
 };
 
 const mapStateToProps = state => ({
-  locations: state.locations
+  locations: state.locations.list
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -49,11 +49,7 @@ const mapDispatchToProps = dispatch => ({
 
 LocationListView.propTypes = {
   getLocations: PropTypes.func.isRequired,
-  locations: PropTypes.shape({
-    list: PropTypes.shape({
-      locations: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
-    })
-  }).isRequired
+  locations: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationListView);

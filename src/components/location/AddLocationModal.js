@@ -28,13 +28,22 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddLocationModal = props => {
-  const { onClose, open, createLocation, error, locations } = props;
+  const {
+    onClose,
+    open,
+    createLocation,
+    resetLocations,
+    error,
+    locations,
+    loading
+  } = props;
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placePhotos, setPlacePhotos] = useState({ index: 0, list: [] });
   const classes = useStyles();
 
   const handleClose = () => {
     setPlacePhotos({ index: 0, list: [] });
+    resetLocations();
     onClose();
   };
 
@@ -74,10 +83,10 @@ const AddLocationModal = props => {
   }, [selectedAddress]);
 
   useEffect(() => {
-    if (!error) {
+    if (!error && !loading) {
       handleClose();
     }
-  }, [error, locations]);
+  }, [error, loading, locations]);
 
   return (
     <SimpleModal title="Add a new location" open={open} onClose={handleClose}>
@@ -98,7 +107,6 @@ const AddLocationModal = props => {
                   initialValues={{
                     name: selectedAddress.name.split(',')[0],
                     description: selectedAddress.formatted_address,
-                    maximumCapacity: 0,
                     openingTime: '9:00',
                     closingTime: '18:00'
                   }}
@@ -249,13 +257,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createLocation: data => dispatch(actions.createLocation(data))
+  createLocation: data => dispatch(actions.createLocation(data)),
+  resetLocations: () => dispatch(actions.resetLocations())
 });
 
 AddLocationModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   createLocation: PropTypes.func.isRequired,
-  locations: PropTypes.object,
+  resetLocations: PropTypes.func.isRequired,
+  locations: PropTypes.array,
+  loading: PropTypes.bool,
   open: PropTypes.bool,
   error: PropTypes.string
 };

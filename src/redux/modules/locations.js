@@ -3,12 +3,14 @@ import { createSagaActions } from '../utils/saga';
 // Constants
 export const constants = {
   LOCATIONS_GET: createSagaActions('LOCATIONS_GET'),
-  LOCATIONS_CREATE: createSagaActions('LOCATIONS_CREATE')
+  LOCATIONS_CREATE: createSagaActions('LOCATIONS_CREATE'),
+  LOCATIONS_RESET: createSagaActions('LOCATIONS_RESET')
 };
 
 // Action Creators
 export const actions = {
   getLocations: () => ({ type: constants.LOCATIONS_GET.REQUEST }),
+  resetLocations: () => ({ type: constants.LOCATIONS_RESET }),
   createLocation: data => ({
     type: constants.LOCATIONS_CREATE.REQUEST,
     ...data
@@ -18,9 +20,7 @@ export const actions = {
 // Reducer
 const initialState = {
   loading: false,
-  list: {
-    locations: []
-  }
+  list: []
 };
 
 export default (state = initialState, action) => {
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
       const { locations } = action;
       return {
         ...state,
-        list: { locations },
+        list: locations,
         loading: false
       };
     }
@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
     case constants.LOCATIONS_GET.FAILURE: {
       return {
         ...state,
-        list: { ...state.list },
+        list: state.list,
         error: action.message,
         loading: false
       };
@@ -55,10 +55,7 @@ export default (state = initialState, action) => {
       const { location } = action;
       return {
         ...state,
-        list: {
-          ...state.list,
-          locations: state.list.locations.concat(location)
-        },
+        list: state.list.concat(location),
         loading: false
       };
     }
@@ -66,8 +63,17 @@ export default (state = initialState, action) => {
     case constants.LOCATIONS_CREATE.FAILURE: {
       return {
         ...state,
-        list: { ...state.list },
+        list: state.list,
         error: action.message,
+        loading: false
+      };
+    }
+
+    case constants.LOCATIONS_RESET: {
+      return {
+        ...state,
+        list: state.list,
+        error: null,
         loading: false
       };
     }

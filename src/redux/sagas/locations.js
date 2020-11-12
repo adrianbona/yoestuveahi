@@ -46,7 +46,7 @@ export function* createLocation(action) {
   } catch (e) {
     yield put({
       type: constants.LOCATIONS_CREATE.FAILURE,
-      message: e.message || e
+      message: e.response.data || e.message || e
     });
   }
 }

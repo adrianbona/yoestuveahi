@@ -26,7 +26,8 @@ const items = [
   {
     href: '/app/dashboard',
     icon: BarChartIcon,
-    title: 'Dashboard'
+    title: 'Dashboard',
+    requiresAdminPrivilege: true
   },
   {
     href: '/app/users',
@@ -83,10 +84,17 @@ const useStyles = makeStyles(theme => ({
 
 const avatar = user => {
   return {
+    accessoriesType: user.isAdministrator ? 'Wayfarers' : null,
+    eyeType:
+      user.status === 'COVID Positive'
+        ? 'Dizzy'
+        : user.status === 'Contagion Risk'
+        ? 'Surprised'
+        : 'Default',
     mouthType:
       user.status === 'COVID Positive'
         ? 'Vomit'
-        : user.status === 'COVID Positive'
+        : user.status === 'Contagion Risk'
         ? 'Concerned'
         : 'Smile'
   };
@@ -111,11 +119,11 @@ const NavBar = props => {
           style={{ width: '70px', height: '70px' }}
           avatarStyle="Transparent"
           topType="ShortHairShortCurly"
-          accessoriesType={user.isAdministrator ? 'Wayfarers' : null}
+          accessoriesType={avatar(user).accessoriesType}
           hairColor="BrownDark"
           clotheType="Hoodie"
           clotheColor="Gray02"
-          eyeType="Default"
+          eyeType={avatar(user).eyeType}
           eyebrowType="Default"
           mouthType={avatar(user).mouthType}
           skinColor="Light"
