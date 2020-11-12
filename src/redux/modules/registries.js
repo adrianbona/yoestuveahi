@@ -49,6 +49,23 @@ export default (state = initialState, action) => {
     }
     case constants.REGISTRIES_CREATE.SUCCESS: {
       const { registry } = action;
+      console.log(registry);
+      if (
+        state.list.filter(register => register.id === parseInt(registry.id, 10))
+          .length > 0
+      ) {
+        const list = state.list.map(register => {
+          if (register.id === registry.id) {
+            return { ...register, ...registry };
+          }
+          return register;
+        });
+        return {
+          ...state,
+          list,
+          loading: false
+        };
+      }
       return {
         ...state,
         list: state.list.concat(registry),

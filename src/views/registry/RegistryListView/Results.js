@@ -43,23 +43,28 @@ const Results = ({ className, registries, ...rest }) => {
               <TableRow>
                 <TableCell>User</TableCell>
                 <TableCell>Location</TableCell>
-                <TableCell>Entrance</TableCell>
-                <TableCell>Exit</TableCell>
+                <TableCell>Entered at</TableCell>
+                <TableCell>Exited at</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {registries
                 .slice(page * limit, (page + 1) * limit)
-                .map(registry => (
-                  <TableRow hover key={registry.id}>
-                    <TableCell>{registry.customer.name}</TableCell>
-                    <TableCell>{registry.location.name}</TableCell>
-                    <TableCell>
-                      {registry.entranceTime.format('MMMM D, YYYY HH:mm')}
-                    </TableCell>
-                    <TableCell>{registry.exitTime.format('HH:mm')}</TableCell>
-                  </TableRow>
-                ))}
+                .map(registry => {
+                  return (
+                    <TableRow hover key={registry.id}>
+                      <TableCell>{registry.customerName}</TableCell>
+                      <TableCell>{registry.locationName}</TableCell>
+                      <TableCell>
+                        {registry.entranceTime.format('MMMM D, YYYY HH:mm')}
+                      </TableCell>
+                      <TableCell>
+                        {registry.exitTime.isValid() &&
+                          registry.exitTime.format('HH:mm')}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
         </Box>

@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LocationCard from '../../views/location/LocationListView/LocationCard';
 import SimpleModal from '../SimpleModal';
-import { actions } from '../../redux/modules/locations';
+import { actions as locationActions } from '../../redux/modules/locations';
+import { actions as registryActions } from '../../redux/modules/registries';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,8 +23,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ScanQRCodeModal = props => {
-  const { onClose, open, locations, getLocations } = props;
+const ScanQRCodeModal = ({
+  onClose,
+  open,
+  createRegistry,
+  resetRegistries,
+  error,
+  getLocations,
+  locations,
+  registries,
+  loading
+}) => {
   const classes = useStyles();
 
   const [delay] = useState(100);
@@ -31,21 +41,31 @@ const ScanQRCodeModal = props => {
 
   const handleScan = data => {
     if (data) {
-      const result = locations.find(location => location.id === parseInt(data));
-      if (result) {
-        setQRData(result);
-      }
+      setQRData(locations.find(location => location.id === parseInt(data, 10)));
     }
   };
 
   const handleClose = () => {
     setQRData(null);
+    resetRegistries();
     onClose();
   };
 
   useEffect(() => {
     getLocations();
   }, [getLocations]);
+
+  const handleCreate = () => {
+    createRegistry({
+      locationId: QRData.id
+    });
+  };
+
+  useEffect(() => {
+    if (!error && !loading) {
+      handleClose();
+    }
+  }, [error, loading, registries]);
 
   return (
     <SimpleModal title="Scan a QR code" open={open} onClose={handleClose}>
@@ -69,7 +89,11 @@ const ScanQRCodeModal = props => {
               >
                 Scan Again
               </Button>
-              <Button color="primary" variant="contained">
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleCreate}
+              >
                 Check in
               </Button>
             </Box>
@@ -96,15 +120,26 @@ const ScanQRCodeModal = props => {
 };
 
 const mapStateToProps = state => ({
-  locations: state.locations.list
+  locations: state.locations.list,
+  registries: state.registries.list
 });
 
 const mapDispatchToProps = dispatch => ({
-  getLocations: () => dispatch(actions.getLocations())
+  createRegistry: data => dispatch(registryActions.createRegistry(data)),
+  resetRegistries: () => dispatch(registryActions.resetRegistries()),
+  getLocations: () => dispatch(locationActions.getLocations())
 });
 
 ScanQRCodeModal.propTypes = {
-  locations: PropTypes.array.isRequired
+  createRegistry: PropTypes.func.isRequired,
+  resetRegistries: PropTypes.func.isRequired,
+  getLocations: PropTypes.func.isRequired,
+  locations: PropTypes.array.isRequired,
+  registries: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  open: PropTypes.bool,
+  error: PropTypes.string
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScanQRCodeModal);

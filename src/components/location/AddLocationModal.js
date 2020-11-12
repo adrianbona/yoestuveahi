@@ -27,16 +27,15 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const AddLocationModal = props => {
-  const {
-    onClose,
-    open,
-    createLocation,
-    resetLocations,
-    error,
-    locations,
-    loading
-  } = props;
+const AddLocationModal = ({
+  onClose,
+  open,
+  createLocation,
+  resetLocations,
+  error,
+  locations,
+  loading
+}) => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [placePhotos, setPlacePhotos] = useState({ index: 0, list: [] });
   const classes = useStyles();
@@ -263,10 +262,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 AddLocationModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
   createLocation: PropTypes.func.isRequired,
   resetLocations: PropTypes.func.isRequired,
   locations: PropTypes.array,
+  onClose: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   open: PropTypes.bool,
   error: PropTypes.string

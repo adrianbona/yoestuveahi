@@ -1,4 +1,5 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
+import moment from 'moment';
 import { constants } from '../modules/registries';
 import * as api from '../api/registries';
 
@@ -9,7 +10,11 @@ export function* getRegistries() {
       type: constants.REGISTRIES_GET.SUCCESS,
       registries: registries.map(registry => {
         return {
-          ...registry
+          ...registry,
+          customerName: registry.registered_by_name,
+          locationName: registry.included_in_name,
+          entranceTime: moment(registry.entrance_time),
+          exitTime: moment(registry.exit_time)
         };
       })
     });
@@ -29,7 +34,11 @@ export function* createRegistry(action) {
   try {
     const { data } = yield call(api.createRegistry, { ...action });
     const registry = {
-      ...data
+      ...data,
+      customerName: data.registered_by_name,
+      locationName: data.included_in_name,
+      entranceTime: moment(data.entrance_time),
+      exitTime: moment(data.exit_time)
     };
     yield put({ type: constants.REGISTRIES_CREATE.SUCCESS, registry });
   } catch (e) {
