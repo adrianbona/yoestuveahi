@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Card, CardContent, makeStyles } from '@material-ui/core';
 import QrReader from 'react-qr-scanner';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import LocationCard from '../../views/location/LocationListView/LocationCard';
-import locations from '../../views/location/LocationListView/data';
 import SimpleModal from '../SimpleModal';
+import { actions } from '../../redux/modules/locations';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ScanQRCodeModal = props => {
-  const { onClose, open } = props;
+  const { onClose, open, locations, getLocations } = props;
   const classes = useStyles();
 
   const [delay] = useState(100);
@@ -29,8 +31,10 @@ const ScanQRCodeModal = props => {
 
   const handleScan = data => {
     if (data) {
-      const location = locations[Math.floor(Math.random() * locations.length)];
-      setQRData(location);
+      const result = locations.find(location => location.id === parseInt(data));
+      if (result) {
+        setQRData(result);
+      }
     }
   };
 
@@ -38,6 +42,10 @@ const ScanQRCodeModal = props => {
     setQRData(null);
     onClose();
   };
+
+  useEffect(() => {
+    getLocations();
+  }, [getLocations]);
 
   return (
     <SimpleModal title="Scan a QR code" open={open} onClose={handleClose}>
@@ -87,4 +95,16 @@ const ScanQRCodeModal = props => {
   );
 };
 
-export default ScanQRCodeModal;
+const mapStateToProps = state => ({
+  locations: state.locations.list
+});
+
+const mapDispatchToProps = dispatch => ({
+  getLocations: () => dispatch(actions.getLocations())
+});
+
+ScanQRCodeModal.propTypes = {
+  locations: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScanQRCodeModal);

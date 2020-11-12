@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   },
   statsIcon: {
     marginRight: theme.spacing(1)
+  },
+  large: {
+    width: theme.spacing(8),
+    height: theme.spacing(8)
   }
 }));
 
@@ -36,7 +40,12 @@ const LocationCard = ({ className, location, ...rest }) => {
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardContent>
         <Box display="flex" justifyContent="center" mb={2}>
-          <Avatar alt="Product" src={location.logo} variant="circle" />
+          <Avatar
+            alt="Product"
+            src={location.logo}
+            className={classes.large}
+            variant="circle"
+          />
         </Box>
         <Typography
           align="center"
@@ -53,16 +62,17 @@ const LocationCard = ({ className, location, ...rest }) => {
       <Box flexGrow={1} />
       <Divider />
       <Box p={1}>
-        <Grid container justify="space-between" spacing={2}>
+        <Grid container justify="center" spacing={2}>
           <Grid className={classes.statsItem} item>
             <AccessTimeIcon className={classes.statsIcon} color="action" />
             <Typography color="textSecondary" display="inline" variant="body2">
-              Last update at{' '}
-              {moment(location.createdAt).format('MMMM D, YYYY HH:mm')}
+              {`Last update at ${moment(location.createdAt).format(
+                'MMMM D, YYYY HH:mm'
+              )}`}
             </Typography>
           </Grid>
           <Grid className={classes.statsItem} item>
-            <PeopleIcon />
+            <PeopleIcon className={classes.statsIcon} color="action" />
             <Typography color="textSecondary" display="inline" variant="body2">
               {location.maximumCapacity} people allowed inside
             </Typography>
