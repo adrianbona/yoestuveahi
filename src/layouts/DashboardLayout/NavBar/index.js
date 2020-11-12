@@ -84,7 +84,12 @@ const useStyles = makeStyles(theme => ({
 
 const avatar = user => {
   return {
-    accessoriesType: user.isAdministrator ? 'Wayfarers' : null,
+    accessoriesType:
+      user.status !== 'Healthy'
+        ? null
+        : user.isAdministrator
+        ? 'Wayfarers'
+        : null,
     eyeType:
       user.status === 'COVID Positive'
         ? 'Dizzy'
