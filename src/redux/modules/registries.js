@@ -49,11 +49,9 @@ export default (state = initialState, action) => {
     }
     case constants.REGISTRIES_CREATE.SUCCESS: {
       const { registry } = action;
-      console.log(registry);
-      if (
-        state.list.filter(register => register.id === parseInt(registry.id, 10))
-          .length > 0
-      ) {
+      const registryExists =
+        state.list.filter(register => register.id === registry.id).length > 0;
+      if (registryExists) {
         const list = state.list.map(register => {
           if (register.id === registry.id) {
             return { ...register, ...registry };

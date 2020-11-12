@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/location/AddLocationModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/registry/ScanQRCodeModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/registry/ScanQRCodeModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/modules/registries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/registries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/registries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/registries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/registry/RegistryListView/Results.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,7 @@
       <workItem from="1605060725683" duration="5465000" />
       <workItem from="1605118797163" duration="4836000" />
       <workItem from="1605133864142" duration="12055000" />
-      <workItem from="1605193547604" duration="6063000" />
+      <workItem from="1605193547604" duration="6638000" />
     </task>
     <servers />
   </component>
