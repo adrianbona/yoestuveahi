@@ -107,6 +107,7 @@ const AddLocationModal = props => {
                   initialValues={{
                     name: selectedAddress.name.split(',')[0],
                     description: selectedAddress.formatted_address,
+                    maximumCapacity: '',
                     openingTime: '9:00',
                     closingTime: '18:00'
                   }}

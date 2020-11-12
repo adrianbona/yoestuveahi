@@ -33,7 +33,9 @@ export default (state = initialState, action) => {
       const { locations } = action;
       return {
         ...state,
-        list: locations,
+        list: locations.sort((locA, locB) => {
+          return locA.name.localeCompare(locB.name);
+        }),
         loading: false
       };
     }
@@ -55,7 +57,9 @@ export default (state = initialState, action) => {
       const { location } = action;
       return {
         ...state,
-        list: state.list.concat(location),
+        list: state.list.concat(location).sort((locA, locB) => {
+          return locA.name.localeCompare(locB.name);
+        }),
         loading: false
       };
     }
