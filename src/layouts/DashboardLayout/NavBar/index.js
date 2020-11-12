@@ -126,8 +126,8 @@ const NavBar = props => {
           topType="ShortHairShortCurly"
           accessoriesType={avatar(user).accessoriesType}
           hairColor="BrownDark"
-          clotheType="Hoodie"
-          clotheColor="Gray02"
+          clotheType="ShirtVNeck"
+          clotheColor="Black"
           eyeType={avatar(user).eyeType}
           eyebrowType="Default"
           mouthType={avatar(user).mouthType}
