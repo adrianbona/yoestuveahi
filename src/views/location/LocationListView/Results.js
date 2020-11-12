@@ -53,6 +53,7 @@ const Results = ({ className, locations, ...rest }) => {
                   <TableCell>Logo</TableCell>
                   <TableCell>Name</TableCell>
                   <TableCell>Description</TableCell>
+                  <TableCell>Current Capacity</TableCell>
                   <TableCell>Max Capacity</TableCell>
                   <TableCell>Created By</TableCell>
                   <TableCell>Created On</TableCell>
@@ -82,6 +83,7 @@ const Results = ({ className, locations, ...rest }) => {
                         </Box>
                       </TableCell>
                       <TableCell>{location.description}</TableCell>
+                      <TableCell>{location.currentCapacity}</TableCell>
                       <TableCell>{location.maximumCapacity}</TableCell>
                       <TableCell>
                         {location.createdBy && location.createdBy}

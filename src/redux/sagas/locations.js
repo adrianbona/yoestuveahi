@@ -11,6 +11,7 @@ export function* getLocations() {
       locations: locations.map(location => {
         return {
           ...location,
+          currentCapacity: location.current_capacity,
           maximumCapacity: location.maximum_capacity,
           openingTime: moment(location.opening_time),
           closingTime: moment(location.closing_time),
@@ -36,6 +37,7 @@ export function* createLocation(action) {
     const { data } = yield call(api.createLocation, { ...action });
     const location = {
       ...data,
+      currentCapacity: data.current_capacity,
       maximumCapacity: data.maximum_capacity,
       openingTime: moment(data.opening_time),
       closingTime: moment(data.closing_time),
