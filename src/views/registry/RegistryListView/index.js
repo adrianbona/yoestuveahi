@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Box, Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
-import data from './data';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Results from './Results';
+import { actions } from '../../../redux/modules/registries';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,9 +15,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const RegistryList = () => {
+const RegistryList = ({ registries, getRegistries }) => {
   const classes = useStyles();
-  const [registries] = useState(data);
+
+  useEffect(() => {
+    getRegistries();
+  }, [getRegistries]);
 
   return (
     <Page className={classes.root} title="Products">
@@ -28,4 +33,17 @@ const RegistryList = () => {
   );
 };
 
-export default RegistryList;
+const mapStateToProps = state => ({
+  registries: state.registries.list
+});
+
+const mapDispatchToProps = dispatch => ({
+  getRegistries: () => dispatch(actions.getRegistries())
+});
+
+RegistryList.propTypes = {
+  getRegistries: PropTypes.func.isRequired,
+  registries: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistryList);
