@@ -16,8 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UserListView = props => {
-  const { users, getUsers } = props;
+const UserListView = ({ users, getUsers }) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -28,11 +27,7 @@ const UserListView = props => {
     <Page className={classes.root} title="Customers">
       <Container maxWidth={false}>
         <Box mt={3}>
-          {users.list.users.length > 0 ? (
-            <Results users={users.list.users} />
-          ) : (
-            <NoResults />
-          )}
+          {users.length > 0 ? <Results users={users} /> : <NoResults />}
         </Box>
       </Container>
     </Page>
@@ -40,7 +35,7 @@ const UserListView = props => {
 };
 
 const mapStateToProps = state => ({
-  users: state.users
+  users: state.users.list
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -49,11 +44,8 @@ const mapDispatchToProps = dispatch => ({
 
 UserListView.propTypes = {
   getUsers: PropTypes.func.isRequired,
-  users: PropTypes.shape({
-    list: PropTypes.shape({
-      users: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
-    })
-  }).isRequired
+  users: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
+    .isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserListView);

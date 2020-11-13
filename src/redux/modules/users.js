@@ -13,9 +13,7 @@ export const actions = {
 // Reducer
 const initialState = {
   loading: false,
-  list: {
-    users: []
-  }
+  list: []
 };
 
 export default (state = initialState, action) => {
@@ -28,7 +26,7 @@ export default (state = initialState, action) => {
       const { users } = action;
       return {
         ...state,
-        list: { users },
+        list: users,
         loading: false
       };
     }
@@ -36,7 +34,7 @@ export default (state = initialState, action) => {
     case constants.USERS_GET.FAILURE: {
       return {
         ...state,
-        list: { ...state.list, users: [] },
+        list: state.list,
         error: action.message,
         loading: false
       };
