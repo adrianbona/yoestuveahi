@@ -16,8 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LocationListView = props => {
-  const { locations, getLocations } = props;
+const LocationListView = ({ locations, getLocations }) => {
   const classes = useStyles();
 
   useEffect(() => {

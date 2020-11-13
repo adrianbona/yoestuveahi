@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Sales = ({ className, ...rest }) => {
+const ContagionsByDate = ({ className, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -96,40 +96,23 @@ const Sales = ({ className, ...rest }) => {
   };
 
   return (
-    <Card
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <Card className={clsx(classes.root, className)} {...rest}>
       <CardHeader
-        action={(
-          <Button
-            endIcon={<ArrowDropDownIcon />}
-            size="small"
-            variant="text"
-          >
+        action={
+          <Button endIcon={<ArrowDropDownIcon />} size="small" variant="text">
             Last 7 days
           </Button>
-        )}
-        title="Latest Sales"
+        }
+        title="Latest ContagionsByDate"
       />
       <Divider />
       <CardContent>
-        <Box
-          height={400}
-          position="relative"
-        >
-          <Bar
-            data={data}
-            options={options}
-          />
+        <Box height={400} position="relative">
+          <Bar data={data} options={options} />
         </Box>
       </CardContent>
       <Divider />
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        p={2}
-      >
+      <Box display="flex" justifyContent="flex-end" p={2}>
         <Button
           color="primary"
           endIcon={<ArrowRightIcon />}
@@ -143,8 +126,8 @@ const Sales = ({ className, ...rest }) => {
   );
 };
 
-Sales.propTypes = {
+ContagionsByDate.propTypes = {
   className: PropTypes.string
 };
 
-export default Sales;
+export default ContagionsByDate;
