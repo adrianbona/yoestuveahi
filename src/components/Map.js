@@ -1,6 +1,13 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import { Marker } from 'google-maps-react';
+import StoreIcon from '@material-ui/icons/Store';
+
+const Marker = ({ text }) => (
+  <div>
+    <StoreIcon color="primary" />
+    {text}
+  </div>
+);
 
 const SimpleMap = ({ markers }) => {
   const defaultProps = {
@@ -18,17 +25,13 @@ const SimpleMap = ({ markers }) => {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        {markers.map(marker => {
-          return (
-            <Marker
-              key={marker.id}
-              position={{
-                lat: parseFloat(marker.latitude),
-                lng: parseFloat(marker.longitude)
-              }}
-            />
-          );
-        })}
+        {markers.map(marker => (
+          <Marker
+            lat={marker.latitude}
+            lng={marker.longitude}
+            text={marker.name}
+          />
+        ))}
       </GoogleMapReact>
     </div>
   );
