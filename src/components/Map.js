@@ -1,13 +1,27 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import StoreIcon from '@material-ui/icons/Store';
+import { makeStyles } from '@material-ui/styles';
+import theme from '../theme';
 
-const Marker = ({ text }) => (
-  <div>
-    <StoreIcon color="primary" />
-    {text}
-  </div>
-);
+const useStyles = makeStyles({
+  marker: {
+    color: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.light,
+    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+    fontWeight: 'bolder',
+    fontSize: 'larger'
+  }
+});
+const Marker = ({ text }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.marker}>
+      <StoreIcon color="primary" />
+      {text}
+    </div>
+  );
+};
 
 const SimpleMap = ({ markers }) => {
   const defaultProps = {
