@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import StoreIcon from '@material-ui/icons/Store';
 import { makeStyles } from '@material-ui/styles';
+import QRCode from 'qrcode.react';
 import theme from '../theme';
 
 const useStyles = makeStyles({
   marker: {
     color: theme.palette.secondary.light,
-    backgroundColor: theme.palette.secondary.light,
     textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
     fontWeight: 'bolder',
-    fontSize: 'larger'
+    fontSize: 'larger',
+    marginBottom: '10px'
   }
 });
 const Marker = ({ text }) => {
   const classes = useStyles();
+  const [showQR, setIsShowingQR] = useState(false);
+  const showMap = show => setIsShowingQR(show);
   return (
-    <div className={classes.marker}>
+    <div
+      onMouseEnter={() => {
+        showMap(true);
+      }}
+      onMouseLeave={() => {
+        showMap(false);
+      }}
+    >
       <StoreIcon color="primary" />
-      {text}
+      <div className={classes.marker}>{text}</div>
+      {showQR && <QRCode value={text} size={100} renderAs="svg" />}
     </div>
   );
 };
