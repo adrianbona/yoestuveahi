@@ -27,7 +27,7 @@ const Marker = ({ text }) => {
         showMap(false);
       }}
     >
-      <StoreIcon color="primary" />
+      <StoreIcon color="primary" fontSize="large" />
       <div className={classes.marker}>{text}</div>
       {showQR && <QRCode value={text} size={100} renderAs="svg" />}
     </div>

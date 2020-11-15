@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
@@ -11,19 +10,10 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography,
-  makeStyles
+  Typography
 } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  avatar: {
-    marginRight: theme.spacing(2)
-  }
-}));
-
-const Results = ({ className, tests, ...rest }) => {
-  const classes = useStyles();
+const Results = ({ tests }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -36,7 +26,7 @@ const Results = ({ className, tests, ...rest }) => {
   };
 
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
+    <Card>
       <PerfectScrollbar>
         <Box>
           <Table>
@@ -83,8 +73,7 @@ const Results = ({ className, tests, ...rest }) => {
 };
 
 Results.propTypes = {
-  className: PropTypes.string,
-  locations: PropTypes.array.isRequired
+  tests: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string })).isRequired
 };
 
 export default Results;

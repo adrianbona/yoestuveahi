@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
@@ -12,20 +11,11 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  makeStyles,
   Avatar
 } from '@material-ui/core';
 import QRCodeDisplayModal from '../../../components/location/QRCodeDisplayModal';
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  avatar: {
-    marginRight: theme.spacing(2)
-  }
-}));
-
-const Results = ({ className, locations, ...rest }) => {
-  const classes = useStyles();
+const Results = ({ locations }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -44,7 +34,7 @@ const Results = ({ className, locations, ...rest }) => {
 
   return (
     <>
-      <Card className={clsx(classes.root, className)} {...rest}>
+      <Card>
         <PerfectScrollbar>
           <Box>
             <Table>
@@ -118,7 +108,6 @@ const Results = ({ className, locations, ...rest }) => {
 };
 
 Results.propTypes = {
-  className: PropTypes.string,
   locations: PropTypes.arrayOf(PropTypes.shape({ name: PropTypes.string }))
     .isRequired
 };

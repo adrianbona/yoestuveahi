@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f6285c9-0851-4874-8611-3413f0f3e3f4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/redux/api/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/modules/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/sagas/tests.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/test/LoadTestModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/test/LoadTestModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/modules/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/location/LocationListView/Results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/location/LocationListView/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/test/TestListView/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/test/TestListView/Results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/test/TestListView/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/test/TestListView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/test/TestListView/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +52,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/redux/sagas" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -64,19 +75,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\authentication" />
+      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\auth" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\registry" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\location\LocationListView" />
       <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\public\static" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\modules" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\sagas" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\redux\api" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\components\authentication" />
-      <recent name="C:\Users\Adrian\GIT\yoestuveahi-frontend\src\views\auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -141,7 +152,7 @@
       <workItem from="1605270854941" duration="196000" />
       <workItem from="1605271069295" duration="1383000" />
       <workItem from="1605272698308" duration="74000" />
-      <workItem from="1605455488260" duration="2158000" />
+      <workItem from="1605455488260" duration="6686000" />
     </task>
     <servers />
   </component>
@@ -160,34 +171,34 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1667" y="510" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1603899103583" />
-    <state x="1650" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605240944617">
+    <state x="1650" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605462894131">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="1650" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1605240944617" />
+    <state x="1650" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1605462894131" />
     <state x="1700" y="460" key="FileChooserDialogImpl" timestamp="1603995262921">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1700" y="460" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1603995262921" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom" timestamp="1605272681500">
+    <state width="1234" height="357" key="GridCell.Tab.0.bottom" timestamp="1605463654064">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1233" height="295" key="GridCell.Tab.0.bottom/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605140257503" />
-    <state width="1234" height="295" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1605272681500" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center" timestamp="1605272681500">
+    <state width="1234" height="357" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1605463654064" />
+    <state width="1234" height="357" key="GridCell.Tab.0.center" timestamp="1605463654064">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1233" height="295" key="GridCell.Tab.0.center/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605140257503" />
-    <state width="1234" height="295" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1605272681500" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left" timestamp="1605272681500">
+    <state width="1234" height="357" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1605463654064" />
+    <state width="1234" height="357" key="GridCell.Tab.0.left" timestamp="1605463654064">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1233" height="295" key="GridCell.Tab.0.left/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605140257503" />
-    <state width="1234" height="295" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1605272681500" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right" timestamp="1605272681500">
+    <state width="1234" height="357" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1605463654064" />
+    <state width="1234" height="357" key="GridCell.Tab.0.right" timestamp="1605463654064">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1233" height="295" key="GridCell.Tab.0.right/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605140257503" />
-    <state width="1234" height="295" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1605272681500" />
+    <state width="1234" height="357" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1605463654064" />
     <state x="1717" y="411" key="RollbackChangesDialog" timestamp="1602729322139">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -204,15 +215,15 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1525" y="319" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1410@0.0.2560.1410" timestamp="1604846859498" />
-    <state x="1458" y="316" width="877" height="781" key="find.popup" timestamp="1605223234053">
+    <state x="1458" y="316" width="877" height="781" key="find.popup" timestamp="1605464370848">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1458" y="316" width="877" height="781" key="find.popup/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605152015370" />
-    <state x="1458" y="316" width="877" height="781" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605223234053" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1605272699445">
+    <state x="1458" y="316" width="877" height="781" key="find.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605464370848" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup" timestamp="1605464517565">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.840/0.0.2560.1410@0.0.2560.1410" timestamp="1605152191182" />
-    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605272699445" />
+    <state x="1583" y="321" width="672" height="678" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1605464517565" />
   </component>
 </project>

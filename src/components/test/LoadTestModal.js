@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -19,7 +19,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Alert from '@material-ui/lab/Alert';
+import AlertTitle from '@material-ui/lab/AlertTitle';
 import SimpleModal from '../SimpleModal';
+import { actions } from '../../redux/modules/tests';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -34,16 +39,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LoadTestModal = props => {
-  const { onClose, open } = props;
+const LoadTestModal = ({
+  onClose,
+  open,
+  loadTest,
+  resetTests,
+  error,
+  tests,
+  loading
+}) => {
   const classes = useStyles();
   const [selectedDate, setSelectedDate] = useState(moment().toISOString());
   const [isPositive, setIsPositive] = useState(false);
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    loadTest({
+      dateTaken: selectedDate,
+      isPositive
+    });
+  };
+
+  const handleClose = () => {
+    resetTests();
+    onClose();
+  };
+
+  useEffect(() => {
+    if (!error && !loading) {
+      handleClose();
+    }
+  }, [error, loading, tests]);
+
   return (
     <SimpleModal title="Load Test Result" open={open} onClose={onClose}>
       <div className={classes.container}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Card>
             <CardContent>
               <FormControl component="fieldset" className={classes.body}>
@@ -93,6 +124,22 @@ const LoadTestModal = props => {
               </FormControl>
             </CardContent>
             <Divider />
+            {error && (
+              <>
+                <Box
+                  p={2}
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="column"
+                >
+                  <Alert className={classes.fullWidth} severity="error">
+                    <AlertTitle>Error</AlertTitle>
+                    {error}
+                  </Alert>
+                </Box>
+                <Divider />
+              </>
+            )}
             <Box
               p={2}
               display="flex"
@@ -102,7 +149,7 @@ const LoadTestModal = props => {
               <Button color="secondary" variant="contained" onClick={onClose}>
                 Cancel
               </Button>
-              <Button color="primary" variant="contained" onClick={onClose}>
+              <Button color="primary" variant="contained" type="submit">
                 Load
               </Button>
             </Box>
@@ -113,4 +160,25 @@ const LoadTestModal = props => {
   );
 };
 
-export default LoadTestModal;
+const mapStateToProps = state => ({
+  tests: state.tests.list,
+  loading: state.tests.loading,
+  error: state.tests.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadTest: data => dispatch(actions.loadTest(data)),
+  resetTests: () => dispatch(actions.resetTests())
+});
+
+LoadTestModal.propTypes = {
+  loadTest: PropTypes.func.isRequired,
+  resetTests: PropTypes.func.isRequired,
+  tests: PropTypes.array,
+  onClose: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  open: PropTypes.bool,
+  error: PropTypes.string
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoadTestModal);
