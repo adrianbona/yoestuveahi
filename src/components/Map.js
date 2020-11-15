@@ -19,8 +19,9 @@ const useStyles = makeStyles({
     textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
     fontWeight: 'bolder',
     fontSize: 'larger',
-    marginBottom: '10px'
-  }
+    paddingBottom: '10px'
+  },
+  map: {}
 });
 
 const Marker = ({ location }) => {
@@ -29,7 +30,6 @@ const Marker = ({ location }) => {
   const [showQR, setIsShowingQR] = useState(false);
   const showMap = show => setIsShowingQR(show);
 
-  console.log(location);
   return (
     <div
       onMouseEnter={() => {
@@ -39,12 +39,20 @@ const Marker = ({ location }) => {
         showMap(false);
       }}
     >
-      <StoreIcon color="primary" fontSize="large" />
+      <StoreIcon
+        color="primary"
+        fontSize="large"
+        style={{ backgroundColor: 'white' }}
+      />
       <div className={classes.marker}>{name}</div>
       <div className={classes.capacity}>
         {`${currentCapacity - maximumCapacity} /  ${maximumCapacity}`}
       </div>
-      {showQR && <QRCode value={String(id)} size={100} renderAs="svg" />}
+      {showQR && (
+        <div className={classes.map}>
+          <QRCode value={String(id)} size={100} renderAs="svg" />
+        </div>
+      )}
     </div>
   );
 };

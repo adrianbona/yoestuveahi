@@ -21,7 +21,6 @@ import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import RoomIcon from '@material-ui/icons/Room';
 
 import Logo from 'src/components/Logo';
-import data from 'src/views/notification/NotificationListView/data';
 import Tooltip from '@material-ui/core/Tooltip';
 import LoadTestModal from '../../components/test/LoadTestModal';
 import ScanQRCodeModal from '../../components/registry/ScanQRCodeModal';
@@ -44,7 +43,7 @@ const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
   const [scanQRCodeIsOpen, setScanQRCodeIsOpen] = useState(false);
   const [addLocationIsOpen, setAddLocationIsOpen] = useState(false);
   const [notifications] = useState(
-    data.filter(notification => !notification.shown)
+    [].filter(notification => !notification.shown)
   );
 
   return (

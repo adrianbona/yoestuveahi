@@ -32,15 +32,20 @@ export function* watchGetRegistries() {
 
 export function* createRegistry(action) {
   try {
-    const { data } = yield call(api.createRegistry, { ...action });
-    const registry = {
-      ...data,
-      customerName: data.registered_by_name,
-      locationName: data.included_in_name,
-      entranceTime: moment(data.entrance_time),
-      exitTime: moment(data.exit_time)
-    };
-    yield put({ type: constants.REGISTRIES_CREATE.SUCCESS, registry });
+    yield call(api.createRegistry, { ...action });
+    const { data: registries } = yield call(api.getRegistries);
+    yield put({
+      type: constants.REGISTRIES_CREATE.SUCCESS,
+      registries: registries.map(registry => {
+        return {
+          ...registry,
+          customerName: registry.registered_by_name,
+          locationName: registry.included_in_name,
+          entranceTime: moment(registry.entrance_time),
+          exitTime: moment(registry.exit_time)
+        };
+      })
+    });
   } catch (e) {
     yield put({
       type: constants.REGISTRIES_CREATE.FAILURE,

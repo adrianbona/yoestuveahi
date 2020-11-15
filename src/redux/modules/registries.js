@@ -28,6 +28,7 @@ export default (state = initialState, action) => {
     case constants.REGISTRIES_GET.REQUEST: {
       return { ...state, error: null, loading: true };
     }
+
     case constants.REGISTRIES_GET.SUCCESS: {
       const { registries } = action;
       return {
@@ -36,6 +37,7 @@ export default (state = initialState, action) => {
         loading: false
       };
     }
+
     case constants.REGISTRIES_GET.FAILURE: {
       return {
         ...state,
@@ -44,32 +46,20 @@ export default (state = initialState, action) => {
         loading: false
       };
     }
+
     case constants.REGISTRIES_CREATE.REQUEST: {
       return { ...state, error: null, loading: true };
     }
+
     case constants.REGISTRIES_CREATE.SUCCESS: {
-      const { registry } = action;
-      const registryExists =
-        state.list.filter(register => register.id === registry.id).length > 0;
-      if (registryExists) {
-        const list = state.list.map(register => {
-          if (register.id === registry.id) {
-            return { ...register, ...registry };
-          }
-          return register;
-        });
-        return {
-          ...state,
-          list,
-          loading: false
-        };
-      }
+      const { registries } = action;
       return {
         ...state,
-        list: state.list.concat(registry),
+        list: registries,
         loading: false
       };
     }
+
     case constants.REGISTRIES_CREATE.FAILURE: {
       return {
         ...state,
@@ -78,6 +68,7 @@ export default (state = initialState, action) => {
         loading: false
       };
     }
+
     case constants.REGISTRIES_RESET: {
       return {
         ...state,
@@ -86,6 +77,7 @@ export default (state = initialState, action) => {
         loading: false
       };
     }
+
     default:
       return state;
   }
