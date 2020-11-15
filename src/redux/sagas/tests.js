@@ -1,5 +1,4 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
-import moment from 'moment';
 import { constants } from '../modules/tests';
 import * as api from '../api/tests';
 
@@ -34,7 +33,6 @@ export function* loadTest(action) {
     };
     yield put({ type: constants.TESTS_LOAD.SUCCESS, test });
   } catch (e) {
-    console.log(e.response);
     yield put({
       type: constants.TESTS_LOAD.FAILURE,
       message:

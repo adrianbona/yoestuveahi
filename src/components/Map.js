@@ -7,17 +7,29 @@ import theme from '../theme';
 
 const useStyles = makeStyles({
   marker: {
+    width: 'max-content',
     color: theme.palette.secondary.light,
+    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+    fontWeight: 'bolder',
+    fontSize: 'larger'
+  },
+  capacity: {
+    width: 'max-content',
+    color: theme.palette.primary.light,
     textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
     fontWeight: 'bolder',
     fontSize: 'larger',
     marginBottom: '10px'
   }
 });
-const Marker = ({ text }) => {
+
+const Marker = ({ location }) => {
+  const { id, name, currentCapacity, maximumCapacity } = location;
   const classes = useStyles();
   const [showQR, setIsShowingQR] = useState(false);
   const showMap = show => setIsShowingQR(show);
+
+  console.log(location);
   return (
     <div
       onMouseEnter={() => {
@@ -28,8 +40,11 @@ const Marker = ({ text }) => {
       }}
     >
       <StoreIcon color="primary" fontSize="large" />
-      <div className={classes.marker}>{text}</div>
-      {showQR && <QRCode value={text} size={100} renderAs="svg" />}
+      <div className={classes.marker}>{name}</div>
+      <div className={classes.capacity}>
+        {`${currentCapacity - maximumCapacity} /  ${maximumCapacity}`}
+      </div>
+      {showQR && <QRCode value={String(id)} size={100} renderAs="svg" />}
     </div>
   );
 };
@@ -52,9 +67,10 @@ const SimpleMap = ({ markers }) => {
       >
         {markers.map(marker => (
           <Marker
+            key={marker.id}
             lat={marker.latitude}
             lng={marker.longitude}
-            text={marker.name}
+            location={marker}
           />
         ))}
       </GoogleMapReact>
