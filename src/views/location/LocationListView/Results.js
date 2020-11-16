@@ -73,7 +73,9 @@ const Results = ({ locations }) => {
                         </Box>
                       </TableCell>
                       <TableCell>{location.description}</TableCell>
-                      <TableCell>{location.currentCapacity}</TableCell>
+                      <TableCell>
+                        {location.maximumCapacity - location.currentCapacity}
+                      </TableCell>
                       <TableCell>{location.maximumCapacity}</TableCell>
                       <TableCell>
                         {location.createdBy && location.createdBy}

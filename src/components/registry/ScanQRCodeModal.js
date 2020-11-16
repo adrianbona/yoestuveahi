@@ -48,6 +48,7 @@ const ScanQRCodeModal = ({
   const handleClose = () => {
     setQRData(null);
     resetRegistries();
+    getLocations();
     onClose();
   };
 

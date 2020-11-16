@@ -41,7 +41,8 @@ const Marker = ({ location }) => {
       <StoreIcon color="primary" fontSize="large" />
       <div className={classes.marker}>{name}</div>
       <div className={classes.capacity}>
-        {`${currentCapacity - maximumCapacity} /  ${maximumCapacity}`}
+        {`${location.maximumCapacity -
+          location.currentCapacity} /  ${maximumCapacity}`}
       </div>
       {showQR && (
         <div>
