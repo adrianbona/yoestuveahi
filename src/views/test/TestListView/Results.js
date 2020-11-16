@@ -41,7 +41,8 @@ const Results = ({ tests }) => {
               {tests.slice(page * limit, (page + 1) * limit).map(test => (
                 <TableRow hover key={test.id}>
                   <TableCell>
-                    {test.dateTaken && test.dateTaken.format('MMMM D, YYYY')}
+                    {test.dateTaken &&
+                      test.dateTaken.format('MMMM D, YYYY HH:mm')}
                   </TableCell>
                   <TableCell>
                     <Box alignItems="center" display="flex">

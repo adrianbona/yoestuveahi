@@ -11,7 +11,7 @@ export function* getTests() {
       tests: tests.map(test => {
         return {
           ...test,
-          takenAt: moment(test.date_taken),
+          dateTaken: moment(test.date_taken),
           isPositive: test.is_positive,
           takenBy: test.taken_by_name
         };
@@ -34,7 +34,7 @@ export function* loadTest(action) {
     const { data } = yield call(api.loadTest, { ...action });
     const test = {
       ...data,
-      takenAt: moment(data.date_taken),
+      dateTaken: moment(data.date_taken),
       isPositive: data.is_positive,
       takenBy: data.taken_by_name
     };
