@@ -26,7 +26,9 @@ export default (state = initialState, action) => {
       const { users } = action;
       return {
         ...state,
-        list: users,
+        list: users.sort((userA, userB) => {
+          return userA.email.localeCompare(userB.email);
+        }),
         loading: false
       };
     }

@@ -24,7 +24,8 @@ import { connect } from 'react-redux';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
 import SimpleModal from '../SimpleModal';
-import { actions } from '../../redux/modules/tests';
+import { actions as testActions } from '../../redux/modules/tests';
+import { actions as userActions } from '../../redux/modules/users';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -44,6 +45,7 @@ const LoadTestModal = ({
   open,
   loadTest,
   resetTests,
+  refreshUsers,
   error,
   tests,
   loading
@@ -62,6 +64,7 @@ const LoadTestModal = ({
 
   const handleClose = () => {
     resetTests();
+    refreshUsers();
     onClose();
   };
 
@@ -167,13 +170,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadTest: data => dispatch(actions.loadTest(data)),
-  resetTests: () => dispatch(actions.resetTests())
+  loadTest: data => dispatch(testActions.loadTest(data)),
+  resetTests: () => dispatch(testActions.resetTests()),
+  refreshUsers: () => dispatch(userActions.getUsers())
 });
 
 LoadTestModal.propTypes = {
   loadTest: PropTypes.func.isRequired,
   resetTests: PropTypes.func.isRequired,
+  refreshUsers: PropTypes.func.isRequired,
   tests: PropTypes.array,
   onClose: PropTypes.func.isRequired,
   loading: PropTypes.bool,
