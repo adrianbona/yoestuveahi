@@ -1,4 +1,5 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
+import moment from 'moment';
 import { constants } from '../modules/tests';
 import * as api from '../api/tests';
 
@@ -9,7 +10,10 @@ export function* getTests() {
       type: constants.TESTS_GET.SUCCESS,
       tests: tests.map(test => {
         return {
-          ...test
+          ...test,
+          takenAt: moment(test.date_taken),
+          isPositive: test.is_positive,
+          takenBy: test.taken_by_name
         };
       })
     });
@@ -29,7 +33,10 @@ export function* loadTest(action) {
   try {
     const { data } = yield call(api.loadTest, { ...action });
     const test = {
-      ...data
+      ...data,
+      takenAt: moment(data.date_taken),
+      isPositive: data.is_positive,
+      takenBy: data.taken_by_name
     };
     yield put({ type: constants.TESTS_LOAD.SUCCESS, test });
   } catch (e) {

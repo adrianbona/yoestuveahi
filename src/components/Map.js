@@ -20,8 +20,7 @@ const useStyles = makeStyles({
     fontWeight: 'bolder',
     fontSize: 'larger',
     paddingBottom: '10px'
-  },
-  map: {}
+  }
 });
 
 const Marker = ({ location }) => {
@@ -39,17 +38,13 @@ const Marker = ({ location }) => {
         showMap(false);
       }}
     >
-      <StoreIcon
-        color="primary"
-        fontSize="large"
-        style={{ backgroundColor: 'white' }}
-      />
+      <StoreIcon color="primary" fontSize="large" />
       <div className={classes.marker}>{name}</div>
       <div className={classes.capacity}>
         {`${currentCapacity - maximumCapacity} /  ${maximumCapacity}`}
       </div>
       {showQR && (
-        <div className={classes.map}>
+        <div>
           <QRCode value={String(id)} size={100} renderAs="svg" />
         </div>
       )}

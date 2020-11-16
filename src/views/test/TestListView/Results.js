@@ -35,24 +35,24 @@ const Results = ({ tests }) => {
                 <TableCell>Date Taken</TableCell>
                 <TableCell>Taken By</TableCell>
                 <TableCell>Result</TableCell>
-                <TableCell>ID</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {tests.slice(page * limit, (page + 1) * limit).map(test => (
                 <TableRow hover key={test.id}>
-                  <TableCell>{test.dateTaken.format('MMMM D, YYYY')}</TableCell>
+                  <TableCell>
+                    {test.dateTaken && test.dateTaken.format('MMMM D, YYYY')}
+                  </TableCell>
                   <TableCell>
                     <Box alignItems="center" display="flex">
                       <Typography color="textPrimary" variant="body1">
-                        {test.takenBy.name}
+                        {test.takenBy}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
                     {test.isPositive ? 'Positve' : 'Negative'}
                   </TableCell>
-                  <TableCell>{test.id}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -73,7 +73,7 @@ const Results = ({ tests }) => {
 };
 
 Results.propTypes = {
-  tests: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.string })).isRequired
+  tests: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number })).isRequired
 };
 
 export default Results;

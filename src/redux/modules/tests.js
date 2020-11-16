@@ -33,8 +33,8 @@ export default (state = initialState, action) => {
       const { tests } = action;
       return {
         ...state,
-        list: tests.sort((locA, locB) => {
-          return locA.name.localeCompare(locB.name);
+        list: tests.sort((testA, testB) => {
+          return testA.dateTaken > testB.dateTaken;
         }),
         loading: false
       };
@@ -57,8 +57,8 @@ export default (state = initialState, action) => {
       const { test } = action;
       return {
         ...state,
-        list: state.list.concat(test).sort((locA, locB) => {
-          return locA.name.localeCompare(locB.name);
+        list: state.list.concat(test).sort((testA, testB) => {
+          return testA.dateTaken > testB.dateTaken;
         }),
         loading: false
       };

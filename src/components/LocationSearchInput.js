@@ -58,10 +58,10 @@ const LocationSearchInput = props => {
             {...getInputProps()}
           />
           <div className="autocomplete-dropdown-container">
-            {suggestions.map((suggestion, index) => {
+            {suggestions.map(suggestion => {
               return (
                 <div
-                  key={`suggestions-${index}`}
+                  key={suggestion.placeId}
                   {...getSuggestionItemProps(suggestion, {})}
                 >
                   <Typography className={classes.suggestion} variant="h5">
