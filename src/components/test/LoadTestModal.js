@@ -172,7 +172,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loadTest: data => dispatch(testActions.loadTest(data)),
   resetTests: () => dispatch(testActions.resetTests()),
-  refreshUsers: () => dispatch(userActions.getUsers())
+  refreshUsers: () => dispatch(userActions.refreshUsers())
 });
 
 LoadTestModal.propTypes = {

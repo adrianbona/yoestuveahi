@@ -6,7 +6,8 @@ export const constants = {
   AUTHENTICATION_LOGOUT: createSagaActions('AUTHENTICATION_LOGOUT'),
   AUTHENTICATION_UPDATE_DETAILS: createSagaActions(
     'AUTHENTICATION_UPDATE_DETAILS'
-  )
+  ),
+  AUTHENTICATION_REFRESH: createSagaActions('AUTHENTICATION_REFRESH')
 };
 
 // Action Creators
@@ -73,6 +74,17 @@ export default (state = initialState, action) => {
 
     case constants.AUTHENTICATION_LOGOUT.FAILURE:
       return { ...initialState, error: 'Error Logging out' };
+
+    case constants.AUTHENTICATION_REFRESH: {
+      const { users } = action;
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...users.find(user => user.id === state.user.id)
+        }
+      };
+    }
 
     default:
       return state;
