@@ -4,13 +4,15 @@ import users from './users';
 import locations from './locations';
 import registries from './registries';
 import tests from './tests';
+import notifications from './notifications';
 
 const reducers = {
   authentication,
   locations,
   registries,
   users,
-  tests
+  tests,
+  notifications
 };
 
 const createRootReducer = () =>

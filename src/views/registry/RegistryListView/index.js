@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Results from './Results';
 import { actions } from '../../../redux/modules/registries';
+import NoResults from '../../../components/NoResults';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,7 +27,11 @@ const RegistryList = ({ registries, getRegistries }) => {
     <Page className={classes.root} title="Products">
       <Container maxWidth={false}>
         <Box mt={3}>
-          <Results registries={registries} />
+          {registries.length > 0 ? (
+            <Results registries={registries} />
+          ) : (
+            <NoResults />
+          )}
         </Box>
       </Container>
     </Page>
