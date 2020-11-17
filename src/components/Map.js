@@ -55,10 +55,10 @@ const Marker = ({ location }) => {
 const SimpleMap = ({ markers }) => {
   const defaultProps = {
     center: {
-      lat: -34.6037,
-      lng: -58.3816
+      lat: -34.58,
+      lng: -58.44
     },
-    zoom: 12
+    zoom: 13
   };
 
   return (

@@ -35,12 +35,17 @@ const routes = [
   },
   {
     path: '/',
-    element: <MainLayout />,
+    element: (
+      <MainLayout>
+        <LoginView />
+      </MainLayout>
+    ),
     children: [
       { path: 'login', element: <LoginView /> },
       { path: 'logout', element: <LogoutView /> },
       { path: '404', element: <NotFoundView /> },
-      { path: '*', element: <Navigate to="/404" /> }
+      { path: '*', element: <Navigate to="/404" /> },
+      { path: '', element: <LoginView /> }
     ]
   }
 ];
