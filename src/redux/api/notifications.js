@@ -9,11 +9,11 @@ export function getNotifications() {
   });
 }
 
-export function markAsRead({ notificationId }) {
+export function markNotificationAsRead({ id, shown }) {
   return instance.patch(
-    `/contagion/risk/${notificationId}`,
+    `/contagion/risk/${id}/`,
     {
-      shown: true
+      shown
     },
     {
       headers: {

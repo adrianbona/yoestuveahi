@@ -13,8 +13,10 @@ import {
 } from '@material-ui/core';
 import MailIcon from '@material-ui/icons/Mail';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import { connect } from 'react-redux';
+import { actions } from '../../../redux/modules/notifications';
 
-const Results = ({ className, notifications, ...rest }) => {
+const Results = ({ markNotificationAsRead, notifications }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -27,7 +29,7 @@ const Results = ({ className, notifications, ...rest }) => {
   };
 
   return (
-    <Card className={className} {...rest}>
+    <Card>
       <PerfectScrollbar>
         <Box>
           <Table>
@@ -49,7 +51,15 @@ const Results = ({ className, notifications, ...rest }) => {
                     </TableCell>
                     <TableCell>{notification.locationName}</TableCell>
                     <TableCell>{notification.content}</TableCell>
-                    <TableCell>
+                    <TableCell
+                      style={{ cursor: 'pointer' }}
+                      onClick={() =>
+                        markNotificationAsRead({
+                          id: notification.id,
+                          shown: !notification.shown
+                        })
+                      }
+                    >
                       {notification.shown ? <DraftsIcon /> : <MailIcon />}
                     </TableCell>
                   </TableRow>
@@ -71,9 +81,13 @@ const Results = ({ className, notifications, ...rest }) => {
   );
 };
 
+const mapDispatchToProps = dispatch => ({
+  markNotificationAsRead: data => dispatch(actions.markNotificationAsRead(data))
+});
+
 Results.propTypes = {
-  className: PropTypes.string,
-  notifications: PropTypes.array.isRequired
+  notifications: PropTypes.array.isRequired,
+  markNotificationAsRead: PropTypes.func.isRequired
 };
 
-export default Results;
+export default connect(null, mapDispatchToProps)(Results);

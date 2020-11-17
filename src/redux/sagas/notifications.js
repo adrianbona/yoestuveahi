@@ -28,8 +28,37 @@ export function* watchGetNotifications() {
   yield takeLatest(constants.NOTIFICATIONS_GET.REQUEST, getNotifications);
 }
 
+export function* markNotificationAsRead(action) {
+  try {
+    const { data: notification } = yield call(
+      api.markNotificationAsRead,
+      action
+    );
+    yield put({
+      type: constants.NOTIFICATIONS_MARK_AS_READ.SUCCESS,
+      notification: {
+        ...notification,
+        locationName: notification.location_name,
+        createdAt: moment(notification.created_at)
+      }
+    });
+  } catch (e) {
+    yield put({
+      type: constants.NOTIFICATIONS_MARK_AS_READ.FAILURE,
+      message: e.message || e
+    });
+  }
+}
+
+export function* watchMarkNotificationAsRead() {
+  yield takeLatest(
+    constants.NOTIFICATIONS_MARK_AS_READ.REQUEST,
+    markNotificationAsRead
+  );
+}
+
 function* rootSaga() {
-  const watchers = [watchGetNotifications];
+  const watchers = [watchGetNotifications, watchMarkNotificationAsRead];
   yield all(watchers.map(fork));
 }
 

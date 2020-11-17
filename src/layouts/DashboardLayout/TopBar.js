@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -22,9 +21,11 @@ import RoomIcon from '@material-ui/icons/Room';
 
 import Logo from 'src/components/Logo';
 import Tooltip from '@material-ui/core/Tooltip';
+import { connect } from 'react-redux';
 import LoadTestModal from '../../components/test/LoadTestModal';
 import ScanQRCodeModal from '../../components/registry/ScanQRCodeModal';
 import AddLocationModal from '../../components/location/AddLocationModal';
+import { actions } from '../../redux/modules/notifications';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -36,18 +37,19 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
+const TopBar = ({ onMobileNavOpen, user, notifications, getNotifications }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [loadTestIsOpen, setLoadTestIsOpen] = useState(false);
   const [scanQRCodeIsOpen, setScanQRCodeIsOpen] = useState(false);
   const [addLocationIsOpen, setAddLocationIsOpen] = useState(false);
-  const [notifications] = useState(
-    [].filter(notification => !notification.shown)
-  );
+
+  useEffect(() => {
+    getNotifications();
+  }, [getNotifications]);
 
   return (
-    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
+    <AppBar className={classes.root} elevation={0}>
       <Toolbar>
         <RouterLink to="/app/dashboard">
           <div className={classes.title}>
@@ -143,9 +145,21 @@ const TopBar = ({ className, onMobileNavOpen, user, ...rest }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  notifications: state.notifications.list.filter(
+    notification => !notification.shown
+  )
+});
+
+const mapDispatchToProps = dispatch => ({
+  getNotifications: () => dispatch(actions.getNotifications())
+});
+
 TopBar.propTypes = {
-  className: PropTypes.string,
   onMobileNavOpen: PropTypes.func,
+  getNotifications: PropTypes.func.isRequired,
+  notifications: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number }))
+    .isRequired,
   user: PropTypes.shape({
     name: PropTypes.string,
     status: PropTypes.string,
@@ -154,4 +168,4 @@ TopBar.propTypes = {
   })
 };
 
-export default TopBar;
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);
