@@ -1,4 +1,5 @@
 import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
+import moment from 'moment';
 import { constants } from '../modules/notifications';
 import * as api from '../api/notifications';
 
@@ -9,7 +10,9 @@ export function* getNotifications() {
       type: constants.NOTIFICATIONS_GET.SUCCESS,
       notifications: notifications.map(notification => {
         return {
-          ...notification
+          ...notification,
+          locationName: notification.location_name,
+          createdAt: moment(notification.created_at)
         };
       })
     });

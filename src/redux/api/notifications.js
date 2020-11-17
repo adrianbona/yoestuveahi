@@ -8,3 +8,17 @@ export function getNotifications() {
     }
   });
 }
+
+export function markAsRead({ notificationId }) {
+  return instance.patch(
+    `/contagion/risk/${notificationId}`,
+    {
+      shown: true
+    },
+    {
+      headers: {
+        Authorization: `token ${getUserToken()}`
+      }
+    }
+  );
+}

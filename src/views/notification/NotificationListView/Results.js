@@ -47,7 +47,7 @@ const Results = ({ className, notifications, ...rest }) => {
                     <TableCell>
                       {notification.createdAt.format('MMMM D, YYYY HH:mm')}
                     </TableCell>
-                    <TableCell>{notification.contagionSource.name}</TableCell>
+                    <TableCell>{notification.locationName}</TableCell>
                     <TableCell>{notification.content}</TableCell>
                     <TableCell>
                       {notification.shown ? <DraftsIcon /> : <MailIcon />}
