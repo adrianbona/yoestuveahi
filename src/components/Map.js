@@ -1,56 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import StoreIcon from '@material-ui/icons/Store';
-import { makeStyles } from '@material-ui/styles';
-import QRCode from 'qrcode.react';
-import theme from '../theme';
-
-const useStyles = makeStyles({
-  marker: {
-    width: 'max-content',
-    color: theme.palette.secondary.light,
-    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
-    fontWeight: 'bolder',
-    fontSize: 'larger'
-  },
-  capacity: {
-    width: 'max-content',
-    color: theme.palette.primary.light,
-    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
-    fontWeight: 'bolder',
-    fontSize: 'larger',
-    paddingBottom: '10px'
-  }
-});
-
-const Marker = ({ location }) => {
-  const { id, name, currentCapacity, maximumCapacity } = location;
-  const classes = useStyles();
-  const [showQR, setIsShowingQR] = useState(false);
-  const showMap = show => setIsShowingQR(show);
-
-  return (
-    <div
-      onMouseEnter={() => {
-        showMap(true);
-      }}
-      onMouseLeave={() => {
-        showMap(false);
-      }}
-    >
-      <StoreIcon color="primary" fontSize="large" />
-      <div className={classes.marker}>{name}</div>
-      <div className={classes.capacity}>
-        {`${maximumCapacity - currentCapacity} /  ${maximumCapacity}`}
-      </div>
-      {showQR && (
-        <div>
-          <QRCode value={String(id)} size={100} renderAs="svg" />
-        </div>
-      )}
-    </div>
-  );
-};
+import PropTypes from 'prop-types';
+import Marker from './Marker';
 
 const SimpleMap = ({ markers }) => {
   const defaultProps = {
@@ -79,6 +30,10 @@ const SimpleMap = ({ markers }) => {
       </GoogleMapReact>
     </div>
   );
+};
+
+SimpleMap.propTypes = {
+  markers: PropTypes.array.isRequired
 };
 
 export default SimpleMap;

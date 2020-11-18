@@ -34,7 +34,7 @@ const ContagionsByDate = ({ contagions, getContagions }) => {
   const data = {
     datasets: [
       {
-        backgroundColor: colors.indigo[500],
+        backgroundColor: theme.palette.primary.light,
         data: Object.values(contagionsByDate).map(date => date.length),
         label: 'Contagions'
       }
