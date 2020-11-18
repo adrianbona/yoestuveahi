@@ -35,11 +35,11 @@ const ContagionsByDate = ({ contagions, getContagions }) => {
     datasets: [
       {
         backgroundColor: colors.indigo[500],
-        data: [18, 5, 19, 27, 29, 19, 20],
+        data: Object.values(contagionsByDate).map(date => date.length),
         label: 'Contagions'
       }
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
+    labels: Object.keys(contagionsByDate)
   };
 
   const options = {
