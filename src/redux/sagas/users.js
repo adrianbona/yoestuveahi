@@ -20,7 +20,10 @@ export function* getUsers() {
   } catch (e) {
     yield put({
       type: userConstants.USERS_GET.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
@@ -45,7 +48,10 @@ export function* refreshUsers() {
   } catch (e) {
     yield put({
       type: userConstants.USERS_REFRESH.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }

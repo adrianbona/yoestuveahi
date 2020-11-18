@@ -21,7 +21,10 @@ export function* login(action) {
   } catch (e) {
     yield put({
       type: constants.AUTHENTICATION_LOGIN.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
@@ -50,7 +53,10 @@ export function* updateDetails(action) {
   } catch (e) {
     yield put({
       type: constants.AUTHENTICATION_UPDATE_DETAILS.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }

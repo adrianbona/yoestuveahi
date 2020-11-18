@@ -19,7 +19,10 @@ export function* getNotifications() {
   } catch (e) {
     yield put({
       type: constants.NOTIFICATIONS_GET.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
@@ -45,7 +48,10 @@ export function* markNotificationAsRead(action) {
   } catch (e) {
     yield put({
       type: constants.NOTIFICATIONS_MARK_AS_READ.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }

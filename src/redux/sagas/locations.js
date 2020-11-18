@@ -23,7 +23,10 @@ export function* getLocations() {
   } catch (e) {
     yield put({
       type: constants.LOCATIONS_GET.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
@@ -48,7 +51,10 @@ export function* createLocation(action) {
   } catch (e) {
     yield put({
       type: constants.LOCATIONS_CREATE.FAILURE,
-      message: e.response.data || e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }

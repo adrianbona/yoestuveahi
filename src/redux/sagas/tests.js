@@ -20,7 +20,10 @@ export function* getTests() {
   } catch (e) {
     yield put({
       type: constants.TESTS_GET.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }

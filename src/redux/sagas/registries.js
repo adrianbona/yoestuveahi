@@ -21,7 +21,10 @@ export function* getRegistries() {
   } catch (e) {
     yield put({
       type: constants.REGISTRIES_GET.FAILURE,
-      message: e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
@@ -49,7 +52,10 @@ export function* createRegistry(action) {
   } catch (e) {
     yield put({
       type: constants.REGISTRIES_CREATE.FAILURE,
-      message: e.response.data || e.message || e
+      message:
+        typeof e.response.data === 'string'
+          ? e.response.data
+          : e.request.response || e.message || e
     });
   }
 }
