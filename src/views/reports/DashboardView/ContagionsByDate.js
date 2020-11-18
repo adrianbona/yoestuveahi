@@ -1,10 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardHeader,
@@ -13,28 +10,33 @@ import {
   makeStyles,
   colors
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { actions } from '../../../redux/modules/contagions';
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const ContagionsByDate = ({ className, ...rest }) => {
+const ContagionsByDate = ({ contagions, getContagions }) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const contagionsByDate = contagions.reduce((groups, contagion) => {
+    const date = contagion.reportedOn.format('D MMM');
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(contagion);
+    return groups;
+  }, {});
 
   const data = {
     datasets: [
       {
         backgroundColor: colors.indigo[500],
         data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year'
-      },
-      {
-        backgroundColor: colors.grey[200],
-        data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year'
+        label: 'Contagions'
       }
     ],
     labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug']
@@ -95,16 +97,13 @@ const ContagionsByDate = ({ className, ...rest }) => {
     }
   };
 
+  useEffect(() => {
+    getContagions();
+  }, [getContagions]);
+
   return (
-    <Card className={clsx(classes.root, className)} {...rest}>
-      <CardHeader
-        action={
-          <Button endIcon={<ArrowDropDownIcon />} size="small" variant="text">
-            Last 7 days
-          </Button>
-        }
-        title="Latest ContagionsByDate"
-      />
+    <Card className={classes.root}>
+      <CardHeader title="Latest Contagions By Date" />
       <Divider />
       <CardContent>
         <Box height={400} position="relative">
@@ -112,22 +111,22 @@ const ContagionsByDate = ({ className, ...rest }) => {
         </Box>
       </CardContent>
       <Divider />
-      <Box display="flex" justifyContent="flex-end" p={2}>
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          Overview
-        </Button>
-      </Box>
     </Card>
   );
 };
 
+const mapStateToProps = state => ({
+  contagions: state.contagions.list
+});
+
+const mapDispatchToProps = dispatch => ({
+  getContagions: () => dispatch(actions.getContagions())
+});
+
 ContagionsByDate.propTypes = {
-  className: PropTypes.string
+  getContagions: PropTypes.func.isRequired,
+  contagions: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number }))
+    .isRequired
 };
 
-export default ContagionsByDate;
+export default connect(mapStateToProps, mapDispatchToProps)(ContagionsByDate);
