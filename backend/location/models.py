@@ -12,7 +12,11 @@ class Location(models.Model):
     longitude = models.CharField(max_length=50)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    site_source = models.IntegerField(default=1)
+    external_id = models.IntegerField(default=0)
 
-    def capacity(self):
-        consumido = self.checkins.filter(exit_time__isnull=True).count()
-        return self.maximum_capacity - consumido
+    def _concurrence(self):
+        return self.checkins.filter(exit_time__isnull=True).count()
+
+    def _capacity(self):
+        return self.maximum_capacity - self._concurrence()

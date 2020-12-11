@@ -6,6 +6,7 @@ from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 
 from location.models import Location
+from registry.models import Registry
 
 from .views import RegistryList, RegistryDetail
 from location.views import LocationDetail
@@ -160,7 +161,99 @@ class AccountTests(APITestCase):
         response = self.client.get('/api/location/{}/'.format(self.location.id))
         self.assertEqual(self.location.maximum_capacity,
                          response.data['current_capacity'])
+    
 
+    def test_create_external_checkin_and_checkout(self):
+        self._authenticate_user('jacob1@jacob.com', 'jacob')
+        response = self.client.post('/api/registry/external/2/3/')
+        self.assertEqual(201, response.status_code)
+
+        registry = Registry.objects.get(id=response.data['id'])
+        self.assertEquals(None, registry.exit_time)
+
+        response = self.client.post('/api/registry/external/2/3/')
+        self.assertEqual(201, response.status_code)
+
+        registry.refresh_from_db()
+        self.assertNotEquals(None, registry.exit_time)
+
+
+    def test_create_external_checkin_and_checkout_in_another_location(self):
+        self._authenticate_user('jacob1@jacob.com', 'jacob')
+
+        # external checkin
+        response = self.client.post('/api/registry/external/2/3/')
+        self.assertEqual(201, response.status_code)
+
+        registry = Registry.objects.get(id=response.data['id'])
+        self.assertEquals(None, registry.exit_time)
+        self.assertEquals(registry.included_in.site_source, 2)
+        self.assertEquals(registry.included_in.external_id, 3)
+        self.assertEquals(registry.included_in.name, "La Cueva de Riki")
+
+        response = self.client.post('/api/registry/', {
+            'included_in':self.location.id
+        })
+        self.assertEquals(201, response.status_code)
+        
+        registry.refresh_from_db()
+        self.assertNotEquals(None, registry.exit_time)
+
+        self.assertNotEquals(response.data['id'], registry.id)
+
+
+    def test_create_checkin_checkin_and_checkin_in_external_location(self):
+        self._authenticate_user('jacob1@jacob.com', 'jacob')
+
+        response = self.client.post('/api/registry/', {
+            'included_in':self.location.id
+        })
+        self.assertEquals(201, response.status_code)
+        self.assertEquals(None, response.data['exit_time'])
+
+        local_registry = Registry.objects.get(id=response.data['id'])
+
+        # external checkin
+        response = self.client.post('/api/registry/external/2/16/')
+        self.assertEqual(201, response.status_code)
+
+        registry = Registry.objects.get(id=response.data['id'])
+        self.assertEquals(None, registry.exit_time)
+        self.assertEquals(registry.included_in.site_source, 2)
+        self.assertEquals(registry.included_in.external_id, 16)
+        self.assertEquals(registry.included_in.name, "uno")
+
+        local_registry.refresh_from_db()
+        self.assertNotEquals(None, local_registry.exit_time)
+
+        self.assertNotEquals(response.data['id'], local_registry.id)
+
+
+    def test_create_checkin_checkin_and_checkin_in_external_location_other_site(self):
+        self._authenticate_user('jacob1@jacob.com', 'jacob')
+
+        response = self.client.post('/api/registry/', {
+            'included_in':self.location.id
+        })
+        self.assertEquals(201, response.status_code)
+        self.assertEquals(None, response.data['exit_time'])
+
+        local_registry = Registry.objects.get(id=response.data['id'])
+
+        # external checkin
+        response = self.client.post('/api/registry/external/0/12/')
+        self.assertEqual(201, response.status_code)
+
+        registry = Registry.objects.get(id=response.data['id'])
+        self.assertEquals(None, registry.exit_time)
+        self.assertEquals(registry.included_in.site_source, 0)
+        self.assertEquals(registry.included_in.external_id, 12)
+        self.assertEquals(registry.included_in.name, "Cabildo")
+
+        local_registry.refresh_from_db()
+        self.assertNotEquals(None, local_registry.exit_time)
+
+        self.assertNotEquals(response.data['id'], local_registry.id)
 
 
     #TODO: testear que si hace checkin en otro lado y

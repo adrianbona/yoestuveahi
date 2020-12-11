@@ -9,6 +9,20 @@ from core.views import MyListCreateAPIView
 from rest_framework import status
 from rest_framework.response import Response
 
+from rest_framework.decorators import api_view
+
+
+@api_view(['POST'])
+def checkin_checkout(request, pk):
+    try:
+        location = Location.objects.get(id=pk)
+        serializer = LocationEditSerializer(location)
+        return Response(serializer.data)
+    except ObjectDoesNotExist:
+        pass
+
+    return Response("Location's id doesn't exists.", status=status.HTTP_403_FORBIDDEN)
+
 class LocationList(MyListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
@@ -37,4 +51,4 @@ class LocationList(MyListCreateAPIView):
 class LocationDetail(generics.RetrieveUpdateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationEditSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]

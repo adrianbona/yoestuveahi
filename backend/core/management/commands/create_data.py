@@ -244,7 +244,7 @@ class Command(BaseCommand):
         for user in users_to_checkin:
             delta = timedelta(minutes=int(random.normalvariate(0, 80)))
             checkin_at = random.choice(locations)
-            while checkin_at.capacity() == 0:
+            while checkin_at._capacity() == 0:
                 checkin_at = random.choice(locations)
 
             checkin = Registry.objects.create(
