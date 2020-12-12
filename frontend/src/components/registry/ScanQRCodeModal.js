@@ -44,7 +44,13 @@ const ScanQRCodeModal = ({
   const handleScan = (data) => {
     if (data) {
       const parsedQR = JSON.parse(data);
-      setQRData(locations.find((location) => location.id === parseInt(parsedQR.location_id, 10)));
+      const locationFound = locations.find((location) => location.id === parseInt(parsedQR.location_id, 10)
+        && location.siteSource === parseInt(parsedQR.server_id, 10));
+      if (locationFound) {
+        setQRData(locationFound);
+      } else {
+        setQRData({ siteSource: parsedQR.server_id });
+      }
     }
   };
 

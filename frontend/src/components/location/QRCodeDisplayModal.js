@@ -35,7 +35,7 @@ QRCodeDisplayModal.propTypes = {
     id: PropTypes.string,
     siteSource: PropTypes.string,
     externalId: PropTypes.string
-  }).isRequired
+  })
 };
 
 export default QRCodeDisplayModal;
