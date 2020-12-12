@@ -1,12 +1,17 @@
 import React from 'react';
 import { Box, Card, CardContent } from '@material-ui/core';
 import QRCode from 'qrcode.react';
+import PropTypes from 'prop-types';
 import SimpleModal from '../SimpleModal';
 
-const QRCodeDisplayModal = (props) => {
-  const { onClose, open, value } = props;
+const QRCodeDisplayModal = ({ onClose, open, value }) => {
+  let qrCodeMessage = '';
 
-  const qrCodeMessage = { location_id: value, server_id: 1 };
+  if (value) {
+    qrCodeMessage = parseInt(value.externalId, 10) === 0
+      ? { location_id: value.id, server_id: value.siteSource }
+      : { location_id: value.externalId, server_id: value.siteSource };
+  }
 
   const handleClose = () => {
     onClose();
@@ -23,6 +28,14 @@ const QRCodeDisplayModal = (props) => {
       </Card>
     </SimpleModal>
   );
+};
+
+QRCodeDisplayModal.propTypes = {
+  value: PropTypes.shape({
+    id: PropTypes.string,
+    siteSource: PropTypes.string,
+    externalId: PropTypes.string
+  }).isRequired
 };
 
 export default QRCodeDisplayModal;

@@ -42,7 +42,6 @@ const ScanQRCodeModal = ({
   const [QRData, setQRData] = useState(null);
 
   const handleScan = (data) => {
-    console.log(data);
     if (data) {
       const parsedQR = JSON.parse(data);
       setQRData(locations.find((location) => location.id === parseInt(parsedQR.location_id, 10)));

@@ -20,7 +20,7 @@ const Results = ({ locations }) => {
   const [page, setPage] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const handleLimitChange = event => {
+  const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
 
@@ -28,8 +28,8 @@ const Results = ({ locations }) => {
     setPage(newPage);
   };
 
-  const handleShowQRCode = locationId => {
-    setSelectedLocation(locationId);
+  const handleShowQRCode = (location) => {
+    setSelectedLocation(location);
   };
 
   return (
@@ -52,11 +52,11 @@ const Results = ({ locations }) => {
               <TableBody>
                 {locations
                   .slice(page * limit, (page + 1) * limit)
-                  .map(location => (
+                  .map((location) => (
                     <TableRow
                       hover
                       key={location.id}
-                      onClick={() => handleShowQRCode(location.id)}
+                      onClick={() => handleShowQRCode(location)}
                     >
                       <TableCell>
                         <Avatar
@@ -81,8 +81,8 @@ const Results = ({ locations }) => {
                         {location.createdBy && location.createdBy}
                       </TableCell>
                       <TableCell>
-                        {location.createdAt &&
-                          location.createdAt.format('MMMM D, YYYY')}
+                        {location.createdAt
+                          && location.createdAt.format('MMMM D, YYYY')}
                       </TableCell>
                     </TableRow>
                   ))}
