@@ -3,8 +3,10 @@ import { Box, Card, CardContent } from '@material-ui/core';
 import QRCode from 'qrcode.react';
 import SimpleModal from '../SimpleModal';
 
-const QRCodeDisplayModal = props => {
+const QRCodeDisplayModal = (props) => {
   const { onClose, open, value } = props;
+
+  const qrCodeMessage = { location_id: value, server_id: 1 };
 
   const handleClose = () => {
     onClose();
@@ -15,7 +17,7 @@ const QRCodeDisplayModal = props => {
       <Card>
         <CardContent>
           <Box alignItems="center" display="flex" flexDirection="column">
-            <QRCode value={`${value}`} size={150} renderAs="svg" />
+            <QRCode value={JSON.stringify(qrCodeMessage)} size={150} renderAs="svg" />
           </Box>
         </CardContent>
       </Card>

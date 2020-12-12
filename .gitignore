@@ -130,3 +130,4 @@ dmypy.json
 
 frontend/.idea/
 frontend/node_modules/
+backend/.idea/

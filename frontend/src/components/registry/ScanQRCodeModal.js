@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Card, CardContent, makeStyles } from '@material-ui/core';
+import {
+  Box, Button, Card, CardContent, makeStyles
+} from '@material-ui/core';
 import QrReader from 'react-qr-scanner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,7 +10,7 @@ import SimpleModal from '../SimpleModal';
 import { actions as locationActions } from '../../redux/modules/locations';
 import { actions as registryActions } from '../../redux/modules/registries';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
@@ -39,9 +41,11 @@ const ScanQRCodeModal = ({
   const [delay] = useState(100);
   const [QRData, setQRData] = useState(null);
 
-  const handleScan = data => {
+  const handleScan = (data) => {
+    console.log(data);
     if (data) {
-      setQRData(locations.find(location => location.id === parseInt(data, 10)));
+      const parsedQR = JSON.parse(data);
+      setQRData(locations.find((location) => location.id === parseInt(parsedQR.location_id, 10)));
     }
   };
 
@@ -120,13 +124,13 @@ const ScanQRCodeModal = ({
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   locations: state.locations.list,
   registries: state.registries.list
 });
 
-const mapDispatchToProps = dispatch => ({
-  createRegistry: data => dispatch(registryActions.createRegistry(data)),
+const mapDispatchToProps = (dispatch) => ({
+  createRegistry: (data) => dispatch(registryActions.createRegistry(data)),
   resetRegistries: () => dispatch(registryActions.resetRegistries()),
   getLocations: () => dispatch(locationActions.getLocations())
 });
