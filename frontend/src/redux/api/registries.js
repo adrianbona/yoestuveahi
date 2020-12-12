@@ -9,12 +9,24 @@ export function getRegistries() {
   });
 }
 
-export function createRegistry({ locationId }) {
+export function createRegistry({ id: locationId, siteSource }) {
+  if (parseInt(siteSource, 10) === 1) {
+    return instance.post(
+      '/registry/',
+      {
+        included_in: locationId
+      },
+      {
+        headers: {
+          Authorization: `token ${getUserToken()}`
+        }
+      }
+    );
+  }
+
   return instance.post(
-    '/registry/',
-    {
-      included_in: locationId
-    },
+    `/registry/external/${siteSource}/${locationId}/`,
+    {},
     {
       headers: {
         Authorization: `token ${getUserToken()}`

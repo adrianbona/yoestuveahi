@@ -11,9 +11,9 @@ export const constants = {
 export const actions = {
   getRegistries: () => ({ type: constants.REGISTRIES_GET.REQUEST }),
   resetRegistries: () => ({ type: constants.REGISTRIES_RESET }),
-  createRegistry: data => ({
+  createRegistry: (data) => ({
     type: constants.REGISTRIES_CREATE.REQUEST,
-    ...data
+    data
   })
 };
 

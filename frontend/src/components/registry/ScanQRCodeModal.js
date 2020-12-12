@@ -49,7 +49,7 @@ const ScanQRCodeModal = ({
       if (locationFound) {
         setQRData(locationFound);
       } else {
-        setQRData({ siteSource: parsedQR.server_id });
+        setQRData({ siteSource: parsedQR.server_id, id: parsedQR.location_id });
       }
     }
   };
@@ -66,9 +66,7 @@ const ScanQRCodeModal = ({
   }, [getLocations]);
 
   const handleCreate = () => {
-    createRegistry({
-      locationId: QRData.id
-    });
+    createRegistry(QRData);
   };
 
   useEffect(() => {
