@@ -66,7 +66,7 @@ def create_contagion_risk_to_every_body_in_checkins(checkin):
 
 @api_view(['POST'])
 def new(request):
-    stays = request.POST.get('stays', "[]")
+    stays = request.data.get('stays', "[]")
     for stay in stays:
         # print(stay['server_id'])
         location = get_location(stay['server_id'], stay['location_id'])
