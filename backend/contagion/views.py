@@ -32,7 +32,7 @@ def get_location(site, pk):
 
 def get_checkins(location, entrance_time, exit_time):
     checkin_time = datetime.fromtimestamp(entrance_time, tz=pytz.UTC)
-    one_hour = timedelta(days=0,hours=1)
+    delta_hour = timedelta(days=0,hours=3)
     if exit_time is None:
         exit_time = timezone.now()
     else:
@@ -40,10 +40,10 @@ def get_checkins(location, entrance_time, exit_time):
 
     return Registry.objects.filter(
         included_in=location,
-        exit_time__range=[checkin_time-one_hour, exit_time + one_hour]
+        exit_time__range=[checkin_time-delta_hour, exit_time + delta_hour]
     ) | Registry.objects.filter(
         included_in=location,
-        entrance_time__range=[checkin_time-one_hour, exit_time + one_hour],
+        entrance_time__range=[checkin_time-delta_hour, exit_time + delta_hour],
     ) | Registry.objects.filter(
         included_in=location,
         entrance_time__lte=checkin_time,
@@ -66,7 +66,7 @@ def create_contagion_risk_to_every_body_in_checkins(checkin):
 
 @api_view(['POST'])
 def new(request):
-    stays = json.loads(request.POST.get('stays', "[]"))
+    stays = request.POST.get('stays', "[]")
     for stay in stays:
         # print(stay['server_id'])
         location = get_location(stay['server_id'], stay['location_id'])
