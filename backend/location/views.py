@@ -13,9 +13,25 @@ from rest_framework.decorators import api_view
 
 
 @api_view(['POST'])
-def checkin_checkout(request, pk):
+def checkin(request, pk):
     try:
         location = Location.objects.get(id=pk)
+        location.external_checkins = location.external_checkins + 1
+        location.save()
+        serializer = LocationEditSerializer(location)
+        return Response(serializer.data)
+    except ObjectDoesNotExist:
+        pass
+
+    return Response("Location's id doesn't exists.", status=status.HTTP_403_FORBIDDEN)
+
+@api_view(['POST'])
+def checkout(request, pk):
+    try:
+        location = Location.objects.get(id=pk)
+        if location.external_checkins > 0:
+            location.external_checkins = location.external_checkins - 1
+        location.save()
         serializer = LocationEditSerializer(location)
         return Response(serializer.data)
     except ObjectDoesNotExist:

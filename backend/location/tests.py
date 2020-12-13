@@ -124,3 +124,74 @@ class LocationTest(APITestCase):
             'included_in': location.id
         })
         self.assertEqual(403, response.status_code)
+    
+    
+    def test_external_checkins(self):
+        user2 = User.objects.create_user(email='2@2.com',
+                                                password='2')
+        user2.save()
+
+        location = Location.objects.create(
+            name="test",
+            description="description",
+            opening_time="10hs",
+            closing_time="16hs",
+            logo="",
+            maximum_capacity=1,
+            latitude=100,
+            longitude=100,
+            created_by = self.user
+        )
+        location.save()
+
+        self.client.force_authenticate(user=user2)
+        response = self.client.post('/api/registry/', {
+            'included_in': location.id
+        })
+        self.assertEqual(201, response.status_code)
+
+        location.refresh_from_db()
+
+        response = self.client.get('/api/location/{}/'.format(location.id))
+        self.assertEqual(1, response.data['concurrence'])
+
+        response = self.client.post('/api/checkin/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+
+        response = self.client.get('/api/location/{}/'.format(location.id))
+        self.assertEqual(2, response.data['concurrence'])
+
+        response = self.client.post('/api/checkin/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkin/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkin/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+
+        response = self.client.get('/api/location/{}/'.format(location.id))
+        self.assertEqual(5, response.data['concurrence'])
+
+
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+
+        response = self.client.get('/api/location/{}/'.format(location.id))
+        self.assertEqual(3, response.data['concurrence'])
+
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+        response = self.client.post('/api/checkout/{}/'.format(location.id))
+        self.assertEqual(200, response.status_code)
+
+        response = self.client.get('/api/location/{}/'.format(location.id))
+        self.assertEqual(1, response.data['concurrence'])

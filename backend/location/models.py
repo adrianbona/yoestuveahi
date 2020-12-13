@@ -14,9 +14,10 @@ class Location(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     site_source = models.IntegerField(default=1)
     external_id = models.IntegerField(default=0)
+    external_checkins = models.IntegerField(default=0)
 
     def _concurrence(self):
-        return self.checkins.filter(exit_time__isnull=True).count()
+        return self.checkins.filter(exit_time__isnull=True).count() + self.external_checkins
 
     def _capacity(self):
         return self.maximum_capacity - self._concurrence()
