@@ -94,9 +94,9 @@ class Command(BaseCommand):
                 try:
                     stays = self._get_stays_lists(checkins)
                     print(stays)
-                    response = requests.post('http://yoestuveahiyea.herokuapp.com/contagion/new/', json={'stays': stays})
+                    response = requests.post('http://yoestuveahiyea.herokuapp.com/contagion/new/', json={'stays': stays}, headers={'accept': 'application/json'})
                     print(response.status_code)
-                    response = requests.post('https://covidweb2020.azurewebsites.net/api/contagion/new/', json={'stays': stays})
+                    response = requests.post('https://covidweb2020.azurewebsites.net/api/contagion/new/', json={'stays': stays}, headers={'accept': 'application/json'})
                     print(response.status_code)
                 except:
                     pass
