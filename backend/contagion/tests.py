@@ -109,12 +109,12 @@ class AccountTests(APITestCase):
         begin = timezone.now() - day
         end = timezone.now() + day
 
-        response = self.client.post('/api/contagion/new/', {
-            'stays': json.dumps([
+        response = self.client.post('/api/contagion/new/', data={
+            'stays': [
                 {"location_id": external_id, "server_id": 1, "begin": int(begin.timestamp()), "end": int(end.timestamp())},
                 {"location_id": 60, "server_id": 0, "begin": int(begin.timestamp()), "end": int(end.timestamp())},
-            ])
-        })
+            ]
+        }, format='json')
         self.assertEqual(200, response.status_code)
 
         self.users[0].refresh_from_db()

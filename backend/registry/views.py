@@ -24,6 +24,29 @@ def get_external_location_data(site, id):
         return request.json()
 
 
+def send_external_checkin(site, id):
+    try:
+        if site == 0:
+            request = requests.get("http://yoestuveahiyea.herokuapp.com/checkin/{}/".format(id), headers={'accept': 'application/json'})
+            return request.json()
+        elif site == 2:
+            request = requests.get('https://covidweb2020.azurewebsites.net/api/checkin/{}/'.format(id), headers={'accept': 'application/json'})
+            return request.json()
+    except:
+        pass
+
+def send_external_checkout(site, id):
+    try:
+        if site == 0:
+            request = requests.get("http://yoestuveahiyea.herokuapp.com/checkout/{}/".format(id), headers={'accept': 'application/json'})
+            return request.json()
+        elif site == 2:
+            request = requests.get('https://covidweb2020.azurewebsites.net/api/checkout/{}/'.format(id), headers={'accept': 'application/json'})
+            return request.json()
+    except:
+        pass
+
+
 @api_view(['POST'])
 @renderer_classes([JSONRenderer])
 def external_checkin(request, site, pk):
@@ -55,6 +78,7 @@ def external_checkin(request, site, pk):
                         ).get()
         registry.exit_time = timezone.now()
         registry.save()
+        send_external_checkout(registry.included_in.site_source, registry.included_in.external_id)
         seria = RegistrySerializer(registry)
         return Response(seria.data, status=status.HTTP_201_CREATED)
     except ObjectDoesNotExist:
@@ -68,6 +92,7 @@ def external_checkin(request, site, pk):
                         registered_by=request.user,
                         )
         registry.save()
+        send_external_checkin(location.site_source, location.external_id)
         seria = RegistrySerializer(registry)
         return Response(seria.data, status=status.HTTP_201_CREATED)
 
@@ -103,6 +128,7 @@ class RegistryList(MyListCreateAPIView):
                             ).get()
             registry.exit_time = timezone.now()
             registry.save()
+            send_external_checkout(registry.included_in.site_source, registry.included_in.external_id)
             seria = RegistrySerializer(registry)
             return Response(seria.data, status=status.HTTP_201_CREATED)
         except ObjectDoesNotExist:
@@ -114,6 +140,7 @@ class RegistryList(MyListCreateAPIView):
         location = Location.objects.get(id=request.data['included_in'])
         if location._capacity() > 0:
             return super().create(request, *args, **kwargs)
+        send_external_checkin(location.site_source, location.external_id)
 
         return Response("Maximum capacity reached", status=status.HTTP_403_FORBIDDEN)
 
