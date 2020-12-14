@@ -9,6 +9,8 @@ from datetime import timedelta
 from django.db.models import Q
 from django.utils import timezone
 
+import requests
+
 
 
 class Command(BaseCommand):
@@ -66,11 +68,37 @@ class Command(BaseCommand):
         return "Contagion risk created on {} at {}".format(
                     checkin.entrance_time.strftime("%d/%m/%y"), location.name)
 
+
+    def _get_stays_lists(self, checkins):
+        out = []
+
+        for c in checkins:
+            o = {}
+            if c.included_in.site_source == 1:
+                o['location_id'] = c.included_in.id
+            else:
+                o['location_id'] = c.included_in.external_id
+
+            o['server_id'] = c.included_in.site_source
+            o['begin'] = int(c.entrance_time.timestamp())
+            o['end'] = int(c.exit_time.timestamp())
+            out.append(o)
+        return out
+
+
     def handle(self, *args, **options):
         tests = Test.objects.filter(processed=False)
         for test in tests:
             if test.is_positive:
                 checkins = self._get_user_chekins(test.taken_by)
+                try:
+                    stays = self._get_stays_lists(checkins)
+                    print(stays)
+                    response = requests.post('http://yoestuveahiyea.herokuapp.com/contagion/new/', json={'stays': stays})
+                    response = requests.post('https://covidweb2020.azurewebsites.net/api/contagion/new/', json={'stays': stays})
+                except:
+                    pass
+
                 for checkin in checkins:
                     self._create_contagion_risk_to_every_body_in_checkins(checkin, test)
             else:
